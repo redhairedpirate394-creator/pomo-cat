@@ -245,3 +245,17 @@ Ubuntu 26; both only warnings, worth a template update.
 
 Session end: context is large after the interview, C1 and the handoff; the owner is
 advised to start C2 fresh.
+
+### C2 progress (2026-11-04)
+
+Owner art: `make-art` cut the drawings by flood-filling paper from the edges, so
+white inside a drawing stays. The font came from `alphabet-sheet.jpg`: columns split
+by gaps per row, 6x upscale, potrace, opentype.js with integer coordinates; contours
+inside an odd number of others are reversed, because fonts fill by winding and the
+tracer assumes even-odd. Both scripts lived in the scratchpad, not the repository.
+Rebuilding needs them written again; the result is `src/ui/assets/pomo-hand.otf`.
+
+Stories 3 to 6 share one commit because they share the side column and catalogs.
+Final `pnpm verify`: exit 0 (101 unit tests, 130 browser scenarios). Stopped at a
+story boundary because the session context is large, by estimate past the 250k
+limit; the exact figure is not available.
