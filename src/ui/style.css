@@ -14,7 +14,7 @@
   --line: 2px solid var(--ink);
   /* The owner's drawn frame; every box keeps its size. */
   --frame: url("./assets/frame.png") 12 / 9px stretch;
-  /* Slightly uneven corners, like the boxes the owner draws. */
+  /* Square: the owner wants exact right angles (r28). */
   --sketch-corners: 0;
   /* Characters the owner did not draw, such as an é in a name, fall through. */
   font-family: "Pomo Hand", "Patrick Hand", "Segoe Print", cursive;
@@ -60,7 +60,7 @@ button {
   cursor: pointer;
 }
 
-button:hover {
+button:hover:not(:disabled) {
   background: #f1f1f1;
 }
 
@@ -355,7 +355,6 @@ button.item-mouse {
 
 /* A drawn frame cannot change colour, so the whole box fades. */
 button:disabled {
-  color: var(--ink-soft);
   cursor: not-allowed;
   opacity: 0.55;
 }

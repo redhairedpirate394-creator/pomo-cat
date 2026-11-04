@@ -17,13 +17,13 @@ commands, outcomes, review findings and screenshots go to
 ## Where we are
 
 - Active feature: 001-pomo-cat (`specs/001-pomo-cat/`)
-- Checkpoint: C3 report posted (round 3), delivery mode Full. C2 approved and live.
-- Pending owner decisions: round 3 Q1 (accept C3), Q2 (keep the frame's corners).
+- Checkpoint: C3 report posted (round 4), delivery mode Full. C2 approved and live.
+- Pending owner decisions: round 4 Q1 (accept C3).
   T040 stays open until the drawings arrive (r16).
 
 ## Counters
 
-- Rounds held: 3
+- Rounds held: 4
 - Last feedback id: r28 (next is r29)
 
 ## Machine
@@ -48,7 +48,7 @@ commands, outcomes, review findings and screenshots go to
 
 ## Exact next action
 
-Round 3 is reported on `001-pomo-cat-c3`, reachable locally at
+Round 4 is reported on `001-pomo-cat-c3`, reachable locally at
 `http://127.0.0.1:5173/?probelauf` (`README.md` has the restart steps). Wait for the
 owner's C3 decision and do not publish before it. On approval: record it here, tick
 T043, write `docs/retro.md`, publish with auto-merge. Then start the next feature
