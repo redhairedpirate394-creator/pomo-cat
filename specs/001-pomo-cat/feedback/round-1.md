@@ -21,6 +21,7 @@ Type: bug (within the spec) | change (other than specified) | extension (new sco
 | r03 | next round | decision | FR-040, SC-010 | Own drawings of coin, gear button, shop button, yarn, mouse and a cushion-like item |
 | r04 | next round | decision | FR-026, FR-040 | Own cat drawings: eating, sleeping, sitting, crying, heart eyes |
 | r05 | next round | decision | FR-041 | Own alphabet, digits and punctuation on one page |
+| r06 | next round | decision | FR-016, FR-027, FR-040 | Food drawings: bowl with layers on top, two snacks |
 
 ## r01 First impression
 
@@ -81,3 +82,17 @@ and publish; Q2 the six details; Q37 the meow was heard; Q38 heart eyes for happ
 for petted; Q39 the lilac item is the pillow; Q40 build the drawings in now, later
 versions replace them by file; Q41 SHOP and gear as images, other buttons get the
 same drawn box with the owner's lettering if legible.
+
+## r06 Food (mid-turn, during C2 work)
+
+> hier ist das Futter. die varienten kannst du über den napf layern. die zwei sachen unten sind snacks
+
+With one image: a lilac bowl, an orange heap labelled "Nass", a brown heap labelled
+"Trocken", a blue fish, and below them an orange fish-shaped item and a flowering
+plant. Reading: the feed window shows the bowl with the chosen food on top; the blue
+fish is tuna; the orange item is the salmon stick and the plant is the catnip. The
+image came in while the team was working and no copy exists on disk, so it must be
+sent again.
+
+Not stated: Q42, what happens to the third snack, the crunchy pillow, which has no
+drawing.
