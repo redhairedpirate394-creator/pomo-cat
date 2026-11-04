@@ -180,3 +180,13 @@ retention, cost and operations rules, and the owner's yes. No provider chosen.
 
 The summary posted in chat said it applies once Q30 and Q36 are answered yes, so
 it stands as the shared understanding. Interview frontier empty.
+
+### Spec, plan, tasks, analyze (2026-11-04)
+
+- `/speckit-specify`: 6 stories, FR-001 to FR-048, SC-001 to SC-010, no open
+  markers. FR-048 (demo link) added by the team during planning.
+- `/speckit-clarify` skipped: nothing left open by the interview.
+- `/speckit-plan`: Delivery Mode Full. ADR 013 written. New package: Patrick Hand.
+- `/speckit-tasks`: 43 tasks; `/speckit-analyze`: 1 gap found and fixed (FR-014
+  had no task, added to T013), 1 contract detail clarified (the warning's stop
+  button exists only after feeding). 0 critical issues, coverage 100 %.

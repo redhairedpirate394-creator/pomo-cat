@@ -17,9 +17,9 @@ commands, outcomes, review findings and screenshots go to
 ## Where we are
 
 - Active feature: 001-pomo-cat (no spec yet; interview running)
-- Checkpoint: none yet; C1 comes after the interview, spec and plan.
-- Pending owner decisions: none; interview closed 2026-11-04 (answers
-  go to `docs/journal/001-pomo-cat.md`).
+- Checkpoint: C1 in progress (delivery mode Full).
+- Pending owner decisions: none; interview closed 2026-11-04 (record in
+  `docs/journal/001-pomo-cat.md`).
 
 ## Counters
 
@@ -47,6 +47,4 @@ commands, outcomes, review findings and screenshots go to
 
 ## Exact next action
 
-Run the Spec Kit flow for 001-pomo-cat. If new questions arise, ask the next
-frontier with the `grilling` skill until it is empty, then `/speckit-specify`
-(BOOTSTRAP-PROMPT.md, NEW PRODUCT steps 2-6).
+Run `/speckit-implement` to the C1 GATE (T018 in specs/001-pomo-cat/tasks.md).
