@@ -182,3 +182,27 @@ test("buying says so, also while the run is held", async ({ page }) => {
     "Kissen steht jetzt im Raum.",
   );
 });
+
+test("room items keep their shape while the cat sleeps", async ({ page }) => {
+  await seedGame(page, {
+    owned: ["yarn", "mouse", "pillow", "plant", "rug", "scratching-post"],
+  });
+  await page.goto("/");
+  await page.getByRole("button", { name: "Start" }).click();
+  await page.getByRole("img", { name: "Spielmaus" }).waitFor();
+  const shapes = await page.locator("img.room-item").evaluateAll((images) =>
+    images.map((element) => {
+      const image = element as HTMLImageElement;
+      const box = image.getBoundingClientRect();
+      return {
+        name: image.alt,
+        drawn: image.naturalWidth / image.naturalHeight,
+        shown: box.width / box.height,
+      };
+    }),
+  );
+  expect(shapes).toHaveLength(6);
+  for (const { name, drawn, shown } of shapes) {
+    expect(Math.abs(shown / drawn - 1), name).toBeLessThan(0.05);
+  }
+});

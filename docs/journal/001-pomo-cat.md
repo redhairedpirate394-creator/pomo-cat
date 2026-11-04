@@ -285,3 +285,11 @@ limit; the exact figure is not available.
   independent reviewer did not re-review the fixes.
 
 Context: large, by estimate well past the 250k limit; exact figure not available.
+
+### C2 decision and triage (2026-11-04)
+
+Owner approved round 2 (Q1) and sent r13 to r15, built before the publish: the mouse
+was stretched while learning, because the bigger tap area also applied to the plain
+image, now only the button and tested; enclosed ears and feet stay white, stars stay
+see-through; gear alone in a square box. Q2 is not stated and is asked again. These
+three changes had no independent review; `pnpm verify` and a visual check only.

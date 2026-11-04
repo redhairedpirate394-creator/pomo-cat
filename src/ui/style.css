@@ -306,11 +306,16 @@ button.room-item img {
 }
 
 .item-mouse {
-  right: 15%;
-  bottom: -2%;
+  z-index: 4;
+  right: -5%;
+  bottom: -3%;
+  width: 14%;
+}
+
+/* A bigger tap area for a flat drawing; only the button, or the art stretches. */
+button.item-mouse {
   display: flex;
   align-items: flex-end;
-  width: 14%;
   min-height: 2.75rem;
 }
 
@@ -370,12 +375,11 @@ button:disabled {
 
 .gear {
   flex: 0 0 auto;
-  width: 3.4rem;
-  min-height: 3.4rem;
+  width: 2.75rem;
+  height: 2.75rem;
+  min-height: 0;
   margin-left: auto;
-  padding: 0;
-  background: none;
-  border: 0;
+  padding: 0.35rem;
 }
 
 .gear img {
@@ -589,4 +593,10 @@ select {
     flex: 0 0 auto;
     width: 3.5rem;
   }
+}
+
+/* Lying cats are wide: narrower, so toys beside them stay free. */
+.stage .cat.lying img {
+  width: 76%;
+  margin: 0 auto;
 }

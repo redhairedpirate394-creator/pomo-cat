@@ -7,7 +7,7 @@ commands, outcomes, review findings and screenshots go to
 ## Product
 
 - Product: Pomo Cat (possibly Pomo Pet later, with other animals and rooms)
-- Repository/branch: `redhairedpirate394-creator/pomo-cat` (public), `001-pomo-cat-c2`
+- Repository/branch: `redhairedpirate394-creator/pomo-cat` (public), `main`; next work on `001-pomo-cat-c3`
 - Live URL: https://redhairedpirate394-creator.github.io/pomo-cat/
   (GitHub Pages, source: workflow; trial link: add `?probelauf`)
 - Spec language: de (chat and spec). App: German and English.
@@ -17,15 +17,13 @@ commands, outcomes, review findings and screenshots go to
 ## Where we are
 
 - Active feature: 001-pomo-cat (`specs/001-pomo-cat/`)
-- Checkpoint: C1 approved 2026-11-04 and published. C2 gate (T036) pending, delivery
-  mode Full. Round 2 reported.
-- Pending owner decisions: round 2 Q1 (approve and publish), Q2 (team-chosen
-  details).
+- Checkpoint: C2 approved 2026-11-04 and published; C3 next, delivery mode Full.
+- Pending owner decisions: round 2 Q2 (the four team-chosen details).
 
 ## Counters
 
 - Rounds held: 2
-- Last feedback id: r12 (next is r13)
+- Last feedback id: r15 (next is r16)
 
 ## Machine
 
@@ -48,7 +46,6 @@ commands, outcomes, review findings and screenshots go to
 
 ## Exact next action
 
-Wait for the owner (`specs/001-pomo-cat/review/round-2.md`). Do not start C3. On
-feedback: handoff step 8 in `feedback/round-2.md`. Review URL: `pnpm dev --host
-127.0.0.1 --port 5173 --strictPort`, then `/?probelauf`; local to this machine.
-On approval: publish from `001-pomo-cat-c2`, then T037 on a new branch.
+C2 is live. Ask Q2 of round 2 again. Create `001-pomo-cat-c3` from the updated
+`main` and record the publish there, then do T037 to T042 (the rest of Phase 9),
+then the C3 GATE (T043). T040 waits for the owner's remaining drawings.
