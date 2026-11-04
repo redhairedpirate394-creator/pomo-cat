@@ -7,9 +7,9 @@ commands, outcomes, review findings and screenshots go to
 ## Product
 
 - Product: Pomo Cat (possibly Pomo Pet later, with other animals and rooms)
-- Repository/branch: `redhairedpirate394-creator/pomo-cat` (public), `001-pomo-cat`
+- Repository/branch: `redhairedpirate394-creator/pomo-cat` (public), `main`; next work on `001-pomo-cat-c2`
 - Live URL once published: https://redhairedpirate394-creator.github.io/pomo-cat/
-  (GitHub Pages enabled, source: workflow; nothing deployed yet)
+  (GitHub Pages, source: workflow; trial link: add `?probelauf`)
 - Spec language: de (chat and spec). App: German and English.
 - Publish choice: auto-merge ("publish automatically")
 - Owner experience: see `.mvp-starter/manifest.json` (single source)
@@ -17,9 +17,8 @@ commands, outcomes, review findings and screenshots go to
 ## Where we are
 
 - Active feature: 001-pomo-cat (`specs/001-pomo-cat/`)
-- Checkpoint: C1 gate (T018) pending, delivery mode Full. Round 1 reported.
-- Pending owner decisions: round 1 Q1 (approve and publish), Q2 (team-chosen
-  details), whether the meow was audible; design wishes announced by the owner.
+- Checkpoint: C1 approved 2026-11-04 and published; C2 next, delivery mode Full.
+- Pending owner decisions: none.
 
 ## Counters
 
@@ -47,7 +46,6 @@ commands, outcomes, review findings and screenshots go to
 
 ## Exact next action
 
-Wait for the owner (`specs/001-pomo-cat/review/round-1.md`, open items in
-`specs/001-pomo-cat/feedback/round-1.md`). Do not start US2. On feedback: handoff
-step 8. Review URL: `pnpm dev --host 127.0.0.1 --port 5173 --strictPort`, then
-`/?probelauf`; it is local to this machine and must be restarted in a new session.
+C1 is live. Create `001-pomo-cat-c2` from the updated `main`, then run
+`/speckit-analyze` and `/speckit-implement` from T044 (owner's art), then T019 on,
+to the C2 GATE (T036). The owner expects their drawings in the next round.

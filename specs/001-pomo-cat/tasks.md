@@ -65,13 +65,21 @@ journey. Tests are written alongside the code they prove, never deferred.
 
 ### C1 GATE
 
-- [ ] T018 [GATE] C1 checkpoint (owner-facing: "First working slice"): run `pnpm verify`; start `pnpm dev --host 127.0.0.1 --port 5173 --strictPort` and confirm the URL responds; draft the round report from docs/templates/round-report.md (≤3 owner steps); run the `reviewer` subagent (code review plus walk-through of the owner steps with screenshots) and fix blockers; save the report as specs/001-pomo-cat/review/round-<k>.md; update docs/STATUS.md (checkpoint, round counter, next action) and the spec in the same commit, and append evidence to docs/journal/001-pomo-cat.md; commit; post the report in chat; then **STOP** and wait for an explicit owner decision. Do not start later phases until docs/STATUS.md records approval.
+- [X] T018 [GATE] C1 checkpoint (owner-facing: "First working slice"): run `pnpm verify`; start `pnpm dev --host 127.0.0.1 --port 5173 --strictPort` and confirm the URL responds; draft the round report from docs/templates/round-report.md (≤3 owner steps); run the `reviewer` subagent (code review plus walk-through of the owner steps with screenshots) and fix blockers; save the report as specs/001-pomo-cat/review/round-<k>.md; update docs/STATUS.md (checkpoint, round counter, next action) and the spec in the same commit, and append evidence to docs/journal/001-pomo-cat.md; commit; post the report in chat; then **STOP** and wait for an explicit owner decision. Do not start later phases until docs/STATUS.md records approval.
 
 ---
 
 ## Phase 4: User Story 2 - Pause mit der Katze (Priority: P2) C2 Useful and recoverable
 
 **Goal**: The break replaces doomscrolling; mood shows on the cat
+
+### Owner's art (feedback r03 to r05, IDs added after C1)
+
+- [ ] T044 Build the owner's cat drawings from docs/design/owner/ into src/ui/assets/ with transparent paper, make src/ui/components/CatStage.tsx fit lying and sitting cats, heart eyes for happy and petted (FR-026, FR-040, Q38, Q40)
+- [ ] T045 Cut coin, gear, SHOP, yarn, mouse and pillow from docs/design/owner/items-sheet.jpg into src/ui/assets/ behind src/ui/assets/manifest.ts, drawn box for the other buttons (FR-040, Q39, Q41)
+- [ ] T046 Owner's lettering from docs/design/owner/alphabet-sheet.jpg: timer digits for certain, whole text only if legible at button size, otherwise keep the current font for small text and say so (FR-041, Q41)
+
+### Story
 
 **Independent Test**: Pet, hold, close, reopen and continue; check mood over simulated days
 

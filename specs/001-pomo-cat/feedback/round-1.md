@@ -7,9 +7,9 @@ reading, for triage. Anything the owner did not say is marked **not stated**.
 These items arrived while the review was running, before the round report was
 posted. Later answers are appended.
 
-**Decision**: not stated
+**Decision**: approve with follow-ups
 **Publish choice**: as recorded
-**Tried**: not stated which steps; the owner said "test ist fertig" after opening the trial link
+**Tried**: the trial link in the owner's browser; the meow was heard (Q37)
 
 Timing: `before publish` | `next round` | `later` (backlog).
 Type: bug (within the spec) | change (other than specified) | extension (new scope) | question | decision | praise.
@@ -74,3 +74,10 @@ all text can use it is still to be tested; the timer digits were promised.
 - Heart eyes: happy or petted.
 - Lilac item: pillow or something else.
 - Whether the other buttons should also be drawn.
+
+Answers of 2026-11-04, the owner's words unchanged: "1: ja", "2: Ja", "37: Ja",
+"38: Ja", "39: Ja", "40: Ja", "41: Ja". They accept the recommendations: Q1 approved
+and publish; Q2 the six details; Q37 the meow was heard; Q38 heart eyes for happy and
+for petted; Q39 the lilac item is the pillow; Q40 build the drawings in now, later
+versions replace them by file; Q41 SHOP and gear as images, other buttons get the
+same drawn box with the owner's lettering if legible.
