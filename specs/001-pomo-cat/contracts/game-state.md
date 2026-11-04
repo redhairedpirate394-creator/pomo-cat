@@ -1,7 +1,7 @@
 # Contract: persisted game state
 
-- Key: `pomo-cat:game:v1`; demo link: `pomo-cat:demo:v1`. Only these keys are ever
-  touched.
+- Key: `pomo-cat:game:v1`; demo link: `pomo-cat:demo:v1` and its clock start
+  `pomo-cat:demo-epoch`. Only these keys are ever touched.
 - Value: JSON `{ "version": 1, ...GameState }` (see [data-model.md](../data-model.md)).
 - Absent key: new game. Invalid JSON, wrong shape or another version:
   `data-invalid`. Storage access failure: `read-failed`. Write failure: `save-failed`.

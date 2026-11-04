@@ -31,6 +31,7 @@ export interface Messages {
   readonly fedNote: (name: string, coins: number) => string;
   readonly warning: string;
   readonly warningStop: string;
+  readonly heldNote: string;
   readonly continueUnit: (unit: number, total: number) => string;
   readonly coins: (count: number) => string;
   readonly catAsleep: (name: string) => string;

@@ -27,6 +27,7 @@ export const de: Messages = {
   fedNote: (name, count) => `${name} gibt dir ${coins(count)}.`,
   warning: "Gleich geht es weiter",
   warningStop: "Stopp",
+  heldNote: "Angehalten. Es geht weiter, wenn du bereit bist.",
   continueUnit: (unit, total) => `Weiter mit Einheit ${unit} von ${total}`,
   coins,
   catAsleep: (name) => `${name} schläft`,

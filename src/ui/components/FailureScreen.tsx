@@ -35,7 +35,13 @@ export function FailureScreen({
             <button type="button" onClick={() => setConfirming(false)}>
               {m.cancel}
             </button>
-            <button type="button" onClick={onStartOver}>
+            <button
+              type="button"
+              onClick={() => {
+                setConfirming(false);
+                onStartOver();
+              }}
+            >
               {m.startOverConfirm}
             </button>
           </div>

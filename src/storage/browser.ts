@@ -7,6 +7,7 @@ import { type GameStore, StoreError } from "./port";
 
 export const STORAGE_KEY = "pomo-cat:game:v1";
 export const DEMO_STORAGE_KEY = "pomo-cat:demo:v1";
+export const DEMO_EPOCH_KEY = "pomo-cat:demo-epoch";
 
 const timestamp = z.number().finite();
 
@@ -143,4 +144,22 @@ export function createBrowserStore(
       }
     },
   };
+}
+
+/**
+ * The demo clock's starting point. Without storage the demo still runs; it just
+ * restarts its time on reload.
+ */
+export function loadDemoEpoch(
+  now: number,
+  access: StorageAccess = () => window.localStorage,
+): number {
+  try {
+    const saved = Number(access().getItem(DEMO_EPOCH_KEY));
+    if (Number.isFinite(saved) && saved > 0) return saved;
+    access().setItem(DEMO_EPOCH_KEY, String(now));
+  } catch {
+    // Falls through to `now`.
+  }
+  return now;
 }

@@ -7,7 +7,12 @@ import {
   newGame,
   start,
 } from "../domain/game";
-import { createBrowserStore, DEMO_STORAGE_KEY, STORAGE_KEY } from "./browser";
+import {
+  createBrowserStore,
+  DEMO_STORAGE_KEY,
+  loadDemoEpoch,
+  STORAGE_KEY,
+} from "./browser";
 import { StoreError } from "./port";
 
 function memoryStorage(initial: Record<string, string> = {}) {
@@ -120,5 +125,20 @@ describe("browser game store", () => {
     await store.reset();
     expect(storage.data.has(STORAGE_KEY)).toBe(false);
     expect(storage.data.get("other")).toBe("keep");
+  });
+});
+
+describe("loadDemoEpoch", () => {
+  it("keeps the first starting point across reloads", () => {
+    const storage = memoryStorage();
+    expect(loadDemoEpoch(1000, () => storage)).toBe(1000);
+    expect(loadDemoEpoch(9000, () => storage)).toBe(1000);
+  });
+
+  it("still gives a time without storage", () => {
+    const denied = () => {
+      throw new Error("denied");
+    };
+    expect(loadDemoEpoch(1000, denied)).toBe(1000);
   });
 });
