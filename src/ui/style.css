@@ -84,10 +84,12 @@ input {
   min-height: 100vh;
   margin: 0 auto;
   padding: 2rem 1.5rem;
-  align-items: center;
+  align-items: start;
 }
 
 .center {
+  position: sticky;
+  top: 2rem;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -129,7 +131,7 @@ input {
 }
 
 /* Lying and sitting cats have different shapes; they stand on the same floor. */
-.stage img {
+.stage .cat img {
   display: block;
   width: 100%;
   height: 100%;
@@ -223,6 +225,10 @@ input {
 }
 
 @media (max-width: 44rem) {
+  .center {
+    position: static;
+  }
+
   .game {
     grid-template-columns: minmax(0, 1fr);
     gap: 1.25rem;
