@@ -343,8 +343,8 @@ Session start after `/clear`, in a fresh context. Owner answered Q43 (r16).
   throttling flags left on; Playwright only set up the unit and disconnected, because
   its focus emulation keeps pages visible; a blank tab in front. Keep-awake request
   from the script, no settings changed. Deadline to meow 249 ms, to feed window 279 ms,
-  largest display deviation 278 ms, 7198 display updates, longest wall-clock gap
-  5.0 s, so no sleep. SC-004 passes in this environment. Limits: visible about 2 of 60
+  largest display deviation 278 ms, 7198 samples of the display, about two per second, longest wall-clock gap 5.0 s,
+  so no sleep. A short debugger read reached the page every 5 minutes. SC-004 passes in this environment. Limits: visible about 2 of 60
   minutes (the window was clicked; hidden at the deadline); the page timer stayed near
   1 s (max 2 s), so Chromium's one-minute throttling did not apply to this page, and
   the worker fallback was not exercised against it.
@@ -354,3 +354,14 @@ Session start after `/clear`, in a fresh context. Owner answered Q43 (r16).
   domain, owned ones stay. Analyze: no conflicts; exclusions and the UI contract
   updated. Room, sounds: next section; r22 means two sliders only.
 - `pnpm verify`: exit 0 (112 unit, 176 browser, 9 skipped). axe: 0 violations.
+
+### C3 handoff (2026-11-04)
+
+Final review pass on the wishes: no blockers, four should-fix, all fixed: disabled
+boxes fade, because a drawn frame cannot change colour; corner overlap at 993 to 1022 px,
+because `rem` in a media query is 16 px here, not the app's 21 px; report length; the
+measurement's limit in the report. Nits fixed too. These last fixes had no further
+independent review, only tests. Steps 1 to 3 passed as written at both sizes.
+Final `pnpm verify`: exit 0 (112 unit, 178 browser, 9 skipped), axe 0 violations,
+`http://127.0.0.1:5173/?probelauf` answers 200 (this computer only). Screenshots:
+`specs/001-pomo-cat/review/round-3/`, 12 files. Context: large, exact figure not available.

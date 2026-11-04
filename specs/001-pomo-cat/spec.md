@@ -288,7 +288,7 @@ Vom Team gewählte Kleinigkeiten, die das Interview offen ließ. Sie werden in d
 - Ein Snack setzt die 48- und 96-Stunden-Frist zurück wie eine fertige Einheit.
 - Die Lernzeit einer abgebrochenen Einheit wird auf ganze Minuten abgerundet. Bei geschlossener App zählt der letzte Moment, in dem sie noch offen war.
 - Kissen, Pflanze und Teppich sind reine Einrichtung, zum Spielen dienen Wollknäuel, Spielmaus und Kratzbaum.
-- Die Decke unter der schlafenden Katze aus der Skizze gehört von Anfang an dazu; der Teppich aus dem Shop kommt zusätzlich.
+- Die Decke unter der schlafenden Katze aus der Skizze gehört von Anfang an dazu; der Teppich kommt später zusätzlich.
 - Eine Lerneinheit über Mitternacht zählt für den Tag, an dem sie begonnen hat.
 - Diese erste Version kommt ohne Knopf zum Zurücksetzen aus. Nur wenn die gespeicherten Daten unlesbar sind, bietet der Fehlerbildschirm nach einer Rückfrage „Neu anfangen“ an.
 - Nutzung zuerst nur durch die Eigentümerin bzw. den Eigentümer, ohne persönliche Daten. Daten bleiben im jeweiligen Browser: getrennte Katzen pro Gerät, und das Löschen der Browserdaten löscht auch die Katze.

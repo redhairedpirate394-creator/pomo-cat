@@ -232,3 +232,23 @@ test("the food lies in the bowl at the drawn size", async ({ page }) => {
   const food = await bowl.locator(".on-bowl").boundingBox();
   expect((food?.width ?? 0) / (outer?.width ?? 1)).toBeCloseTo(0.84, 2);
 });
+
+test("the corner stays clear of the timer at every width", async ({ page }) => {
+  await seedGame(page, {});
+  await page.goto("/");
+  for (const width of [320, 704, 705, 760, 993, 1000, 1024, 1025, 1280]) {
+    await page.setViewportSize({ width, height: 800 });
+    const gear = await page
+      .getByRole("button", { name: "Einstellungen" })
+      .boundingBox();
+    const timer = await page
+      .getByRole("timer")
+      .locator("span")
+      .first()
+      .boundingBox();
+    const clear =
+      (gear?.y ?? 0) + (gear?.height ?? 0) <= (timer?.y ?? 0) ||
+      (gear?.x ?? 0) + (gear?.width ?? 0) <= (timer?.x ?? 0);
+    expect(clear, `at ${width} px`).toBe(true);
+  }
+});

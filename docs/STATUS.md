@@ -17,13 +17,13 @@ commands, outcomes, review findings and screenshots go to
 ## Where we are
 
 - Active feature: 001-pomo-cat (`specs/001-pomo-cat/`)
-- Checkpoint: C2 approved 2026-11-04 and published; C3 next, delivery mode Full.
-- Pending owner decisions: none before the gate. Q43 (r16): acceptance does not wait
-  for the remaining drawings, T040 stays open. Order of r17 to r23 decided (r24).
+- Checkpoint: C3 report posted (round 3), delivery mode Full. C2 approved and live.
+- Pending owner decisions: round 3 Q1 (accept C3), Q2 (keep the frame's corners).
+  T040 stays open until the drawings arrive (r16).
 
 ## Counters
 
-- Rounds held: 2
+- Rounds held: 3
 - Last feedback id: r27 (next is r28)
 
 ## Machine
@@ -48,6 +48,9 @@ commands, outcomes, review findings and screenshots go to
 
 ## Exact next action
 
-C2 is live (PR #2 merged). On branch `001-pomo-cat-c3`: finish T039 (the hidden tab
-measurement), then the C3 GATE (T043). T040 stays open until the owner delivers the
-remaining drawings (r16).
+Round 3 is reported on `001-pomo-cat-c3`, reachable locally at
+`http://127.0.0.1:5173/?probelauf` (`README.md` has the restart steps). Wait for the
+owner's C3 decision and do not publish before it. On approval: record it here, tick
+T043, write `docs/retro.md`, publish with auto-merge. Then start the next feature
+with an interview: the real room and the two-slider sounds (r21, r22, r24, r25;
+drawing in `docs/design/owner/room-draft.jpg`; plant, rug and post return with it).

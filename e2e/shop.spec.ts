@@ -74,9 +74,11 @@ test("too few coins show the price but do not buy", async ({ page }) => {
   await expect(
     page.getByRole("button", { name: "Lachsstick für 5 Münzen kaufen" }),
   ).toBeDisabled();
-  await expect(
-    page.getByRole("button", { name: "Wollknäuel für 5 Münzen kaufen" }),
-  ).toBeDisabled();
+  const yarn = page.getByRole("button", {
+    name: "Wollknäuel für 5 Münzen kaufen",
+  });
+  await expect(yarn).toBeDisabled();
+  await expect(yarn).toHaveCSS("opacity", "0.55");
 });
 
 test("shop is out of reach during a unit", async ({ page }) => {

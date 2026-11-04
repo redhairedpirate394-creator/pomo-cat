@@ -6,6 +6,7 @@
 }
 
 :root {
+  scroll-padding-top: 5rem;
   --paper: #ffffff;
   --ink: #1a1a1a;
   --ink-soft: #5c5c5c;
@@ -352,10 +353,11 @@ button.item-mouse {
   width: 100%;
 }
 
+/* A drawn frame cannot change colour, so the whole box fades. */
 button:disabled {
   color: var(--ink-soft);
-  border-color: var(--ink-soft);
   cursor: not-allowed;
+  opacity: 0.55;
 }
 
 .month {
@@ -613,7 +615,7 @@ button.room-item img {
   line-height: 1;
 }
 
-@media (max-width: 62rem) {
+@media (max-width: 1024px) {
   .center {
     padding-top: 2.5rem;
   }
