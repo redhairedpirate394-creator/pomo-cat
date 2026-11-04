@@ -1,3 +1,4 @@
-# Spec Kit bash scripts must keep LF line endings, including for clones made
-# with core.autocrlf=true (the Git for Windows default); bash fails on CRLF.
-*.sh text eol=lf
+# Every text file is stored and checked out with LF on every machine, including
+# clones made with core.autocrlf=true (the Git for Windows default): Biome and
+# bash both fail on CRLF.
+* text=auto eol=lf

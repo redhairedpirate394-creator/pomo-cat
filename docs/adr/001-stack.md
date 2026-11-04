@@ -2,7 +2,8 @@
 
 Status: selected starter direction; implementation and verification tracked in
 `docs/STATUS.md`. Dependency metadata checked on 2026-10-16; Node raised from
-22.23.3 to 24.21.0 on 2026-10-18 at the owner's request. This records a dated
+22.23.3 to 24.21.0 on 2026-10-18 at the owner's request and to 24.22.0 on
+2026-11-04 to match the owner's installed runtime. This records a dated
 selection, not a claim that every dependency is the newest major.
 
 ## Context
@@ -19,7 +20,7 @@ and maintenance matter more than upgrading majors for their own sake.
   the pure domain.
 - Vitest 4 for unit tests; Playwright with Chromium for browser workflows.
 - Biome for lint/format checks; dependency-cruiser for architecture checks.
-- Pin Node `24.21.0` (Active LTS "Krypton") in `.node-version`, `.nvmrc`, and `engines`; pin pnpm
+- Pin Node `24.22.0` (Active LTS "Krypton") in `.node-version`, `.nvmrc`, and `engines`; pin pnpm
   `10.34.7` in `packageManager`. Commit the lockfile and use frozen installs.
 - The verification gate runs lint, typecheck, architecture, test, build, and
   test:e2e; CI must exercise the same interface.
