@@ -17,20 +17,15 @@ commands, outcomes, review findings and screenshots go to
 ## Where we are
 
 - Active feature: 001-pomo-cat (`specs/001-pomo-cat/`)
-- Checkpoint: C1 approved 2026-11-04 and published. C2 in progress, delivery
-  mode Full.
-  - Done: owner's art and lettering (T044-T046), US2 to US6 (T019-T032).
-  - Not started: food art (T047), single tab, reliability, keyboard (T033-T035),
-    C2 gate (T036).
-  - Known problems: the owner's food drawing (r06) reached the chat mid-turn and
-    is not on disk; it must be sent again. One harmless CSS lint warning.
-  - Checks: `pnpm verify` exit 0 (101 unit tests, 130 browser scenarios).
-- Pending owner decisions: Q42 (feedback r06), resend the food drawing.
+- Checkpoint: C1 approved 2026-11-04 and published. C2 gate (T036) pending, delivery
+  mode Full. Round 2 reported.
+- Pending owner decisions: round 2 Q1 (approve and publish), Q2 (team-chosen
+  details).
 
 ## Counters
 
-- Rounds held: 1
-- Last feedback id: r06 (next is r07)
+- Rounds held: 2
+- Last feedback id: r12 (next is r13)
 
 ## Machine
 
@@ -53,7 +48,7 @@ commands, outcomes, review findings and screenshots go to
 
 ## Exact next action
 
-Ask the owner to send the food drawing again, then save it to
-`docs/design/owner/food-sheet.jpg` and do T047. Then T033-T035 on branch
-`001-pomo-cat-c2`, then the C2 GATE (T036, handoff procedure). The fonts and
-cut-outs were built with throwaway scripts; the steps are in the journal.
+Wait for the owner (`specs/001-pomo-cat/review/round-2.md`). Do not start C3. On
+feedback: handoff step 8 in `feedback/round-2.md`. Review URL: `pnpm dev --host
+127.0.0.1 --port 5173 --strictPort`, then `/?probelauf`; local to this machine.
+On approval: publish from `001-pomo-cat-c2`, then T037 on a new branch.

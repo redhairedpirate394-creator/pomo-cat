@@ -19,6 +19,8 @@ Type: bug (within the spec) | change (other than specified) | extension (new sco
 | r08 | next round | change | FR-029 | The cat should sit more on the pillow |
 | r09 | next round | bug | FR-012 | The stop button does not work |
 | r10 | next round | change | Q41 | SHOP should look like To-Dos and Start |
+| r11 | next round | change | FR-041 | Letters on one line, heights may change |
+| r12 | next round | change | FR-029 | Room items in sizes that look right together |
 
 ## r07, r08, r09, r10
 
@@ -33,10 +35,16 @@ and that delayed close event then counts as Escape. Production builds, which the
 tests use, do not do this, so the tests stayed green. r10 replaces the drawn SHOP
 button of Q41 by the normal box and supersedes that part of Q41.
 
-## Not stated
-
-- Q1 and Q2 of the round 2 report, which is not posted yet.
+## r11, r12
 
 > kannst du die Schrift ungefähr auf eine Linie bringen, es ist okay wenn es ein bisschen versetzt ist aber du darfst die höhe der Buchstaben gerne verändern, Auch die Größe der Objekte so anpassen, dass es schön aussieht
 
-r11 (next round, change, FR-041): letters sit on one baseline, a little unevenness stays; letter heights may change. r12 (next round, change, FR-029): room items get sizes that look right together.
+Letters share one baseline, a little unevenness stays; letter heights may change.
+Room items get sizes that look right together.
+
+All of r07 to r12 are built. r09: confirmed by reproduction on the development server
+before the fix, and the settings window failed the same way.
+
+## Not stated
+
+- Q1 and Q2 of the round 2 report, which is not posted yet.

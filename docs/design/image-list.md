@@ -1,40 +1,27 @@
 # Bilderliste für Pomo Cat
 
-Für alle Bilder gilt: PNG mit durchsichtigem Hintergrund. Die Bilder müssen nicht
-pixelgenau sein, das Seitenverhältnis sollte aber stimmen. Bis ein Bild fertig ist,
-nutzt die App einen Platzhalter.
+Für alle Bilder gilt: Papierhintergrund reicht, das Freistellen macht das Team. Du
+kannst eine Zeichnung jederzeit durch eine neue Version ersetzen.
 
-## Die Katze (ungefähr 900 Pixel an der längsten Seite, liegend oder sitzend)
+## Schon von dir da
 
-| Datei | Zeigt | Gebraucht ab |
+Katze schlafend, fressend, sitzend, weinend und mit Herzaugen; Münze, Zahnrad;
+Wollknäuel, Spielmaus, Kissen; Napf, Nassfutter, Trockenfutter, Thunfisch;
+Lachsstick, Katzenminze; dein Alphabet.
+
+## Noch offen
+
+| Was | Datei in der App | Bis dahin |
 | --- | --- | --- |
-| `cat-sleeping.png` | schläft, während du lernst | jetzt |
-| `cat-happy.png` | fröhlich (Herzaugen) | jetzt |
-| `cat-normal.png` | sitzt ruhig da | jetzt |
-| `cat-sad.png` | traurig | jetzt |
-| `cat-eating.png` | frisst aus dem Napf | jetzt |
-| `cat-petted.png` | wird gestreichelt, vorerst die Herzaugen | wenn du möchtest |
-| `cat-snack.png` | freut sich besonders über einen Snack | nächste Runde |
-| `cat-play-yarn.png` | spielt mit dem Wollknäuel | nächste Runde |
-| `cat-play-mouse.png` | spielt mit der Spielmaus | nächste Runde |
-| `cat-play-post.png` | spielt am Kratzbaum | nächste Runde |
-
-## Für den Raum (je 300 × 300 Pixel)
-
-`item-yarn.png`, `item-mouse.png`, `item-pillow.png`, `item-plant.png`,
-`item-rug.png`, `item-scratching-post.png`
-
-Der Kratzbaum darf gern höher sein: 300 × 600 Pixel.
-
-## Für den Shop und das Füttern (je 120 × 120 Pixel)
-
-`food-dry.png`, `food-wet.png`, `food-tuna.png`, `snack-salmon-stick.png`,
-`snack-crunchy-pillow.png`, `snack-catnip.png`
+| Pflanze | `item-plant.png` | Platzhalter |
+| Teppich | `item-rug.png` | Platzhalter |
+| Kratzbaum (gern hoch) | `item-scratching-post.png` | Platzhalter |
+| Knusperkissen | `snack-crunchy-pillow.png` | nur Text im Shop |
+| Katze spielt mit Wollknäuel | `cat-play-yarn.png` | Herzaugen |
+| Katze spielt mit Spielmaus | `cat-play-mouse.png` | Herzaugen |
+| Katze spielt am Kratzbaum | `cat-play-post.png` | Herzaugen |
+| Katze freut sich über einen Snack | `cat-snack.png` | Herzaugen |
 
 ## Ton
 
-`meow.wav`: ein kurzes Miauen, höchstens eine Sekunde.
-
-## Wenn du möchtest
-
-`icon-gear.png` (Zahnrad) und `icon-coin.png` (Münze), je 120 × 120 Pixel.
+`meow.wav`: ein eigenes kurzes Miauen, höchstens eine Sekunde, wenn du möchtest.
