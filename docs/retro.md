@@ -45,3 +45,18 @@ Rules the owner wants for this product only go into the constitution's
   review means when the code changes right after it.
 - A mid-turn image may not reach the disk, so an owner has to send it twice.
 - Round numbers in report questions (Q1, Q2) clash with interview numbers.
+
+## Pomo Cat, C3 (2026-11-04)
+
+- Every C3 wish changed the app, so C3 took two extra rounds. The handoff has no rule
+  for what a small change after the last independent review still needs: the final
+  rebuild had tests and a visual check, but no second review.
+- An owner's request for the finished thing is close to approval without being one.
+  "Silence is not acceptance" covers silence, not this. One line would help: a request
+  for the result is answered with the links and the acceptance question.
+- Reports say "reachable on this computer" while the owner asks for the website. Each
+  report could say in one line how the public link differs from the review link.
+- A scratchpad script rebuilt an asset (the frame) and is gone, so the next rebuild
+  needs it written again. Generators of committed assets could live in the repository.
+- A visual wish is hard to judge from a description: rounded versus square corners took
+  two rounds. A cheap one-screen prototype first would have saved one.

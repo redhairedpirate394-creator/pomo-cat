@@ -4,7 +4,7 @@
 
 **Created**: 2026-11-04
 
-**Status**: C2 accepted and published, C3 at its gate
+**Status**: C3 accepted and published (r29); T040 follows when the remaining drawings arrive
 
 **Spec Language**: de
 

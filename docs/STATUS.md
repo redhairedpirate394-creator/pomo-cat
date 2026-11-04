@@ -7,7 +7,8 @@ commands, outcomes, review findings and screenshots go to
 ## Product
 
 - Product: Pomo Cat (possibly Pomo Pet later, with other animals and rooms)
-- Repository/branch: `redhairedpirate394-creator/pomo-cat` (public), `001-pomo-cat-c3`
+- Repository/branch: `redhairedpirate394-creator/pomo-cat` (public), `main`; the next
+  feature starts on a new branch from it
 - Live URL: https://redhairedpirate394-creator.github.io/pomo-cat/
   (GitHub Pages, source: workflow; trial link: add `?probelauf`)
 - Spec language: de (chat and spec). App: German and English.
@@ -16,10 +17,9 @@ commands, outcomes, review findings and screenshots go to
 
 ## Where we are
 
-- Active feature: 001-pomo-cat (`specs/001-pomo-cat/`)
-- Checkpoint: C3 report posted (round 4), delivery mode Full. C2 approved and live.
-- Pending owner decisions: round 4 Q1 (accept C3).
-  T040 stays open until the drawings arrive (r16).
+- Active feature: none yet. 001-pomo-cat (`specs/001-pomo-cat/`) is accepted and live.
+- Checkpoint: C3 approved by the owner (r29), delivery mode Full.
+- Pending owner decisions: none. T040 stays open until the drawings arrive (r16).
 
 ## Counters
 
@@ -48,9 +48,8 @@ commands, outcomes, review findings and screenshots go to
 
 ## Exact next action
 
-Round 4 is reported on `001-pomo-cat-c3`, reachable locally at
-`http://127.0.0.1:5173/?probelauf` (`README.md` has the restart steps). Wait for the
-owner's C3 decision and do not publish before it. On approval: record it here, tick
-T043, write `docs/retro.md`, publish with auto-merge. Then start the next feature
-with an interview: the real room and the two-slider sounds (r21, r22, r24, r25;
-drawing in `docs/design/owner/room-draft.jpg`; plant, rug and post return with it).
+Pomo Cat with all C3 work is live at the URL above, merged to `main`. When the owner
+wants to go on, branch `002-<short-name>` from the updated `main` and start the next
+feature with an interview: the real room and the two-slider sounds (r21, r22, r24,
+r25; drawing in `docs/design/owner/room-draft.jpg`; plant, rug and post return with
+it). When the remaining drawings arrive, finish T040.

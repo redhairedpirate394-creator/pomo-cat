@@ -383,3 +383,12 @@ had no further independent review: `pnpm verify` exit 0, axe 0 violations, visua
 check at 1x and 3x, report steps scripted at both sizes, screenshots in
 `review/round-4/`. Square corner buttons look slightly smudgy at 3x, because the long
 drawn line is compressed there; fine at normal size. Context: large, figure not available.
+
+### C3 acceptance (2026-11-04)
+
+Session start after `/clear`. The owner wrote "gib mir bitte die fertige website"; this
+was not read as acceptance, the links were given and Q1 asked again, and the owner
+answered "ja" (r29, `feedback/round-4.md`). Triage: decision, no changes. T043 ticked,
+retro written, publish with auto-merge. Before publishing, on 501ddd4: `pnpm verify`
+exit 0 (112 unit, 180 browser, 9 skipped). Open after C3: T040 (r16); the next feature
+is the room and the sounds. Not covered at acceptance: Firefox, Safari, real phones.
