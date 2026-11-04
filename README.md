@@ -1,4 +1,50 @@
-# mvp-starter
+# Pomo Cat
+
+A learning timer with a cat: learn in units, feed the cat in the breaks, earn coins
+and furnish its room. It runs in the browser on phones and computers, in German and
+English.
+
+- **Live:** <https://redhairedpirate394-creator.github.io/pomo-cat/>
+- **Trial run:** add `?probelauf` to the link. 2 seconds count as 1 minute, so a unit
+  takes 50 seconds; mood and calendar run faster too. It keeps its own saved data.
+
+### Start it again on this computer
+
+```sh
+pnpm install --frozen-lockfile
+pnpm dev --host 127.0.0.1 --port 5173 --strictPort
+```
+
+Then open <http://127.0.0.1:5173/?probelauf>. This address only works on this
+computer. "Port 5173 is already in use" means it is already running: open the
+address. To check everything: `pnpm verify`.
+
+### Known limits
+
+- Progress lives only in this browser on this device. Clearing the browser's data
+  deletes it. There is no account, backup, export or sync.
+- Still placeholders or without a drawing: plant, rug, scratching post, crunchy
+  pillow and the playing cat. They can be swapped without changing the app.
+- Tested automatically in Chromium, at desktop and phone size. Firefox, Safari and
+  real phones were not tested, including the sound on an iPhone.
+- Timer accuracy over 60 minutes in a hidden tab was measured in Chromium on a
+  computer. A locked phone may pause the page: the time stays right, but the meow
+  can come late.
+- Keyboard use is tested, and an automatic accessibility scan passes; no one has
+  tried it with a real screen reader.
+- A second open tab waits with a notice. Reloading the first tab while a second one
+  waits can swap which of them is active; nothing is lost.
+- No licence has been chosen yet.
+
+Decisions and history: [`specs/001-pomo-cat/`](specs/001-pomo-cat/),
+[`docs/STATUS.md`](docs/STATUS.md).
+
+---
+
+The rest of this file describes **mvp-starter**, the template this project was built
+from.
+
+## About mvp-starter
 
 You describe a product. A small team of AI agents builds it, in rounds. After
 every round you get a link, a few things to try, and a couple of questions to
