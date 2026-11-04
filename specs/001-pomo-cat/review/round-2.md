@@ -13,19 +13,15 @@
 1. Starte eine Einheit, warte 50 Sekunden und wähle innerhalb von 10 Sekunden ein Futter auf deinem Napf.
 2. Drücke gleich danach „Anhalten“. Jetzt hast du Zeit: Streichle die Katze, kaufe im Shop einen Snack, öffne den Kalender und trage unter „To-Dos“ eine Aufgabe ein. Warst du zu langsam, kommt nach 50 Sekunden die nächste Pause.
 3. Öffne das Zahnrad, stelle die Sprache auf English und schließe das Fenster.
-
 **Bilder** (bei dieser Runde gespeichert)
 - Futter-Fenster mit deinem Napf, am Computer und auf dem Handy
 - Katzenraum mit allen Sachen; Shop, Kalender, To-Dos und Einstellungen
-
 **Deine Entscheidungen**
 - Q1 Ist die App so stabil und benutzbar, dass wir in die letzte Runde gehen können?
   ➡️ Ja. Dann stelle ich diesen Stand online und mache die App fertig.
 - Q2 Passen diese Kleinigkeiten? Beim Snack und beim Spielen zeigt die Katze vorerst die Herzaugen. Abgehakte Aufgaben bleiben stehen, bis du sie löschst. Der Kalender beginnt am Montag. Eine zweite offene App wartet mit einem Hinweis.
   ➡️ Ja.
-
 **So antwortest du:** Schreib mir einfach im Chat, in jeder Form. Ich schreibe es auf und lese es dir noch einmal vor.
-
 **Gut zu wissen**
 - Noch Platzhalter oder ohne Bild: Pflanze, Teppich, Kratzbaum, Knusperkissen und die spielende Katze.
 - Im Probelauf laufen auch Stimmung und Kalender 30-mal schneller.
