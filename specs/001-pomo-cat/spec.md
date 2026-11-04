@@ -27,6 +27,10 @@ Geklärt im Interview (Fragen Q1 bis Q36, Wortlaut im Journal):
 - Q: Konto? → A: gewünscht, aber als eigener zweiter Schritt; bis dahin bleibt alles im Browser (Q8, Q16).
 - Q: Aufbau? → A: nach der Skizze, To-Dos, Shop und Kalender ausklappbar (Q26, Q30, Q33).
 - Q: Stil? → A: handgezeichnet; die fertigen Bilder malt die Eigentümerin bzw. der Eigentümer in Farbe, die Skizzen sind Entwürfe (Q5, Q35, Q36).
+- Q: Herzaugen? → A: gelten für die fröhliche und die gestreichelte Katze (Q38).
+- Q: Lila Bild? → A: das Kissen aus dem Shop (Q39).
+- Q: Gelieferte Zeichnungen? → A: werden eingebaut; spätere Versionen ersetzen sie als Datei (Q40).
+- Q: Knöpfe? → A: „SHOP“ und Zahnrad als Bilder; die anderen im gleichen gezeichneten Kasten mit der eigenen Schrift, falls gut lesbar (Q41).
 
 ## User Scenarios & Testing *(mandatory)*
 

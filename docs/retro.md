@@ -19,3 +19,19 @@ Rules the owner wants for this product only go into the constitution's
 - ...
 - Sent upstream: <issue link, or "not yet">
 -->
+
+## Pomo Cat, C1 (2026-11-04)
+
+- A fresh clone on Windows fails `pnpm verify` before any work: Git for Windows
+  defaults to `core.autocrlf=true`, Biome expects LF. The template could ship
+  `* text=auto eol=lf` in `.gitattributes`.
+- An exact Node pin with `engine-strict` blocks every `pnpm` command on a newer
+  version of the same LTS line. A range, or a rule for raising the pin, would have
+  spared a stop on the first run.
+- Timers cannot be reviewed at real speed. The template has no rule for a sped-up
+  demo; a stated pattern would have saved design time.
+- The reviewer's mutation checks found tests that proved less than the ticked tasks
+  claimed. Worth making a standing part of the reviewer's brief.
+- The owner kept trying the app and answering while the review ran. The handoff
+  steps assume the report comes first; a line on feedback before the report would
+  remove the doubt about what such an answer approves.

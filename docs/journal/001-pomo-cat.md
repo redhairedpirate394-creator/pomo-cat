@@ -224,3 +224,13 @@ harmless but wasteful; trial mood decay also runs 30 times faster.
 
 Context at this handoff: large, roughly 200k tokens by estimate; the exact figure
 is not available to the lead.
+
+### C1 decision and triage (2026-11-04)
+
+Owner approved round 1 and the publish (feedback/round-1.md). Triage:
+
+- r01, r02: no change; r02 answered in chat.
+- r03, r04, r05, Q38-Q41: decisions, folded into C2 as tasks in tasks.md: art,
+  fitted cat stage, owner's lettering.
+- Q37: the owner heard the meow in a real browser, which closes that open point
+  on desktop; iOS is still unverified.
