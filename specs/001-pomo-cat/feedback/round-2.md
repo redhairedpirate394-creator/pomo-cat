@@ -47,4 +47,4 @@ before the fix, and the settings window failed the same way.
 
 ## Not stated
 
-- Q1 and Q2 of the round 2 report, which is not posted yet.
+- Q1 and Q2 of the round 2 report.
