@@ -1,0 +1,47 @@
+{
+  "$comment": "Written by the mvp-starter template. The team reads it on start; `docs/update-from-template.md` explains how template-owned paths are refreshed.",
+  "template": "markusrt/mvp-starter",
+  "template_version": "3.0.0",
+  "stack": "web",
+  "stack_label": "A web app that works on phones and desktops, opened in a browser, nothing to install",
+  "owner_experience": "plain",
+  "spec_kit_version": "1.2.1",
+  "template_owned_paths": [
+    ".mvp-starter/manifest.json",
+    ".claude/agents/",
+    ".claude/skills/",
+    ".specify/scripts/",
+    ".specify/templates/",
+    ".specify/workflows/",
+    ".specify/integrations/",
+    ".specify/.gitignore",
+    ".specify/init-options.json",
+    ".specify/integration.json",
+    ".specify/memory/constitution.md",
+    "AGENTS.md",
+    "BOOTSTRAP-PROMPT.md",
+    "CLAUDE.md",
+    "THIRD-PARTY-NOTICES.md",
+    "docs/templates/",
+    "docs/example-bootstrap.md",
+    "docs/port-to-another-agent.md",
+    "docs/update-from-template.md",
+    "scripts/ship.mjs",
+    ".github/workflows/ci.yml",
+    ".github/ISSUE_TEMPLATE/"
+  ],
+  "project_owned_exceptions": [
+    ".specify/memory/constitution.md#Project amendments",
+    "AGENTS.md#Project working rules",
+    ".mvp-starter/manifest.json#owner_experience",
+    ".mvp-starter/manifest.json#agent_runtime"
+  ],
+  "minimum_tool_versions": {
+    "node": "24.21.0",
+    "pnpm": "10.34.7",
+    "git": "2.40.0",
+    "gh": "2.60.0",
+    "claude-code": "any current release"
+  },
+  "gh_freshness_warn_after_days": 180
+}
