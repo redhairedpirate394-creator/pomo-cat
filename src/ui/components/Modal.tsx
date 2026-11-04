@@ -30,8 +30,15 @@ export function Modal({
     if (!element.open) element.showModal();
     if (focusDialog) element.focus();
     const onClose = () => {
-      if (handleEscape.current) handleEscape.current();
-      else element.showModal();
+      // React's development double start closes and reopens the dialog; that
+      // delayed event finds it open again, and it was no escape.
+      if (element.open) return;
+      if (handleEscape.current) {
+        handleEscape.current();
+        return;
+      }
+      element.showModal();
+      if (focusDialog) element.focus();
     };
     element.addEventListener("close", onClose);
     return () => {

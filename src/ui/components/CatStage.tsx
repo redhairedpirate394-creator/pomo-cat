@@ -29,6 +29,7 @@ export function CatStage({
     sad: m.catMood(name, "sad"),
   }[pose];
   const cat = <img src={catImages[pose]} alt={alt} />;
+  const place = owned.includes("pillow") ? "cat on-pillow" : "cat";
   return (
     <div className="stage">
       {ROOM_ITEMS.filter((item) => owned.includes(item.id)).map((item) =>
@@ -54,14 +55,14 @@ export function CatStage({
       {onPet ? (
         <button
           type="button"
-          className="cat"
+          className={place}
           aria-label={m.petCat(name)}
           onClick={onPet}
         >
           {cat}
         </button>
       ) : (
-        <div className="cat">{cat}</div>
+        <div className={place}>{cat}</div>
       )}
     </div>
   );

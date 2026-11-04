@@ -1,4 +1,4 @@
-import { expect, test } from "@playwright/test";
+import { expect, type Page, test } from "@playwright/test";
 import {
   feedTuna,
   finishUnit,
@@ -80,17 +80,35 @@ test("the app talks to nobody else", async ({ page }) => {
   expect(external).toEqual([]);
 });
 
-test("the whole loop works with the keyboard alone", async ({
+async function tabTo(page: Page, name: string) {
+  for (let step = 0; step < 40; step += 1) {
+    await page.keyboard.press("Tab");
+    const focused = await page.evaluate(() => {
+      const element = document.activeElement;
+      return element?.getAttribute("aria-label") ?? element?.textContent ?? "";
+    });
+    if (focused.trim() === name) return;
+  }
+  throw new Error(`${name} cannot be reached with Tab`);
+}
+
+test("the whole game works with the keyboard alone", async ({
   page,
   isMobile,
 }) => {
   test.skip(isMobile, "phones have no keyboard");
+  await seedGame(page, { coins: 10 });
   await page.goto("/");
-  await page.keyboard.type("Mimi");
+  await expect(page.getByRole("button", { name: "Start" })).toBeVisible();
+
+  await tabTo(page, "To-Dos");
   await page.keyboard.press("Enter");
-  const start = page.getByRole("button", { name: "Start" });
-  await expect(start).toBeVisible();
-  await start.focus();
+  await page.keyboard.press("Tab");
+  await page.keyboard.type("Lesen");
+  await page.keyboard.press("Enter");
+  await expect(page.getByRole("checkbox", { name: "Lesen" })).toBeVisible();
+
+  await tabTo(page, "Start");
   await page.keyboard.press("Enter");
   await expect(page.getByRole("timer")).toBeVisible();
 
@@ -104,6 +122,41 @@ test("the whole loop works with the keyboard alone", async ({
   await page.keyboard.press("Enter");
   await expect(dialog).toBeHidden();
   await expect(page.getByRole("status")).toContainText("Mimi gibt dir");
+
+  await tabTo(page, "Mimi streicheln");
+  await page.keyboard.press("Enter");
+  await tabTo(page, "Anhalten");
+  await page.keyboard.press("Enter");
+  await expect(
+    page.getByRole("button", { name: "Weiter mit Einheit 2 von 4" }),
+  ).toBeVisible();
+
+  await tabTo(page, "Shop");
+  await page.keyboard.press("Enter");
+  await tabTo(page, "Lachsstick für 3 Münzen kaufen");
+  await page.keyboard.press("Enter");
+  await expect(page.getByRole("status")).toHaveText("Mimi liebt Lachsstick!");
+
+  await tabTo(page, "Kalender");
+  await page.keyboard.press("Enter");
+  await expect(page.getByText("November 2026")).toBeVisible();
+
+  await tabTo(page, "Einstellungen");
+  await page.keyboard.press("Enter");
+  const settings = page.getByRole("dialog", { name: "Einstellungen" });
+  await expect(settings).toBeVisible();
+  await page.keyboard.press("Escape");
+  await expect(settings).toBeHidden();
+
+  await tabTo(page, "Weiter mit Einheit 2 von 4");
+  await page.keyboard.press("Enter");
+  await tabTo(page, "Stop");
+  await page.keyboard.press("Enter");
+  await expect(
+    page.getByRole("dialog", { name: "Einheit abbrechen?" }),
+  ).toBeVisible();
+  await page.keyboard.press("Escape");
+  await expect(page.getByRole("timer")).toBeVisible();
 });
 
 test("every dialog has a name and keeps focus inside", async ({ page }) => {

@@ -33,7 +33,11 @@ export function createTabGuard(name: string): TabGuard {
         onWaiting();
         return locks.request(name, { signal: controller.signal }, run);
       })
-      .catch(() => undefined);
+      .catch(() => {
+        // Our own abort sets `stopped`; any other failure means no lock
+        // service, and a running app beats an endless wait.
+        if (!stopped) onActive();
+      });
     return () => {
       stopped = true;
       controller.abort();

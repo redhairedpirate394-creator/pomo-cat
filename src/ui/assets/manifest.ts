@@ -1,7 +1,6 @@
 // The only place that names art and sound files. To use a final drawing, replace
 // the file under the same name; docs/design/image-list.md lists them all.
 import type { SnackId } from "../../domain/catalog";
-import buttonShop from "./button-shop.png";
 import catEating from "./cat-eating.png";
 import catHappy from "./cat-happy.png";
 import catNormal from "./cat-normal.png";
@@ -36,7 +35,6 @@ export const catImages = {
 export const icons = {
   coin: iconCoin,
   gear: iconGear,
-  shop: buttonShop,
 } as const;
 
 export const roomImages = {

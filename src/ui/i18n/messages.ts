@@ -70,6 +70,7 @@ export interface Messages {
   readonly buy: (name: string, price: string) => string;
   readonly ownedItem: (name: string) => string;
   readonly snackNote: (cat: string, snack: string) => string;
+  readonly itemNote: (item: string) => string;
   readonly playWith: (item: string) => string;
   readonly playNote: (cat: string, item: string) => string;
   readonly continueUnit: (unit: number, total: number) => string;

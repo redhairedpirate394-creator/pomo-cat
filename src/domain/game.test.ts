@@ -362,6 +362,7 @@ describe("the shop", () => {
     expect(buyRoomItem(learning, "yarn")).toBe(learning);
     const unfed = afterUnit(started());
     expect(buySnack(unfed, T0 + 26 * MINUTE)).toBe(unfed);
+    expect(buyRoomItem(unfed, "yarn")).toBe(unfed);
   });
 
   it("is open in a fed break and while held", () => {
@@ -391,6 +392,7 @@ describe("updateSettings", () => {
     const state = fresh();
     expect(updateSettings(state, { learnMinutes: 7 })).toBe(state);
     expect(updateSettings(state, { shortBreakMinutes: 35 })).toBe(state);
+    expect(updateSettings(state, { longBreakMinutes: 65 })).toBe(state);
     expect(updateSettings(state, { units: 9 })).toBe(state);
   });
 });

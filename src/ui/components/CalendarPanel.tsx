@@ -3,6 +3,8 @@ import { monthDays, type StudyLog, streak } from "../../domain/studyLog";
 import { useMessages } from "../i18n";
 import { Panel } from "./Panel";
 
+const MONDAY_WEEK = [1, 2, 3, 4, 5, 6, 7].map((day) => new Date(2024, 0, day));
+
 export function CalendarPanel({ log, now }: { log: StudyLog; now: number }) {
   const m = useMessages();
   const [offset, setOffset] = useState(0);
@@ -17,6 +19,7 @@ export function CalendarPanel({ log, now }: { log: StudyLog; now: number }) {
     month: "long",
   });
   const running = streak(log, now);
+  const weekday = new Intl.DateTimeFormat(m.intlLocale, { weekday: "narrow" });
 
   return (
     <Panel label={m.calendar}>
@@ -43,6 +46,11 @@ export function CalendarPanel({ log, now }: { log: StudyLog; now: number }) {
           ›
         </button>
       </div>
+      <ol className="calendar weekdays" aria-hidden="true">
+        {MONDAY_WEEK.map((date) => (
+          <li key={date.getDate()}>{weekday.format(date)}</li>
+        ))}
+      </ol>
       <ol className="calendar">
         {days.map(({ day, minutes }) => {
           const date = dayFormat.format(new Date(year, month, day));

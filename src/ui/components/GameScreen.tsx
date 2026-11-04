@@ -37,6 +37,15 @@ type Act = (
   event: (current: GameState, time: number) => GameState,
 ) => ErrorCode | null;
 
+/** What just happened; the text comes from the current language. */
+type Note =
+  | { readonly kind: "fed"; readonly coins: number }
+  | { readonly kind: "snack"; readonly snack: SnackId }
+  | { readonly kind: "item"; readonly item: RoomItemId }
+  | { readonly kind: "play"; readonly item: RoomItemId };
+
+const NOTE_MS = 8000;
+
 /** A short reaction of the cat; it never changes the game. */
 type Reaction = "eating" | "petted" | null;
 
@@ -60,7 +69,7 @@ export function GameScreen({
   const m = useMessages();
   const [confirmStop, setConfirmStop] = useState(false);
   const [reaction, setReaction] = useState<Reaction>(null);
-  const [note, setNote] = useState("");
+  const [note, setNote] = useState<Note | null>(null);
   const [showSettings, setShowSettings] = useState(false);
   const { cat, phase, settings } = state;
 
@@ -77,10 +86,23 @@ export function GameScreen({
     if (!learning) setConfirmStop(false);
   }, [learning]);
 
-  // A note belongs to the phase it was made in.
+  // A note belongs to the phase it was made in, and it does not stay for long.
   useEffect(() => {
-    if (phase.kind !== "break") setNote("");
+    if (phase.kind) setNote(null);
   }, [phase.kind]);
+
+  useEffect(() => {
+    if (note === null) return;
+    const timer = setTimeout(() => setNote(null), NOTE_MS);
+    return () => clearTimeout(timer);
+  }, [note]);
+
+  const feedOpen = phase.kind === "break" && !phase.fed;
+
+  // The feed window comes first; settings can wait.
+  useEffect(() => {
+    if (feedOpen) setShowSettings(false);
+  }, [feedOpen]);
 
   if (cat === null) {
     return (
@@ -92,22 +114,50 @@ export function GameScreen({
 
   function onFeed(food: FoodId) {
     if (cat === null || phase.kind !== "break") return;
-    setNote(m.fedNote(cat.name, phase.coinsEarned));
-    setReaction("eating");
+    const coins = phase.coinsEarned;
     act((s) => feed(s, food));
+    setNote({ kind: "fed", coins });
+    setReaction("eating");
   }
 
   function onBuySnack(snack: SnackId) {
-    if (cat === null) return;
-    setNote(m.snackNote(cat.name, m.snacks[snack]));
+    let bought = false as boolean;
+    act((s, t) => {
+      const next = buySnack(s, t);
+      bought = next !== s;
+      return next;
+    });
+    if (!bought) return;
+    setNote({ kind: "snack", snack });
     setReaction("petted");
-    act(buySnack);
+  }
+
+  function onBuyItem(item: RoomItemId) {
+    let bought = false as boolean;
+    act((s) => {
+      const next = buyRoomItem(s, item);
+      bought = next !== s;
+      return next;
+    });
+    if (bought) setNote({ kind: "item", item });
   }
 
   function onPlay(item: RoomItemId) {
-    if (cat === null) return;
-    setNote(m.playNote(cat.name, m.roomItems[item]));
+    setNote({ kind: "play", item });
     setReaction("petted");
+  }
+
+  function noteText(current: Note, name: string): string {
+    switch (current.kind) {
+      case "fed":
+        return m.fedNote(name, current.coins);
+      case "snack":
+        return m.snackNote(name, m.snacks[current.snack]);
+      case "item":
+        return m.itemNote(m.roomItems[current.item]);
+      case "play":
+        return m.playNote(name, m.roomItems[current.item]);
+    }
   }
 
   function onSettings(patch: Partial<Settings>) {
@@ -160,7 +210,13 @@ export function GameScreen({
           </p>
         )}
         <p className="status" role="status">
-          {warning ? m.warning : phase.kind === "held" ? m.heldNote : note}
+          {warning
+            ? m.warning
+            : note
+              ? noteText(note, cat.name)
+              : phase.kind === "held"
+                ? m.heldNote
+                : ""}
         </p>
         <TodoPanel
           todos={state.todos}
@@ -215,7 +271,7 @@ export function GameScreen({
             coins={state.coins}
             owned={state.owned}
             onBuySnack={onBuySnack}
-            onBuyItem={(item) => act((s) => buyRoomItem(s, item))}
+            onBuyItem={onBuyItem}
           />
         )}
         {!learning && <CalendarPanel log={state.studyLog} now={now} />}

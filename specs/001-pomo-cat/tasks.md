@@ -152,7 +152,7 @@ journey. Tests are written alongside the code they prove, never deferred.
 
 **Purpose**: Demonstrate agreed acceptance criteria and hand off
 
-- [ ] T037 Accessibility pass: focus, labels, status and error announcements in src/ui/
+- [ ] T037 Accessibility pass: focus after deleting a to-do, after hold and after buying, labels, status and error announcements in src/ui/
 - [ ] T038 [ROUTINE] Localization pass: no user-facing strings outside src/ui/i18n/, `Intl` formatting, layouts tolerate longer text at mobile width
 - [ ] T039 Timer accuracy over 60 minutes in a hidden tab, recorded in docs/journal/001-pomo-cat.md (SC-004)
 - [ ] T040 Replace the placeholders with the owner's final art, when delivered, and confirm no behavior changed (SC-003, SC-010)

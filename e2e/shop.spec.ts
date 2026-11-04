@@ -138,3 +138,47 @@ test("buying everything still fits without sideways scrolling", async ({
   );
   expect(fits).toBe(true);
 });
+
+test("every toy can be clicked or tapped in a break", async ({ page }) => {
+  await seedGame(page, { owned: ["yarn", "mouse", "scratching-post"] });
+  await page.goto("/");
+  await page.getByRole("button", { name: "Start" }).click();
+  await finishUnit(page);
+  await feedTuna(page);
+  for (const [button, note] of [
+    ["Mit Wollknäuel spielen", "Mimi spielt mit Wollknäuel."],
+    ["Mit Spielmaus spielen", "Mimi spielt mit Spielmaus."],
+    ["Mit Kratzbaum spielen", "Mimi spielt mit Kratzbaum."],
+  ] as const) {
+    await page.getByRole("button", { name: button }).click();
+    await expect(page.getByRole("status")).toHaveText(note);
+  }
+});
+
+test("buying says so, also while the run is held", async ({ page }) => {
+  await seedGame(page, {
+    coins: 20,
+    phase: {
+      kind: "held",
+      plan: {
+        learnMinutes: 25,
+        shortBreakMinutes: 5,
+        longBreakMinutes: 15,
+        units: 4,
+      },
+      nextUnit: 2,
+    },
+  });
+  await page.goto("/");
+  await openShop(page);
+  await page
+    .getByRole("button", { name: "Lachsstick für 3 Münzen kaufen" })
+    .click();
+  await expect(page.getByRole("status")).toHaveText("Mimi liebt Lachsstick!");
+  await page
+    .getByRole("button", { name: "Kissen für 5 Münzen kaufen" })
+    .click();
+  await expect(page.getByRole("status")).toHaveText(
+    "Kissen steht jetzt im Raum.",
+  );
+});

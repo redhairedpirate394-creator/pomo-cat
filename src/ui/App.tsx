@@ -17,7 +17,11 @@ function Loading() {
 
 function OtherTab() {
   const m = useMessages();
-  return <p className="failure">{m.otherTab}</p>;
+  return (
+    <p className="failure" role="status">
+      {m.otherTab}
+    </p>
+  );
 }
 
 export function App({
