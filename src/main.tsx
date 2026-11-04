@@ -11,6 +11,7 @@ import { App } from "./ui/App";
 import { createDemoClock, systemClock } from "./ui/clock";
 import { detectLocale } from "./ui/i18n";
 import { createSoundPlayer } from "./ui/sounds";
+import { createTabGuard } from "./ui/tabGuard";
 import "./ui/style.css";
 
 const DEMO_SPEED = 30;
@@ -21,6 +22,8 @@ const clock = demo
   : systemClock;
 const store = createBrowserStore(demo ? DEMO_STORAGE_KEY : STORAGE_KEY);
 
+const guard = createTabGuard(demo ? "pomo-cat:demo" : "pomo-cat:game");
+
 const root = document.getElementById("root");
 if (!root) throw new Error("Missing application root.");
 createRoot(root).render(
@@ -29,6 +32,7 @@ createRoot(root).render(
       store={store}
       clock={clock}
       play={createSoundPlayer()}
+      guard={guard}
       browserLocale={detectLocale(navigator.languages)}
       demo={demo}
     />

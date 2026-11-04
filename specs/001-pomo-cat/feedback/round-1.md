@@ -96,3 +96,7 @@ sent again.
 
 Not stated: Q42, what happens to the third snack, the crunchy pillow, which has no
 drawing.
+
+Answer of 2026-11-04, the owner's words unchanged: "42: Ja", with the food drawing
+sent again, saved as `docs/design/owner/food-sheet.jpg`. Accepts: the crunchy pillow
+stays in the shop without a picture for now.

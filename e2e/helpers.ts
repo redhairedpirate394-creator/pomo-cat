@@ -7,6 +7,8 @@ export const T0 = new Date("2026-11-04T09:00:00");
 /** Fixes the page's time, so tests can jump instead of waiting. */
 export async function useTestClock(page: Page) {
   await page.clock.install({ time: T0 });
+  // Time moves only when a test says so, which keeps exact checks exact.
+  await page.clock.pauseAt(T0.getTime() + 1000);
   await page.addInitScript(() => {
     const plays = { count: 0 };
     Object.defineProperty(window, "soundPlays", { value: plays });

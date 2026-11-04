@@ -7,6 +7,7 @@ import { GameScreen } from "./components/GameScreen";
 import { formatClock } from "./format";
 import { catalogs, type Locale, MessagesProvider, useMessages } from "./i18n";
 import type { PlaySound } from "./sounds";
+import type { TabGuard } from "./tabGuard";
 import { useGame } from "./useGame";
 
 function Loading() {
@@ -14,21 +15,28 @@ function Loading() {
   return <p className="failure">{m.loading}</p>;
 }
 
+function OtherTab() {
+  const m = useMessages();
+  return <p className="failure">{m.otherTab}</p>;
+}
+
 export function App({
   store,
   clock,
   play,
+  guard,
   browserLocale,
   demo,
 }: {
   store: GameStore;
   clock: Clock;
   play: PlaySound;
+  guard: TabGuard;
   browserLocale: Locale;
   demo: boolean;
 }) {
   const { load, now, saveFailed, act, retrySave, retryLoad, startOver } =
-    useGame(store, clock, play);
+    useGame(store, clock, play, guard);
   const state = load.status === "ready" ? load.state : null;
   const locale = state?.settings.language ?? browserLocale;
 
@@ -48,6 +56,7 @@ export function App({
   return (
     <MessagesProvider locale={locale}>
       {load.status === "loading" && <Loading />}
+      {load.status === "waiting" && <OtherTab />}
       {load.status === "failed" && (
         <FailureScreen
           code={load.code}

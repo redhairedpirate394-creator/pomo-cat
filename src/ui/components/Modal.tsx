@@ -10,10 +10,13 @@ import { type ReactNode, useEffect, useId, useRef } from "react";
 export function Modal({
   title,
   onEscape,
+  focusDialog = false,
   children,
 }: {
   title: string;
   onEscape?: () => void;
+  /** The window takes focus, not its first button: a key pressed by chance must not choose. */
+  focusDialog?: boolean;
   children: ReactNode;
 }) {
   const dialog = useRef<HTMLDialogElement>(null);
@@ -25,6 +28,7 @@ export function Modal({
     const element = dialog.current;
     if (!element) return;
     if (!element.open) element.showModal();
+    if (focusDialog) element.focus();
     const onClose = () => {
       if (handleEscape.current) handleEscape.current();
       else element.showModal();
@@ -34,12 +38,13 @@ export function Modal({
       element.removeEventListener("close", onClose);
       element.close();
     };
-  }, []);
+  }, [focusDialog]);
 
   return (
     <dialog
       ref={dialog}
       className="modal"
+      tabIndex={-1}
       aria-labelledby={titleId}
       onCancel={(event) => {
         event.preventDefault();

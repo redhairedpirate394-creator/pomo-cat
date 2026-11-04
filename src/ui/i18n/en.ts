@@ -26,6 +26,7 @@ export const en: Messages = {
   minutes: (count) => `${count} minutes`,
   close: "Close",
   loading: "One moment …",
+  otherTab: "Pomo Cat is already open in another tab.",
   nameTitle: "What is your cat called?",
   nameLabel: "Name",
   nameSubmit: "Let's go",
