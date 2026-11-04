@@ -249,7 +249,7 @@ pnpm lint:fix
 pnpm verify
 ```
 
-Pinned toolchain: Node `24.21.0` in `.node-version`, `.nvmrc`, and package
+Pinned toolchain: Node `24.22.0` in `.node-version`, `.nvmrc`, and package
 `engines`; pnpm `10.34.7` in `packageManager`; Spec Kit 1.2.1 vendored under
 `.specify/` and `.claude/skills/speckit-*`. `pnpm verify` runs, in order, lint,
 typecheck, architecture, test, and test:e2e, which builds first, so a targeted
