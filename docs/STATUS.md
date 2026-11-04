@@ -18,14 +18,13 @@ commands, outcomes, review findings and screenshots go to
 
 - Active feature: 001-pomo-cat (`specs/001-pomo-cat/`)
 - Checkpoint: C2 approved 2026-11-04 and published; C3 next, delivery mode Full.
-- Pending owner decisions: order of r17 to r23 and acceptance. Q43 answered (r16):
-  acceptance does not wait for the
-  remaining drawings, T040 stays open until they arrive.
+- Pending owner decisions: none before the gate. Q43 (r16): acceptance does not wait
+  for the remaining drawings, T040 stays open. Order of r17 to r23 decided (r24).
 
 ## Counters
 
 - Rounds held: 2
-- Last feedback id: r23 (next is r24)
+- Last feedback id: r24 (next is r25)
 
 ## Machine
 
