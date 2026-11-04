@@ -153,3 +153,20 @@ retention, cost and operations rules, and the owner's yes. No provider chosen.
 - Q28 Töne: "ja" (accepts: free placeholder sound, own meow possible later)
 - Q29 Freunde: "ja" (accepts: one single-use personal link per person, separate
   cats, nobody sees anybody else, invitations unlocked after the legal check)
+
+### Interview round 4 (owner's words, unchanged)
+
+- Q30 To-Do-Liste: **not stated** (the owner's reply skipped it; asked again)
+- Q31 Zahnrad: "Ja" (accepts: gear always reachable; sound and language apply at
+  once, times and units from the next start; shop and calendar locked while
+  learning)
+- Q32 Futter-Fenster: "Ja" (accepts: window stays open for the whole break,
+  countdown runs behind it; no choice by the end of the break stops the run and
+  the next unit needs a click; "pause" only after feeding)
+- Q33 Andere Ansichten: "Ja, To do/ shop und kalender sollen ausklappbar sein,
+  damit das nicht so überflutet ist" (accepts: same places in the break, cat
+  awake, items on fixed spots, phones stacked)
+- Q34 Anzeige: "Ja" (accepts: minutes and seconds counting down, "Einheit 2 von 4")
+- Q35 Stil: "Handgezeichnet, aber ich mache dass dan farbig das sind nur
+  entwürfe." (final art is hand-drawn and in colour; the sketches are drafts.
+  Handwriting font: not stated.)
