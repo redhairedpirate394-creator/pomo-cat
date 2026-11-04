@@ -234,3 +234,14 @@ Owner approved round 1 and the publish (feedback/round-1.md). Triage:
   fitted cat stage, owner's lettering.
 - Q37: the owner heard the meow in a real browser, which closes that open point
   on desktop; iOS is still unverified.
+
+### Publish of C1 (2026-11-04)
+
+`pnpm ship --mode auto-merge`: exit 0. PR #1 merged by rebase, `main` at 9dd0ad9,
+CI verify and Pages deploy passed. Live check in Chromium at desktop and Pixel 7:
+trial link works, sleeping cat image and font load, no failed or external requests.
+CI warns that the pinned actions target Node 20 and that `ubuntu-latest` moves to
+Ubuntu 26; both only warnings, worth a template update.
+
+Session end: context is large after the interview, C1 and the handoff; the owner is
+advised to start C2 fresh.
