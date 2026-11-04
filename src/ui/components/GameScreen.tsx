@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { currentMood } from "../../domain/cat";
 import type { FoodId, RoomItemId, SnackId } from "../../domain/catalog";
 import {
@@ -104,6 +104,20 @@ export function GameScreen({
     if (feedOpen) setShowSettings(false);
   }, [feedOpen]);
 
+  // A new step removes the button that led to it, so focus would fall to the
+  // page; it goes to the step's main button instead. Focus elsewhere stays.
+  const side = useRef<HTMLElement>(null);
+  const step = `${cat !== null}:${phase.kind}:${feedOpen}`;
+  const lastStep = useRef(step);
+
+  useEffect(() => {
+    if (lastStep.current === step) return;
+    lastStep.current = step;
+    const active = document.activeElement;
+    if (active && active !== document.body) return;
+    side.current?.querySelector<HTMLElement>("[data-next-step]")?.focus();
+  }, [step]);
+
   if (cat === null) {
     return (
       <main className="game">
@@ -192,6 +206,7 @@ export function GameScreen({
 
   return (
     <main className="game">
+      <h1 className="visually-hidden">{m.documentTitle}</h1>
       <section className="center">
         <Timer ms={shownMs} caption={caption} />
         <CatStage
@@ -202,7 +217,7 @@ export function GameScreen({
         />
       </section>
 
-      <aside className="side">
+      <aside ref={side} className="side">
         {!learning && (
           <p className="coins">
             <img src={icons.coin} alt="" />
@@ -242,18 +257,22 @@ export function GameScreen({
           />
         )}
         {phase.kind === "idle" && (
-          <button type="button" onClick={() => act(start)}>
+          <button type="button" data-next-step onClick={() => act(start)}>
             {m.start}
           </button>
         )}
         {phase.kind === "held" && (
-          <button type="button" onClick={() => act(start)}>
+          <button type="button" data-next-step onClick={() => act(start)}>
             {m.continueUnit(phase.nextUnit, phase.plan.units)}
           </button>
         )}
         <div className="actions">
           {learning && (
-            <button type="button" onClick={() => setConfirmStop(true)}>
+            <button
+              type="button"
+              data-next-step
+              onClick={() => setConfirmStop(true)}
+            >
               {m.stop}
             </button>
           )}

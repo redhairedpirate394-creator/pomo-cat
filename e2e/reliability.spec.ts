@@ -159,6 +159,118 @@ test("the whole game works with the keyboard alone", async ({
   await expect(page.getByRole("timer")).toBeVisible();
 });
 
+test("focus moves on when a button removes itself", async ({
+  page,
+  isMobile,
+}) => {
+  test.skip(isMobile, "phones have no keyboard");
+  await page.goto("/");
+  await page.getByLabel("Name").fill("Mimi");
+  await page.keyboard.press("Enter");
+  const start = page.getByRole("button", { name: "Start" });
+  await expect(start).toBeFocused();
+
+  await page.keyboard.press("Enter");
+  await expect(page.getByRole("button", { name: "Stop" })).toBeFocused();
+
+  await page.clock.fastForward("25:00");
+  await expect(page.getByRole("dialog", { name: "Füttern" })).toBeVisible();
+  await page.keyboard.press("Tab");
+  await page.keyboard.press("Enter");
+  const hold = page.getByRole("button", { name: "Anhalten" });
+  await expect(hold).toBeFocused();
+
+  await page.keyboard.press("Enter");
+  const next = page.getByRole("button", { name: "Weiter mit Einheit 2 von 4" });
+  await expect(next).toBeFocused();
+
+  await page.keyboard.press("Enter");
+  await expect(page.getByRole("button", { name: "Stop" })).toBeFocused();
+});
+
+test("focus stays near the list after deleting a to-do", async ({
+  page,
+  isMobile,
+}) => {
+  test.skip(isMobile, "phones have no keyboard");
+  await seedGame(page, {
+    todos: [
+      { id: "a", text: "Eins", done: false },
+      { id: "b", text: "Zwei", done: false },
+      { id: "c", text: "Drei", done: false },
+    ],
+  });
+  await page.goto("/");
+  await page.getByRole("button", { name: "To-Dos" }).click();
+  const remove = (text: string) =>
+    page.getByRole("button", { name: `${text} löschen` });
+
+  await remove("Eins").focus();
+  await page.keyboard.press("Enter");
+  await expect(remove("Zwei")).toBeFocused();
+
+  await remove("Drei").focus();
+  await page.keyboard.press("Enter");
+  await expect(remove("Zwei")).toBeFocused();
+
+  await page.keyboard.press("Enter");
+  await expect(page.getByLabel("Neue Aufgabe")).toBeFocused();
+});
+
+test("focus stays in the shop after buying", async ({ page, isMobile }) => {
+  test.skip(isMobile, "phones have no keyboard");
+  await seedGame(page, { coins: 100 });
+  await page.goto("/");
+  await page.getByRole("button", { name: "Shop" }).click();
+
+  const yarn = page.getByRole("button", { name: /^Wollknäuel für/ });
+  await yarn.focus();
+  await page.keyboard.press("Enter");
+  await expect(yarn).toBeHidden();
+  await expect(page.locator(".panel-body button:focus")).toHaveText(/kaufen/);
+});
+
+test("the shop button takes focus when nothing can be bought", async ({
+  page,
+  isMobile,
+}) => {
+  test.skip(isMobile, "phones have no keyboard");
+  await seedGame(page, { coins: 3 });
+  await page.goto("/");
+  await page.getByRole("button", { name: "Shop" }).click();
+
+  await page.getByRole("button", { name: /Lachsstick für/ }).focus();
+  await page.keyboard.press("Enter");
+  await expect(
+    page.getByRole("button", { name: /Lachsstick für/ }),
+  ).toBeDisabled();
+  await expect(page.getByRole("button", { name: "Shop" })).toBeFocused();
+});
+
+test("errors name their field, and the timer reads as one value", async ({
+  page,
+}) => {
+  await page.goto("/");
+  await page.getByRole("button", { name: "Los geht's" }).click();
+  const name = page.getByLabel("Name");
+  await expect(name).toHaveAttribute("aria-invalid", "true");
+  await expect(name).toHaveAccessibleDescription(/Namen/);
+
+  await name.fill("Mimi");
+  await page.getByRole("button", { name: "Los geht's" }).click();
+  await page.getByRole("button", { name: "Start" }).click();
+  await expect(page.getByRole("timer")).toHaveAccessibleName(
+    "Verbleibende Zeit: 25:00",
+  );
+  await page.getByRole("button", { name: "To-Dos" }).click();
+  await page.getByRole("button", { name: "Eintragen" }).click();
+  const task = page.getByLabel("Neue Aufgabe");
+  await expect(task).toHaveAttribute("aria-invalid", "true");
+  await task.fill("Lesen");
+  await page.getByRole("button", { name: "Eintragen" }).click();
+  await expect(task).toHaveAttribute("aria-invalid", "false");
+});
+
 test("every dialog has a name and keeps focus inside", async ({ page }) => {
   await nameAndStart(page);
   await page.getByRole("button", { name: "Einstellungen" }).click();

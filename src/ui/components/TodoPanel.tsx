@@ -1,8 +1,9 @@
-import { type FormEvent, useState } from "react";
+import { type FormEvent, useId, useRef, useState } from "react";
 import { TODO_MAX, type Todo } from "../../domain/todos";
-import { useMessages } from "../i18n";
+import { GLYPHS, useMessages } from "../i18n";
 import type { ErrorCode } from "../i18n/messages";
 import { Panel } from "./Panel";
+import { useKeepFocus } from "./useKeepFocus";
 
 export function TodoPanel({
   todos,
@@ -18,6 +19,9 @@ export function TodoPanel({
   const m = useMessages();
   const [text, setText] = useState("");
   const [error, setError] = useState<ErrorCode | null>(null);
+  const errorId = useId();
+  const input = useRef<HTMLInputElement>(null);
+  const list = useKeepFocus<HTMLUListElement>(todos, () => input.current);
 
   function submit(event: FormEvent) {
     event.preventDefault();
@@ -32,20 +36,23 @@ export function TodoPanel({
         <label>
           {m.todoLabel}
           <input
+            ref={input}
             value={text}
             maxLength={TODO_MAX}
             autoComplete="off"
+            aria-invalid={error !== null}
+            aria-describedby={error ? errorId : undefined}
             onChange={(event) => setText(event.target.value)}
           />
         </label>
         <button type="submit">{m.todoAdd}</button>
       </form>
       {error && (
-        <p className="error" role="alert">
+        <p id={errorId} className="error" role="alert">
           {m.errors[error]}
         </p>
       )}
-      <ul className="todo-list">
+      <ul ref={list.root} className="todo-list">
         {todos.map((todo) => (
           <li key={todo.id}>
             <label className={todo.done ? "done" : undefined}>
@@ -59,9 +66,12 @@ export function TodoPanel({
             <button
               type="button"
               aria-label={m.todoDelete(todo.text)}
-              onClick={() => onDelete(todo.id)}
+              onClick={(event) => {
+                list.keep(event.currentTarget);
+                onDelete(todo.id);
+              }}
             >
-              ×
+              {GLYPHS.remove}
             </button>
           </li>
         ))}

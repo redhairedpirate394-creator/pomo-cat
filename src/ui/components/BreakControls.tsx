@@ -16,11 +16,15 @@ export function BreakControls({
   return (
     <>
       {canHold && (
-        <button type="button" onClick={onHold}>
+        <button type="button" data-next-step onClick={onHold}>
           {warning ? m.warningStop : m.hold}
         </button>
       )}
-      <button type="button" onClick={onLearnNow}>
+      <button
+        type="button"
+        data-next-step={canHold ? undefined : true}
+        onClick={onLearnNow}
+      >
         {m.learnNow}
       </button>
     </>

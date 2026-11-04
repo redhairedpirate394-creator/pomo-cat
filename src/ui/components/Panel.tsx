@@ -1,11 +1,13 @@
-import { type ReactNode, useId, useState } from "react";
+import { type ReactNode, type Ref, useId, useState } from "react";
 
 /** Closed on every start, so the screen stays calm. */
 export function Panel({
   label,
+  bodyRef,
   children,
 }: {
   label: string;
+  bodyRef?: Ref<HTMLDivElement>;
   children: ReactNode;
 }) {
   const [open, setOpen] = useState(false);
@@ -22,7 +24,7 @@ export function Panel({
         {label}
       </button>
       {open && (
-        <div id={id} className="panel-body">
+        <div ref={bodyRef} id={id} className="panel-body">
           {children}
         </div>
       )}

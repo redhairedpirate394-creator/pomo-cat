@@ -1,4 +1,4 @@
-import { type FormEvent, useState } from "react";
+import { type FormEvent, useId, useState } from "react";
 import { NAME_MAX } from "../../domain/cat";
 import { useMessages } from "../i18n";
 import type { ErrorCode } from "../i18n/messages";
@@ -12,6 +12,7 @@ export function NameCat({
   const m = useMessages();
   const [name, setName] = useState("");
   const [error, setError] = useState<ErrorCode | null>(null);
+  const errorId = useId();
 
   function submit(event: FormEvent) {
     event.preventDefault();
@@ -27,11 +28,13 @@ export function NameCat({
             value={name}
             maxLength={NAME_MAX}
             autoComplete="off"
+            aria-invalid={error !== null}
+            aria-describedby={error ? errorId : undefined}
             onChange={(event) => setName(event.target.value)}
           />
         </label>
         {error && (
-          <p className="error" role="alert">
+          <p id={errorId} className="error" role="alert">
             {m.errors[error]}
           </p>
         )}

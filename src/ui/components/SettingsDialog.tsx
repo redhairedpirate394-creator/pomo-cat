@@ -4,7 +4,7 @@ import {
   MINUTE_STEP,
   type Settings,
 } from "../../domain/settings";
-import { useMessages } from "../i18n";
+import { LANGUAGE_NAMES, useMessages } from "../i18n";
 import { Modal } from "./Modal";
 
 function steps(min: number, max: number, step: number): number[] {
@@ -112,8 +112,8 @@ export function SettingsDialog({
               onChange({ language: event.target.value as Language })
             }
           >
-            <option value="de">Deutsch</option>
-            <option value="en">English</option>
+            <option value="de">{LANGUAGE_NAMES.de}</option>
+            <option value="en">{LANGUAGE_NAMES.en}</option>
           </select>
         </label>
       </div>

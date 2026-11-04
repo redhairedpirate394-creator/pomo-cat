@@ -6,6 +6,7 @@ import {
   savedGame,
   seedGame,
   soundPlays,
+  T0,
   useTestClock,
 } from "./helpers";
 
@@ -136,4 +137,29 @@ test("the feed window closes the settings", async ({ page }) => {
   await expect(
     page.getByRole("dialog", { name: "Einstellungen" }),
   ).toBeHidden();
+});
+
+test("long text does not scroll sideways at 320 px", async ({ page }) => {
+  await page.setViewportSize({ width: 320, height: 640 });
+  await seedGame(page, {
+    cat: { name: "M".repeat(20), mood: "normal", moodAt: T0.getTime() },
+    todos: [{ id: "a", text: "x".repeat(120), done: false }],
+    coins: 1234,
+  });
+  await page.goto("/");
+  await page.getByRole("button", { name: "To-Dos" }).click();
+  await page.getByRole("button", { name: "Shop" }).click();
+  await page.getByRole("button", { name: "Kalender" }).click();
+  await expect(
+    page.getByRole("checkbox", { name: "x".repeat(120) }),
+  ).toBeVisible();
+  const overflow = () =>
+    page.evaluate(
+      () => document.documentElement.scrollWidth - window.innerWidth,
+    );
+  expect(await overflow()).toBeLessThanOrEqual(0);
+  await page.getByRole("button", { name: "Einstellungen" }).click();
+  await page.getByLabel("Sprache").selectOption("en");
+  await expect(page.getByRole("dialog", { name: "Settings" })).toBeVisible();
+  expect(await overflow()).toBeLessThanOrEqual(0);
 });

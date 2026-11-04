@@ -6,7 +6,7 @@ import { de } from "./de";
 import { en } from "./en";
 import type { ErrorCode, Messages } from "./messages";
 
-export type { Messages } from "./messages";
+export { GLYPHS, LANGUAGE_NAMES, type Messages } from "./messages";
 
 // Add a locale by adding its catalog here; the spec language is the default.
 export const catalogs = { de, en } satisfies Record<string, Messages>;
