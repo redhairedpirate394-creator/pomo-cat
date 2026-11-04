@@ -5,7 +5,7 @@ import {
   SNACKS,
   type SnackId,
 } from "../../domain/catalog";
-import { icons, snackImages } from "../assets/manifest";
+import { snackImages } from "../assets/manifest";
 import { useMessages } from "../i18n";
 import { Panel } from "./Panel";
 
@@ -22,7 +22,7 @@ export function ShopPanel({
 }) {
   const m = useMessages();
   return (
-    <Panel label={m.shop} toggle={<img src={icons.shop} alt="" />}>
+    <Panel label={m.shop}>
       <h3>{m.snacksHeading}</h3>
       <ul className="shop-list">
         {SNACKS.map((snack) => (

@@ -9,7 +9,9 @@ export const en: Messages = {
   previousMonth: "Previous month",
   nextMonth: "Next month",
   dayMinutes: (date, minutes) =>
-    minutes === 0 ? date : `${date}: ${minutes} minutes learned`,
+    minutes === 0
+      ? date
+      : `${date}: ${minutes} ${minutes === 1 ? "minute" : "minutes"} learned`,
   streak: (days) => (days === 1 ? "1 day in a row" : `${days} days in a row`),
   todos: "To-dos",
   todoLabel: "New task",
@@ -73,6 +75,7 @@ export const en: Messages = {
   buy: (name, price) => `Buy ${name} for ${price}`,
   ownedItem: (name) => `${name}: yours`,
   snackNote: (cat, snack) => `${cat} loves ${snack}!`,
+  itemNote: (item) => `${item} is in the room now.`,
   playWith: (item) => `Play with ${item}`,
   playNote: (cat, item) => `${cat} is playing with ${item}.`,
   continueUnit: (unit, total) => `Continue with unit ${unit} of ${total}`,

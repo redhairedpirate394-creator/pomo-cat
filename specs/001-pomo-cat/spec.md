@@ -30,7 +30,9 @@ Geklärt im Interview (Fragen Q1 bis Q36, Wortlaut im Journal):
 - Q: Herzaugen? → A: gelten für die fröhliche und die gestreichelte Katze (Q38).
 - Q: Lila Bild? → A: das Kissen aus dem Shop (Q39).
 - Q: Gelieferte Zeichnungen? → A: werden eingebaut; spätere Versionen ersetzen sie als Datei (Q40).
-- Q: Knöpfe? → A: „SHOP“ und Zahnrad als Bilder; die anderen im gleichen gezeichneten Kasten mit der eigenen Schrift, falls gut lesbar (Q41).
+- Q: Knöpfe? → A: Das Zahnrad als Bild; alle anderen Knöpfe, auch „Shop“, im gleichen Kasten mit der eigenen Schrift (Q41, r10).
+- Q: Knusperkissen ohne Bild? → A: bleibt vorerst ohne Bild im Shop (Q42).
+- Q: Schrift und Größen? → A: Buchstaben auf einer Linie, leicht versetzt erlaubt; Sachen im Raum in stimmigen Größen; die Katze sitzt auf dem Kissen (r08, r11, r12).
 
 ## User Scenarios & Testing *(mandatory)*
 

@@ -154,7 +154,7 @@ test("after the last unit comes the long break, then a click", async ({
   }
   await finishUnit(page);
   await expect(page.getByRole("dialog", { name: "Füttern" })).toContainText(
-    /Noch 1[45]:[0-9][0-9] Pause/,
+    "Noch 15:00 Pause",
   );
   await feedTuna(page);
   await expect(page.getByText("Lange Pause")).toBeVisible();

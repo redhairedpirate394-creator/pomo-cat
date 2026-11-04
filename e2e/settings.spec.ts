@@ -88,11 +88,11 @@ test("the whole game can be played in English", async ({ page }) => {
     page.getByRole("button", { name: "Buy Salmon stick for 3 coins" }),
   ).toBeVisible();
   await page.getByRole("button", { name: "Start" }).click();
-  await finishUnit(page).catch(() => undefined);
+  await page.clock.fastForward("25:00");
   await page.getByRole("button", { name: "Tuna" }).click();
   await expect(page.getByRole("status")).toHaveText("Mimi gives you 5 coins.");
-  const german = await page.locator("main").innerText();
-  expect(german).not.toMatch(/Münze|Einheit|Füttern/);
+  const text = await page.locator("main").innerText();
+  expect(text).not.toMatch(/Münze|Einheit|Füttern/);
 });
 
 test("the browser language decides on the first start", async ({ browser }) => {
@@ -115,4 +115,25 @@ test("with the sound off the warning still shows", async ({ page }) => {
   await page.clock.fastForward("04:30");
   await expect(page.getByRole("status")).toHaveText("Gleich geht es weiter");
   expect(await soundPlays(page)).toBe(0);
+});
+
+test("a note follows a language change", async ({ page }) => {
+  await nameAndStart(page);
+  await finishUnit(page);
+  await feedTuna(page);
+  await expect(page.getByRole("status")).toHaveText("Mimi gibt dir 5 Münzen.");
+  await openSettings(page);
+  await page.getByLabel("Sprache").selectOption("en");
+  await page.getByRole("button", { name: "Close" }).click();
+  await expect(page.getByRole("status")).toHaveText("Mimi gives you 5 coins.");
+});
+
+test("the feed window closes the settings", async ({ page }) => {
+  await nameAndStart(page);
+  await openSettings(page);
+  await page.clock.fastForward("25:00");
+  await expect(page.getByRole("dialog", { name: "Füttern" })).toBeVisible();
+  await expect(
+    page.getByRole("dialog", { name: "Einstellungen" }),
+  ).toBeHidden();
 });
