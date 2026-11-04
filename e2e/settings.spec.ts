@@ -252,3 +252,17 @@ test("the corner stays clear of the timer at every width", async ({ page }) => {
     expect(clear, `at ${width} px`).toBe(true);
   }
 });
+
+test("frames have square corners", async ({ page }) => {
+  await seedGame(page, {});
+  await page.goto("/");
+  await expect(page.getByRole("button", { name: "Start" })).toHaveCSS(
+    "border-radius",
+    "0px",
+  );
+  await page.getByRole("button", { name: "To-Dos" }).click();
+  await expect(page.getByLabel("Neue Aufgabe")).toHaveCSS(
+    "border-radius",
+    "0px",
+  );
+});

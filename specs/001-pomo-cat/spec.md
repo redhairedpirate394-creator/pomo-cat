@@ -37,6 +37,7 @@ Geklärt im Interview (Fragen Q1 bis Q36, Wortlaut im Journal):
 - 2026-11-04 Q: Kleinigkeiten aus Runde 2? → A: Passen so: Beim Snack und beim Spielen zeigt die Katze vorerst die Herzaugen; abgehakte Aufgaben bleiben stehen, bis man sie löscht; der Kalender beginnt am Montag; eine zweite offene App wartet mit einem Hinweis (Runde 2, Q2).
 - 2026-11-04 Q: Wartet die Abnahme auf die restlichen Zeichnungen? → A: Nein. Alles andere wird fertig, die Zeichnungen kommen nach, sobald es sie gibt (Q43, r16).
 - 2026-11-04 Q: Letzte Wünsche vor der Abnahme? → A: Snacks kosten 5 Münzen; das Futter liegt im gezeichneten Größenverhältnis im Napf, ohne weißen Rand; alle Rahmen sind die gezeichnete Rahmen-Zeichnung; Fragezeichen und Zahnrad stehen zusammen oben links und sind immer da; das Fragezeichen erklärt, wie die Katze glücklich bleibt (r17 bis r20, r23, r24).
+- 2026-11-04 Q: Ecken der Rahmen? → A: Alle im 90°-Winkel, nicht abgerundet; das ersetzt die zwei runden Ecken (r28).
 - 2026-11-04 Q: Richtiger Raum und neue Geräusche? → A: Beides wird ein eigener nächster Abschnitt nach der Abnahme. Die Raum-Zeichnung ist der erste Entwurf. Geräusche bekommen genau zwei Lautstärkeregler: Katzengeräusche und Alarme (r21, r22, r24).
 
 ## User Scenarios & Testing *(mandatory)*
@@ -240,7 +241,7 @@ Neben dem Timer kann ich eine einfache Liste aufklappen, damit ich weiß, was ic
 - **FR-040**: Alle Grafiken MÜSSEN austauschbare Einzelbilder sein, damit Entwürfe ohne weitere Änderungen durch die fertigen farbigen Bilder ersetzt werden können. Bewegung entsteht durch Bildwechsel.
 - **FR-041**: Timer und Knöpfe MÜSSEN eine gut lesbare handschriftliche Schrift nutzen.
 - **FR-049**: Das Fragezeichen MUSS oben links immer erreichbar sein und ein Fenster mit dem Text „So bleibt deine Katze glücklich:“ und den drei Punkten der Eigentümerin bzw. des Eigentümers öffnen (r20).
-- **FR-050**: Knöpfe, Eingabefelder, aufgeklappte Bereiche und Fenster MÜSSEN die gezeichnete Rahmen-Zeichnung nutzen, ihre Größe bleibt gleich (r19).
+- **FR-050**: Knöpfe, Eingabefelder, aufgeklappte Bereiche und Fenster MÜSSEN die gezeichnete Rahmen-Zeichnung mit Ecken im 90°-Winkel nutzen, ihre Größe bleibt gleich (r19, r28).
 - **FR-051**: Das Futter MUSS im Napf im Größenverhältnis der Zeichnung liegen und darf keinen weißen Rand zeigen (r18).
 - **FR-042**: Zur Testrunde MUSS eine Liste aller benötigten Bilder mit Maßen vorliegen.
 

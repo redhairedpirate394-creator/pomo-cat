@@ -7,7 +7,7 @@ kannst eine Zeichnung jederzeit durch eine neue Version ersetzen.
 
 Katze schlafend, fressend, sitzend, weinend und mit Herzaugen; Münze, Zahnrad;
 Wollknäuel, Spielmaus, Kissen; Napf, Nassfutter, Trockenfutter, Thunfisch;
-Lachsstick, Katzenminze, Knusperstangen; dein Alphabet; der Rahmen (`frame.png`).
+Lachsstick, Katzenminze, Knusperstangen; dein Alphabet; der Rahmen (`frame.png`, gerade gezogen aus `frame.jpg`).
 
 ## Noch offen
 
