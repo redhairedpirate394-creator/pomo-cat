@@ -24,6 +24,8 @@ Type: bug (within the spec) | change (other than specified) | extension (new sco
 | r22 | next round | extension | FR-010, FR-036, FR-038 | New cat sounds with their own controls; the alert stays and can be turned off |
 | r23 | before publish | change | SC-002, FR-036 | Gear beside the question mark; both always available |
 | r24 | before publish | decision | r17 to r23 | Team's order accepted; one volume slider for cat sounds, one for alerts; new frame drawing sent |
+| r25 | before publish | decision | r21, FR-027, SC-006 | Leave the furniture out for now, remember it for later |
+| r26 | before publish | change | Q42, FR-027, T040 | Drawing of the third snack delivered |
 
 ## r17, r18 Futter
 
@@ -101,7 +103,19 @@ the team reads this from "Auschalten" in r22 and reads it back.
 The frame drawing's corners are nearly square, while r19 likes two rounded corners.
 The team builds it as drawn and asks the owner to judge it in the app.
 
+## r25, r26 Möbel und dritter Snack
+
+> kannst du die möbel erstmal rauslassen aber dir für später merken. anbei ist der 3. Snack
+
+r25: "die möbel" can mean the plant, rug and scratching post in today's shop, which
+are placeholders, or only the sofa and the like of the coming room (r21). The team
+asks which. Removing the scratching post would change SC-006. r26: the drawing, saved
+as `docs/design/owner/snack-third.jpg`, shows three brown sticks. The third snack is
+called Knusperkissen so far, so the name may no longer fit.
+
 ## Not stated
 
 - Whether C3 is accepted.
 - Whether the frame's corners should stay as drawn or two of them be rounded.
+- Which furniture r25 means.
+- The name of the third snack.
