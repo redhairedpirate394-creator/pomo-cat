@@ -48,3 +48,47 @@ Windows fails `pnpm verify` out of the box (CRLF), and the exact Node pin with
    Idee hier" (recorded as `owner_experience: plain`)
 7. Name: "Pomo Cat/ Pomo Pet später, eventuell andere Tiere verfügbar, andere
    Räume"
+
+### Interview round 1 (owner's words, unchanged)
+
+Recommendations are in the chat history only in spirit; each answer below names
+what it accepts or changes.
+
+- Q1 Belohnungen: "Es soll Münzen geben, aber nicht so viel auswahl möglichkeit
+  und auch mit wenigen Münzen schon eine Option geben (nicht ewig lernen damit
+  man sich den Kratzbaum kaufen kann). Futter Optionen möchte ich mehr haben
+  zwischen denen man wählen kann. Man soll besondere Snacks kaufen können"
+- Q2 Traurigsein: "ja" (accepts: moods happy/normal/sad; normal after 2 days
+  without learning, sad after 4; a finished unit raises mood one step; a happy
+  cat gives an extra portion, a sad one only the normal reward)
+- Q3 Abbruch: "Ja, aber es soll einen Lernkalender geben in dem Trotzdem die
+  Zeit nach dem abgebrochen wurde eingetragen wird." (accepts: cancel any time,
+  no reward, no penalty)
+- Q4 Pause: "Ja, aber die nächste einheit startet automatisch. es wird 30
+  sekunden vor beginn durch ein miauen gewarnt dass es weiter geht" (accepts:
+  cat room opens with the break countdown; feed, pet, play with toys)
+- Q5 Grafiken: "Ja" (accepts: placeholders first, image list with sizes at the
+  first round, few single images per mood, public visibility of the art is fine)
+- Q6 Zeiten: "Ich möchte eigene Zeit einstellungen aber in 5 minuten schritten"
+- Q7 Signal: "Ja" (accepts: short sound and remaining time in the tab title,
+  sound can be switched off, no browser notifications for now)
+- Q8 Speicherort: "Ich möchte ein Konto, dass man überall nutzen kann." (rejects
+  browser-only storage; conflicts with the foundation and with bootstrap answer
+  2 "no personal data", to be resolved in round 2)
+- Q9 Erster Start: "Ja" (accepts: name the cat once, no tutorial, language from
+  the browser, switch between German and English in the app)
+
+### Account research for interview round 2 (2026-11-04)
+
+An account departs from the foundation (static site, no auth, no backend):
+constitution VI and VII and ADR 002 require an ADR, approved identity, privacy,
+retention, cost and operations rules, and the owner's yes. No provider chosen.
+
+- Supabase free plan (supabase.com/pricing): $0, 50,000 monthly active users,
+  500 MB per project, 2 active projects, paused after 1 week of inactivity, Pro
+  from $25/month. Default auth email reaches only organization members since
+  2024-09-26, so other users need custom SMTP (included on the free plan).
+- Firebase Spark: third-party sources only, and they disagree on auth limits
+  (10,000 vs 50,000); no card required; a product stops at its quota instead of
+  billing. Verify on official pages before choosing. EU data location for auth
+  not confirmed for either provider.
