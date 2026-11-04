@@ -79,7 +79,7 @@ journey. Tests are written alongside the code they prove, never deferred.
 - [ ] T045 Cut coin, gear, SHOP, yarn, mouse and pillow from docs/design/owner/items-sheet.jpg into src/ui/assets/ behind src/ui/assets/manifest.ts, drawn box for the other buttons (FR-040, Q39, Q41)
 - [ ] T046 Owner's lettering from docs/design/owner/alphabet-sheet.jpg: timer digits for certain, whole text only if legible at button size, otherwise keep the current font for small text and say so (FR-041, Q41)
 
-### Story
+### Story work
 
 **Independent Test**: Pet, hold, close, reopen and continue; check mood over simulated days
 

@@ -7,8 +7,8 @@ commands, outcomes, review findings and screenshots go to
 ## Product
 
 - Product: Pomo Cat (possibly Pomo Pet later, with other animals and rooms)
-- Repository/branch: `redhairedpirate394-creator/pomo-cat` (public), `main`; next work on `001-pomo-cat-c2`
-- Live URL once published: https://redhairedpirate394-creator.github.io/pomo-cat/
+- Repository/branch: `redhairedpirate394-creator/pomo-cat` (public), `001-pomo-cat-c2`
+- Live URL: https://redhairedpirate394-creator.github.io/pomo-cat/
   (GitHub Pages, source: workflow; trial link: add `?probelauf`)
 - Spec language: de (chat and spec). App: German and English.
 - Publish choice: auto-merge ("publish automatically")
@@ -46,6 +46,6 @@ commands, outcomes, review findings and screenshots go to
 
 ## Exact next action
 
-C1 is live. Create `001-pomo-cat-c2` from the updated `main`, then run
+C1 is live (PR #1 merged). On branch `001-pomo-cat-c2`, run
 `/speckit-analyze` and `/speckit-implement` from T044 (owner's art), then T019 on,
 to the C2 GATE (T036). The owner expects their drawings in the next round.
