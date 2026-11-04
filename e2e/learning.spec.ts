@@ -42,8 +42,8 @@ test("a unit shows the timer, the unit and the sleeping cat, and nothing else to
   await expect(page.getByText("Einheit 1 von 4")).toBeVisible();
   await expect(page.getByRole("img", { name: "Mimi schläft" })).toBeVisible();
   await expect(page).toHaveTitle(/^25:00 · Pomo Cat$/);
-  // Exactly the controls of the owner's sketch.
-  await expect(page.getByRole("button")).toHaveCount(3);
+  // Exactly the agreed controls: sketch, plus the question mark (r20).
+  await expect(page.getByRole("button")).toHaveCount(4);
   await expect(page.getByRole("button", { name: "To-Dos" })).toBeVisible();
   await expect(page.getByRole("button", { name: "Stop" })).toBeVisible();
   await expect(

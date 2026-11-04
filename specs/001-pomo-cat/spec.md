@@ -19,7 +19,7 @@
 Geklärt im Interview (Fragen Q1 bis Q36, Wortlaut im Journal):
 
 - Q: Belohnung? → A: Münzen pro Lernzeit; die Katze gibt sie beim Füttern; eine fröhliche Katze gibt 50 % mehr (Q1, Q10).
-- Q: Shop? → A: wenig Auswahl, niedrige Preise, kostenlose Futtersorten, Snacks je 3 Münzen (Q1, Q11).
+- Q: Shop? → A: wenig Auswahl, niedrige Preise, kostenlose Futtersorten, Snacks je 5 Münzen (Q1, Q11, r17).
 - Q: Abbruch? → A: jederzeit, ohne Belohnung und Strafe; die Zeit bis zum Abbruch steht im Lernkalender (Q3).
 - Q: Automatik? → A: Einheiten laufen innerhalb eines Durchgangs automatisch weiter, Warnung 30 Sekunden vorher; Anhalten ist möglich; die Anzahl der Einheiten ist einstellbar (Q4, Q13, Q22, Q23).
 - Q: Münzen ohne Lernen verhindern? → A: Das Futter-Fenster öffnet sich automatisch; wer bis zum Pausenende nicht füttert, stoppt den Ablauf, behält aber die Münzen der beendeten Einheit (Q27, Q32).
@@ -31,11 +31,13 @@ Geklärt im Interview (Fragen Q1 bis Q36, Wortlaut im Journal):
 - Q: Lila Bild? → A: das Kissen aus dem Shop (Q39).
 - Q: Gelieferte Zeichnungen? → A: werden eingebaut; spätere Versionen ersetzen sie als Datei (Q40).
 - Q: Knöpfe? → A: Alle Knöpfe, auch „Shop“, im gleichen Kasten mit der eigenen Schrift; das Zahnrad ohne gezeichneten Rand in einem quadratischen Kasten (Q41, r10, r15).
-- Q: Knusperkissen ohne Bild? → A: bleibt vorerst ohne Bild im Shop (Q42).
+- Q: Dritter Snack? → A: heißt Knusperstangen und hat jetzt eine Zeichnung (Q42, r26, r27).
 - Q: Schrift und Größen? → A: Buchstaben auf einer Linie, leicht versetzt erlaubt; Sachen im Raum in stimmigen Größen; die Katze sitzt auf dem Kissen (r08, r11, r12).
 - 2026-11-04 Q: Maus und Hinterfüße? → A: Die Maus bleibt neben der schlafenden Katze in normaler Form; die Hinterfüße sind ausgemalt, nicht durchsichtig (r13, r14).
 - 2026-11-04 Q: Kleinigkeiten aus Runde 2? → A: Passen so: Beim Snack und beim Spielen zeigt die Katze vorerst die Herzaugen; abgehakte Aufgaben bleiben stehen, bis man sie löscht; der Kalender beginnt am Montag; eine zweite offene App wartet mit einem Hinweis (Runde 2, Q2).
 - 2026-11-04 Q: Wartet die Abnahme auf die restlichen Zeichnungen? → A: Nein. Alles andere wird fertig, die Zeichnungen kommen nach, sobald es sie gibt (Q43, r16).
+- 2026-11-04 Q: Letzte Wünsche vor der Abnahme? → A: Snacks kosten 5 Münzen; das Futter liegt im gezeichneten Größenverhältnis im Napf, ohne weißen Rand; alle Rahmen sind die gezeichnete Rahmen-Zeichnung; Fragezeichen und Zahnrad stehen zusammen oben links und sind immer da; das Fragezeichen erklärt, wie die Katze glücklich bleibt (r17 bis r20, r23, r24).
+- 2026-11-04 Q: Richtiger Raum und neue Geräusche? → A: Beides wird ein eigener nächster Abschnitt nach der Abnahme. Die Raum-Zeichnung ist der erste Entwurf. Geräusche bekommen genau zwei Lautstärkeregler: Katzengeräusche und Alarme (r21, r22, r24).
 
 ## User Scenarios & Testing *(mandatory)*
 
@@ -84,7 +86,7 @@ In der Pause ist die Katze wach und ich verbringe die Zeit mit ihr statt mit dem
 
 ### User Story 3 - Shop und Katzenraum (Priority: P3)
 
-Mit meinen Münzen kaufe ich der Katze Snacks und richte ihren Raum ein. Die Auswahl ist klein, und schon mit wenigen Münzen ist etwas drin. Auch der Kratzbaum ist nach einem Lerntag erreichbar.
+Mit meinen Münzen kaufe ich der Katze Snacks und richte ihren Raum ein. Die Auswahl ist klein, und schon mit wenigen Münzen ist etwas drin.
 
 **Why this priority**: Der Shop gibt den Münzen ihren Sinn, braucht aber den funktionierenden Kreislauf.
 
@@ -93,7 +95,7 @@ Mit meinen Münzen kaufe ich der Katze Snacks und richte ihren Raum ein. Die Aus
 **Acceptance Scenarios**:
 
 1. **Given** keine Einheit läuft, **When** ich den Shop aufklappe, **Then** sehe ich die Snacks und Raum-Sachen mit Preisen.
-2. **Given** ich habe mindestens 3 Münzen, **When** ich einen Snack kaufe, **Then** wird er sofort verfüttert, die Katze reagiert besonders, und die Stimmung steigt um eine Stufe.
+2. **Given** ich habe mindestens 5 Münzen, **When** ich einen Snack kaufe, **Then** wird er sofort verfüttert, die Katze reagiert besonders, und die Stimmung steigt um eine Stufe.
 3. **Given** ich habe genug Münzen, **When** ich eine Raum-Sache kaufe, **Then** steht sie dauerhaft an ihrem festen Platz und kann nicht ein zweites Mal gekauft werden.
 4. **Given** ich habe zu wenig Münzen, **When** ich den Shop ansehe, **Then** sehe ich den Preis, kann aber nicht kaufen.
 5. **Given** eine Einheit läuft, **When** ich auf die App schaue, **Then** sind Shop und Kalender nicht erreichbar.
@@ -185,7 +187,7 @@ Neben dem Timer kann ich eine einfache Liste aufklappen, damit ich weiß, was ic
 - **FR-008**: 30 Sekunden vor dem automatischen Start MUSS die Katze miauen und ein sichtbarer Hinweis mit Stopp-Knopf erscheinen; Stopp hält den Ablauf an.
 - **FR-009**: Nach der letzten Einheit eines Durchgangs MUSS die lange Pause beginnen; der nächste Durchgang darf nur per Klick starten.
 - **FR-010**: Das Ende einer Einheit und das Ende der langen Pause MÜSSEN mit einem kurzen Ton gemeldet werden, sofern der Ton an ist. Browser-Benachrichtigungen gibt es nicht.
-- **FR-011**: Während einer Einheit MÜSSEN nur Timer, schlafende Katze, „Stop“, Zahnrad und die ausklappbare To-Do-Liste erreichbar sein; Shop, Kalender, Füttern und Spielen MÜSSEN gesperrt sein.
+- **FR-011**: Während einer Einheit MÜSSEN nur Timer, schlafende Katze, „Stop“, Fragezeichen, Zahnrad und die ausklappbare To-Do-Liste erreichbar sein; Shop, Kalender, Füttern und Spielen MÜSSEN gesperrt sein.
 - **FR-012**: „Stop“ während einer Einheit MUSS nach einer kurzen Bestätigung die Einheit und den Durchgang beenden, ohne Münzen und ohne Strafe.
 - **FR-013**: Das Schließen der App während einer Einheit MUSS diese abbrechen, außer man kommt innerhalb von 2 Minuten zurück; dann läuft sie nach der Uhr weiter.
 - **FR-014**: Tab-Wechsel und Bildschirmsperre DÜRFEN eine Einheit nicht abbrechen, solange die Seite weiterbesteht.
@@ -210,10 +212,10 @@ Neben dem Timer kann ich eine einfache Liste aufklappen, damit ich weiß, was ic
 
 **Shop und Raum**
 
-- **FR-027**: Der Shop MUSS außerhalb von Einheiten erreichbar sein und genau enthalten: die Snacks Lachsstick, Knusperkissen und Katzenminze für je 3 Münzen; Wollknäuel, Spielmaus und Kissen für je 5 Münzen; Pflanze und Teppich für je 10 Münzen; Kratzbaum für 20 Münzen.
+- **FR-027**: Der Shop MUSS außerhalb von Einheiten erreichbar sein und genau enthalten: die Snacks Lachsstick, Knusperstangen und Katzenminze für je 5 Münzen; Wollknäuel, Spielmaus und Kissen für je 5 Münzen. Pflanze, Teppich und Kratzbaum sind vorerst nicht im Shop; schon gekaufte bleiben im Raum (r25, r27).
 - **FR-028**: Ein gekaufter Snack MUSS sofort verfüttert werden; es gibt keinen Vorrat.
 - **FR-029**: Raum-Sachen MÜSSEN dauerhaft an festen Plätzen rund um die Katze stehen, nicht verschiebbar und nur einmal kaufbar.
-- **FR-030**: Wollknäuel, Spielmaus und Kratzbaum MÜSSEN in Pausen anklickbar sein, und die Katze spielt damit.
+- **FR-030**: Wollknäuel, Spielmaus und ein schon gekaufter Kratzbaum MÜSSEN in Pausen anklickbar sein, und die Katze spielt damit.
 - **FR-031**: Ein Kauf MUSS bei zu wenig Münzen unmöglich sein; der Münzstand DARF NICHT negativ werden.
 
 **Kalender**
@@ -228,7 +230,7 @@ Neben dem Timer kann ich eine einfache Liste aufklappen, damit ich weiß, was ic
 
 **Einstellungen und Sprache**
 
-- **FR-036**: Das Zahnrad MUSS immer erreichbar sein und Lernzeit (5 bis 60), kurze Pause (5 bis 30), lange Pause (5 bis 60), jeweils in 5-Minuten-Schritten, sowie die Anzahl der Einheiten (1 bis 8), den Ton und die Sprache einstellen.
+- **FR-036**: Das Zahnrad MUSS oben links neben dem Fragezeichen stehen, immer erreichbar sein und Lernzeit (5 bis 60), kurze Pause (5 bis 30), lange Pause (5 bis 60), jeweils in 5-Minuten-Schritten, sowie die Anzahl der Einheiten (1 bis 8), den Ton und die Sprache einstellen.
 - **FR-037**: Zeiten und Anzahl MÜSSEN ab dem nächsten Durchgang gelten, Ton und Sprache sofort.
 - **FR-038**: Ist der Ton aus, MÜSSEN alle Warnungen weiterhin auf dem Bildschirm sichtbar sein.
 - **FR-039**: Die gesamte App MUSS auf Deutsch und Englisch verfügbar sein. Die Startsprache richtet sich nach dem Browser, sonst Deutsch.
@@ -237,6 +239,9 @@ Neben dem Timer kann ich eine einfache Liste aufklappen, damit ich weiß, was ic
 
 - **FR-040**: Alle Grafiken MÜSSEN austauschbare Einzelbilder sein, damit Entwürfe ohne weitere Änderungen durch die fertigen farbigen Bilder ersetzt werden können. Bewegung entsteht durch Bildwechsel.
 - **FR-041**: Timer und Knöpfe MÜSSEN eine gut lesbare handschriftliche Schrift nutzen.
+- **FR-049**: Das Fragezeichen MUSS oben links immer erreichbar sein und ein Fenster mit dem Text „So bleibt deine Katze glücklich:“ und den drei Punkten der Eigentümerin bzw. des Eigentümers öffnen (r20).
+- **FR-050**: Knöpfe, Eingabefelder, aufgeklappte Bereiche und Fenster MÜSSEN die gezeichnete Rahmen-Zeichnung nutzen, ihre Größe bleibt gleich (r19).
+- **FR-051**: Das Futter MUSS im Napf im Größenverhältnis der Zeichnung liegen und darf keinen weißen Rand zeigen (r18).
 - **FR-042**: Zur Testrunde MUSS eine Liste aller benötigten Bilder mit Maßen vorliegen.
 
 **Daten und Zuverlässigkeit**
@@ -263,11 +268,11 @@ Neben dem Timer kann ich eine einfache Liste aufklappen, damit ich weiß, was ic
 ### Measurable Outcomes
 
 - **SC-001**: Vom ersten Öffnen bis zur laufenden Einheit braucht man höchstens zwei Schritte (Name eingeben, Start) und unter 30 Sekunden.
-- **SC-002**: Beim Lernen sind genau die Elemente der Skizze sichtbar: Timer, Einheit, Katze, To-Do-Knopf, Stop, Zahnrad. Es gibt keine weiteren Bedienelemente.
+- **SC-002**: Beim Lernen sind genau diese Elemente sichtbar: Timer, Einheit, Katze, To-Do-Knopf, Stop, Zahnrad, Fragezeichen. Es gibt keine weiteren Bedienelemente.
 - **SC-003**: Die Eigentümerin bzw. der Eigentümer bewertet die App in der ersten Testrunde als „sehr simpel, ohne Schnickschnack“.
 - **SC-004**: Der Timer weicht über 60 Minuten um höchstens 1 Sekunde ab, auch in einem Hintergrund-Tab.
 - **SC-005**: Ohne jede Eingabe entstehen nach dem Start höchstens die Münzen einer einzigen Einheit.
-- **SC-006**: Der Kratzbaum ist mit Standardeinstellungen nach höchstens 4 fertigen Einheiten bezahlbar, ein Snack nach einer Einheit.
+- **SC-006**: Ein Snack ist mit Standardeinstellungen nach einer fertigen Einheit bezahlbar.
 - **SC-007**: Nach dem Neuladen an beliebiger Stelle geht kein Fortschritt verloren.
 - **SC-008**: Alle Texte erscheinen vollständig auf Deutsch und auf Englisch.
 - **SC-009**: Die App ist auf Handy- und Computerbildschirmen ohne seitliches Scrollen nutzbar.
@@ -295,5 +300,6 @@ Vom Team gewählte Kleinigkeiten, die das Interview offen ließ. Sie werden in d
 - Konto, Anmeldung und Nutzung auf mehreren Geräten: eigener zweiter Schritt, inklusive Übernahme des Fortschritts (Q16 bis Q20).
 - Freunde und Einladungslinks (Q17, Q29).
 - Andere Tiere, andere Räume und der Name Pomo Pet (Bootstrap-Antwort 7).
+- Der richtige Raum zum Herumklicken und die neuen Geräusche: eigener nächster Abschnitt (r21, r22). Pflanze (10 Münzen), Teppich (10) und Kratzbaum (20) kommen damit zurück in den Shop (r25, r27).
 - Browser-Benachrichtigungen (Q7).
 - Verschieben von Einrichtung, Fellauswahl, Ranglisten.

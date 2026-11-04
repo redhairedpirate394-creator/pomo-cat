@@ -5,6 +5,7 @@ import type { StoreErrorCode } from "../../storage/port";
 
 // Language-neutral glyphs and names that are the same in every catalog.
 export const GLYPHS = {
+  help: "?",
   remove: "×",
   previous: "‹",
   next: "›",
@@ -41,6 +42,9 @@ export interface Messages {
   readonly settingLongBreak: string;
   readonly settingUnits: string;
   readonly settingsNote: string;
+  readonly helpOpen: string;
+  readonly helpTitle: string;
+  readonly helpPoints: readonly [string, string, string];
   readonly settingSound: string;
   readonly settingLanguage: string;
   readonly minutes: (count: number) => string;

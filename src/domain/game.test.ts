@@ -330,22 +330,29 @@ describe("learnNow", () => {
 describe("the shop", () => {
   const rich = (coins = 40): GameState => ({ ...fresh(), coins });
 
-  it("feeds a snack at once: three coins, one mood step", () => {
+  it("feeds a snack at once: five coins, one mood step", () => {
     const next = buySnack(rich(), T0 + MINUTE);
-    expect(next.coins).toBe(37);
+    expect(next.coins).toBe(35);
     expect(next.cat?.mood).toBe("happy");
     expect(next.cat?.moodAt).toBe(T0 + MINUTE);
   });
 
   it("refuses a snack without enough coins", () => {
-    const state = rich(2);
+    const state = rich(4);
     expect(buySnack(state, T0)).toBe(state);
   });
 
   it("can buy with exactly the price, and never goes negative", () => {
-    expect(buySnack(rich(3), T0).coins).toBe(0);
-    expect(buyRoomItem(rich(20), "scratching-post").coins).toBe(0);
-    const state = rich(19);
+    expect(buySnack(rich(5), T0).coins).toBe(0);
+    expect(buyRoomItem(rich(5), "yarn").coins).toBe(0);
+    const state = rich(4);
+    expect(buyRoomItem(state, "yarn")).toBe(state);
+  });
+
+  it("does not sell what is not in the shop for now", () => {
+    const state = rich();
+    expect(buyRoomItem(state, "plant")).toBe(state);
+    expect(buyRoomItem(state, "rug")).toBe(state);
     expect(buyRoomItem(state, "scratching-post")).toBe(state);
   });
 
@@ -367,8 +374,8 @@ describe("the shop", () => {
 
   it("is open in a fed break and while held", () => {
     const fed = feed(afterUnit(started()), "dry");
-    expect(buySnack(fed, T0 + 26 * MINUTE).coins).toBe(2);
-    expect(buySnack(hold(fed), T0 + 26 * MINUTE).coins).toBe(2);
+    expect(buySnack(fed, T0 + 26 * MINUTE).coins).toBe(0);
+    expect(buySnack(hold(fed), T0 + 26 * MINUTE).coins).toBe(0);
   });
 });
 

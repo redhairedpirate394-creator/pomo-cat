@@ -2,7 +2,6 @@ import { expect, test } from "@playwright/test";
 import {
   feedTuna,
   finishUnit,
-  KEY,
   nameAndStart,
   savedGame,
   seedGame,
@@ -25,27 +24,24 @@ test("the shop is closed at first and lists everything with prices", async ({
   await expect(page.getByText("Lachsstick")).toBeHidden();
   await openShop(page);
   for (const name of [
-    "Lachsstick für 3 Münzen kaufen",
-    "Knusperkissen für 3 Münzen kaufen",
-    "Katzenminze für 3 Münzen kaufen",
+    "Lachsstick für 5 Münzen kaufen",
+    "Knusperstangen für 5 Münzen kaufen",
+    "Katzenminze für 5 Münzen kaufen",
     "Wollknäuel für 5 Münzen kaufen",
     "Spielmaus für 5 Münzen kaufen",
     "Kissen für 5 Münzen kaufen",
-    "Pflanze für 10 Münzen kaufen",
-    "Teppich für 10 Münzen kaufen",
-    "Kratzbaum für 20 Münzen kaufen",
   ]) {
     await expect(page.getByRole("button", { name })).toBeEnabled();
   }
 });
 
 test("a snack is fed at once and lifts the mood", async ({ page }) => {
-  await seedGame(page, { coins: 3 });
+  await seedGame(page, { coins: 5 });
   await page.goto("/");
   await expect(page.getByRole("img", { name: "Mimi sitzt da" })).toBeVisible();
   await openShop(page);
   await page
-    .getByRole("button", { name: "Lachsstick für 3 Münzen kaufen" })
+    .getByRole("button", { name: "Lachsstick für 5 Münzen kaufen" })
     .click();
   await expect(page.getByRole("status")).toHaveText("Mimi liebt Lachsstick!");
   await expect(page.getByText("0 Münzen", { exact: true })).toBeVisible();
@@ -76,10 +72,10 @@ test("too few coins show the price but do not buy", async ({ page }) => {
   await page.goto("/");
   await openShop(page);
   await expect(
-    page.getByRole("button", { name: "Lachsstick für 3 Münzen kaufen" }),
+    page.getByRole("button", { name: "Lachsstick für 5 Münzen kaufen" }),
   ).toBeDisabled();
   await expect(
-    page.getByRole("button", { name: "Kratzbaum für 20 Münzen kaufen" }),
+    page.getByRole("button", { name: "Wollknäuel für 5 Münzen kaufen" }),
   ).toBeDisabled();
 });
 
@@ -106,22 +102,14 @@ test("a toy can be played with in a break, not during a unit", async ({
   await expect(page.getByRole("button", { name: /Mit Kissen/ })).toHaveCount(0);
 });
 
-test("the scratching post is affordable after four default units", async ({
-  page,
-}) => {
+test("a snack is affordable after one default unit", async ({ page }) => {
   await nameAndStart(page);
-  for (const unit of [1, 2, 3, 4]) {
-    await finishUnit(page);
-    await feedTuna(page);
-    if (unit < 4) {
-      await page.getByRole("button", { name: "Jetzt weiterlernen" }).click();
-    }
-  }
+  await finishUnit(page);
+  await feedTuna(page);
   await openShop(page);
   await expect(
-    page.getByRole("button", { name: "Kratzbaum für 20 Münzen kaufen" }),
+    page.getByRole("button", { name: "Lachsstick für 5 Münzen kaufen" }),
   ).toBeEnabled();
-  expect((await savedGame(page, KEY)).coins).toBeGreaterThanOrEqual(20);
 });
 
 test("buying everything still fits without sideways scrolling", async ({
@@ -172,7 +160,7 @@ test("buying says so, also while the run is held", async ({ page }) => {
   await page.goto("/");
   await openShop(page);
   await page
-    .getByRole("button", { name: "Lachsstick für 3 Münzen kaufen" })
+    .getByRole("button", { name: "Lachsstick für 5 Münzen kaufen" })
     .click();
   await expect(page.getByRole("status")).toHaveText("Mimi liebt Lachsstick!");
   await page

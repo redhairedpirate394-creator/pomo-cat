@@ -294,6 +294,7 @@ export function buyRoomItem(state: GameState, id: RoomItemId): GameState {
   if (
     !canShop(state) ||
     item === undefined ||
+    !item.inShop ||
     state.owned.includes(id) ||
     state.coins < item.price
   ) {

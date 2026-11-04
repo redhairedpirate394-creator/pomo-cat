@@ -18,12 +18,13 @@ import type { Language, Settings } from "../../domain/settings";
 import { addTodo, deleteTodo, toggleTodo } from "../../domain/todos";
 import { icons } from "../assets/manifest";
 import { formatClock } from "../format";
-import { useMessages } from "../i18n";
+import { GLYPHS, useMessages } from "../i18n";
 import type { ErrorCode } from "../i18n/messages";
 import { BreakControls } from "./BreakControls";
 import { CalendarPanel } from "./CalendarPanel";
 import { type CatPose, CatStage } from "./CatStage";
 import { FeedDialog } from "./FeedDialog";
+import { HelpDialog } from "./HelpDialog";
 import { NameCat } from "./NameCat";
 import { SaveFailedNotice } from "./SaveFailedNotice";
 import { SettingsDialog } from "./SettingsDialog";
@@ -72,6 +73,7 @@ export function GameScreen({
   const [reaction, setReaction] = useState<Reaction>(null);
   const [note, setNote] = useState<Note | null>(null);
   const [showSettings, setShowSettings] = useState(false);
+  const [showHelp, setShowHelp] = useState(false);
   const { cat, phase, settings } = state;
 
   useEffect(() => {
@@ -100,9 +102,11 @@ export function GameScreen({
 
   const feedOpen = phase.kind === "break" && !phase.fed;
 
-  // The feed window comes first; settings can wait.
+  // The feed window comes first; settings and help can wait.
   useEffect(() => {
-    if (feedOpen) setShowSettings(false);
+    if (!feedOpen) return;
+    setShowSettings(false);
+    setShowHelp(false);
   }, [feedOpen]);
 
   // A new step removes the button that led to it, so focus would fall to the
@@ -208,6 +212,22 @@ export function GameScreen({
   return (
     <main className="game">
       <h1 className="visually-hidden">{m.documentTitle}</h1>
+      <div className="corner">
+        <button
+          type="button"
+          aria-label={m.helpOpen}
+          onClick={() => setShowHelp(true)}
+        >
+          {GLYPHS.help}
+        </button>
+        <button
+          type="button"
+          aria-label={m.settings}
+          onClick={() => setShowSettings(true)}
+        >
+          <img src={icons.gear} alt="" />
+        </button>
+      </div>
       <section className="center">
         <Timer ms={shownMs} caption={caption} />
         <CatStage
@@ -267,25 +287,15 @@ export function GameScreen({
             {m.continueUnit(phase.nextUnit, phase.plan.units)}
           </button>
         )}
-        <div className="actions">
-          {learning && (
-            <button
-              type="button"
-              data-next-step
-              onClick={() => setConfirmStop(true)}
-            >
-              {m.stop}
-            </button>
-          )}
+        {learning && (
           <button
             type="button"
-            className="gear"
-            aria-label={m.settings}
-            onClick={() => setShowSettings(true)}
+            data-next-step
+            onClick={() => setConfirmStop(true)}
           >
-            <img src={icons.gear} alt="" />
+            {m.stop}
           </button>
-        </div>
+        )}
         {!learning && (
           <ShopPanel
             coins={state.coins}
@@ -307,6 +317,7 @@ export function GameScreen({
           onFeed={onFeed}
         />
       )}
+      {showHelp && <HelpDialog onClose={() => setShowHelp(false)} />}
       {showSettings && (
         <SettingsDialog
           settings={settings}

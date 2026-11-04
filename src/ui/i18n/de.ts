@@ -31,6 +31,13 @@ export const de: Messages = {
   settingSound: "Ton an",
   settingLanguage: "Sprache",
   minutes,
+  helpOpen: "Hilfe",
+  helpTitle: "So bleibt deine Katze glücklich:",
+  helpPoints: [
+    "Lernen, um sie zu füttern. Lernst du eine Zeit nicht, wird sie traurig :(",
+    "Ab und zu ein leckerer Snack. Deine Katze wird durch diese glücklicher",
+    "Ganz viele Streicheleinheiten!!!",
+  ],
   close: "Schließen",
   loading: "Einen Moment …",
   otherTab: "Pomo Cat läuft schon in einem anderen Tab.",
@@ -66,7 +73,7 @@ export const de: Messages = {
   roomHeading: "Für den Raum",
   snacks: {
     "salmon-stick": "Lachsstick",
-    "crunchy-pillow": "Knusperkissen",
+    "crunchy-pillow": "Knusperstangen",
     catnip: "Katzenminze",
   },
   roomItems: {

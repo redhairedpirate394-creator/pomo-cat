@@ -20,6 +20,7 @@ import itemPost from "./item-scratching-post.png";
 import itemYarn from "./item-yarn.png";
 import meow from "./meow.wav";
 import snackCatnip from "./snack-catnip.png";
+import snackCrunchy from "./snack-crunchy-pillow.png";
 import snackSalmon from "./snack-salmon-stick.png";
 
 export const catImages = {
@@ -53,9 +54,9 @@ export const foodImages = {
   tuna: foodTuna,
 } as const;
 
-/** The crunchy pillow has no drawing yet and shows as text only. */
-export const snackImages: Partial<Record<SnackId, string>> = {
+export const snackImages: Record<SnackId, string> = {
   "salmon-stick": snackSalmon,
+  "crunchy-pillow": snackCrunchy,
   catnip: snackCatnip,
 };
 

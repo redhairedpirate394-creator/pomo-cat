@@ -11,6 +11,8 @@
   --ink-soft: #5c5c5c;
   --accent: #c2410c;
   --line: 2px solid var(--ink);
+  /* The owner's drawn frame; every box keeps its size. */
+  --frame: url("./assets/frame.png") 12 / 9px stretch;
   /* Slightly uneven corners, like the boxes the owner draws. */
   --sketch-corners: 3px 6px 2px 5px;
   /* Characters the owner did not draw, such as an é in a name, fall through. */
@@ -52,6 +54,7 @@ button {
   padding: 0.4rem 1.1rem;
   background: var(--paper);
   border: var(--line);
+  border-image: var(--frame);
   border-radius: var(--sketch-corners);
   cursor: pointer;
 }
@@ -74,6 +77,7 @@ input {
   padding: 0.4rem 0.6rem;
   background: var(--paper);
   border: var(--line);
+  border-image: var(--frame);
   border-radius: var(--sketch-corners);
 }
 
@@ -169,6 +173,7 @@ input {
   gap: 0.5rem;
   padding: 0.75rem;
   border: var(--line);
+  border-image: var(--frame);
   border-radius: var(--sketch-corners);
 }
 
@@ -178,6 +183,7 @@ input {
   color: var(--ink);
   background: var(--paper);
   border: var(--line);
+  border-image: var(--frame);
   border-radius: var(--sketch-corners);
 }
 
@@ -225,7 +231,7 @@ input {
     grid-template-columns: minmax(0, 1fr);
     gap: 1.25rem;
     min-height: 0;
-    padding: 1.25rem 1rem;
+    padding: 4rem 1rem 1.25rem;
     align-items: start;
   }
 }
@@ -240,6 +246,7 @@ input {
   padding: 0;
   background: none;
   border: 0;
+  border-image: none;
   border-radius: 0;
 }
 
@@ -255,6 +262,7 @@ input {
   padding: 0;
   background: none;
   border: 0;
+  border-image: none;
   border-radius: 0;
 }
 
@@ -321,6 +329,7 @@ button.item-mouse {
   gap: 0.5rem;
   padding: 0.75rem;
   border: var(--line);
+  border-image: var(--frame);
   border-radius: var(--sketch-corners);
 }
 
@@ -347,31 +356,6 @@ button:disabled {
   color: var(--ink-soft);
   border-color: var(--ink-soft);
   cursor: not-allowed;
-}
-
-.actions {
-  display: flex;
-  gap: 0.5rem;
-  align-items: stretch;
-}
-
-.actions > button:not(.gear) {
-  flex: 1 1 auto;
-}
-
-.gear {
-  flex: 0 0 auto;
-  width: 2.75rem;
-  height: 2.75rem;
-  min-height: 0;
-  margin-left: auto;
-  padding: 0.35rem;
-}
-
-.gear img {
-  display: block;
-  width: 100%;
-  height: auto;
 }
 
 .month {
@@ -479,6 +463,7 @@ select {
   color: inherit;
   background: var(--paper);
   border: var(--line);
+  border-image: var(--frame);
   border-radius: var(--sketch-corners);
 }
 
@@ -524,11 +509,12 @@ select {
   height: auto;
 }
 
+/* The food's width on the owner's sheet, 153 of the bowl's 182 pixels. */
 .bowl .on-bowl {
   position: absolute;
-  top: 2%;
-  left: 18%;
-  width: 64%;
+  top: 3%;
+  left: 8%;
+  width: 84%;
 }
 
 .modal:focus {
@@ -581,6 +567,12 @@ select {
   }
 }
 
+.corner img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
 button.room-item img {
   display: block;
   width: 100%;
@@ -600,6 +592,49 @@ button.room-item img {
 .stage .cat.lying img {
   width: 76%;
   margin: 0 auto;
+}
+
+/* Help and settings stay in the page's corner at every step. */
+.corner {
+  position: fixed;
+  top: 0.75rem;
+  left: 0.75rem;
+  z-index: 3;
+  display: flex;
+  gap: 0.5rem;
+}
+
+.corner button {
+  width: 2.75rem;
+  height: 2.75rem;
+  min-height: 0;
+  padding: 0.35rem;
+  font-size: 1.5rem;
+  line-height: 1;
+}
+
+@media (max-width: 62rem) {
+  .center {
+    padding-top: 2.5rem;
+  }
+}
+
+@media (max-width: 44rem) {
+  .center {
+    padding-top: 0;
+  }
+}
+
+.help {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin: 0 0 1rem;
+  padding-left: 1.5rem;
+}
+
+.modal:has(.foods) {
+  width: min(28rem, calc(100vw - 2rem));
 }
 
 /* For screen readers only; the page keeps its calm look. */

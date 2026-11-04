@@ -1,6 +1,6 @@
 import {
-  ROOM_ITEMS,
   type RoomItemId,
+  SHOP_ITEMS,
   SNACK_PRICE,
   SNACKS,
   type SnackId,
@@ -37,9 +37,7 @@ export function ShopPanel({
                 onBuySnack(snack);
               }}
             >
-              {snackImages[snack] && (
-                <img className="snack" src={snackImages[snack]} alt="" />
-              )}
+              <img className="snack" src={snackImages[snack]} alt="" />
               {m.buy(m.snacks[snack], m.coins(SNACK_PRICE))}
             </button>
           </li>
@@ -47,7 +45,7 @@ export function ShopPanel({
       </ul>
       <h2>{m.roomHeading}</h2>
       <ul className="shop-list">
-        {ROOM_ITEMS.map(({ id, price }) => (
+        {SHOP_ITEMS.map(({ id, price }) => (
           <li key={id}>
             {owned.includes(id) ? (
               <p>{m.ownedItem(m.roomItems[id])}</p>
