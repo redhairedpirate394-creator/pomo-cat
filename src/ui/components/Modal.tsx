@@ -45,6 +45,16 @@ export function Modal({
     return () => {
       element.removeEventListener("close", onClose);
       element.close();
+      // On a phone a text field getting focus back opens the keyboard over the
+      // buttons, so focus goes to the page and the game picks the next button.
+      const active = document.activeElement;
+      if (
+        active instanceof HTMLInputElement &&
+        active.type === "text" &&
+        window.matchMedia("(pointer: coarse)").matches
+      ) {
+        active.blur();
+      }
     };
   }, [focusDialog]);
 
