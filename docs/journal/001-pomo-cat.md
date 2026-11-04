@@ -259,3 +259,29 @@ Stories 3 to 6 share one commit because they share the side column and catalogs.
 Final `pnpm verify`: exit 0 (101 unit tests, 130 browser scenarios). Stopped at a
 story boundary because the session context is large, by estimate past the 250k
 limit; the exact figure is not available.
+
+### C2 review and handoff (2026-11-04)
+
+- Reviewer (fresh context): walked the steps in real time at both widths, plus a
+  production build. Two blockers: on the development server the double effect start
+  queued a close event that counted as Escape, so Stop and Settings closed at once;
+  and the scratching post could not be clicked, because the cat button lay above it.
+  Owner hit the first one independently (r09). Mutation checks: 2 of 13 survived.
+- Fixed: both blockers; race in report step 2 by reordering it; food labels on
+  phones; lock failure no longer leaves the app waiting; notes stored as data, so
+  they follow the language and show while held; rug under pillow; mouse hit area;
+  both surviving mutants; keyboard journey now covers the whole game; settings close
+  when the feed window opens; weekday header; singular minute; spec, image list.
+  New test project `dev` runs a smoke test on the development server.
+- r07 to r12 built. Cat cut-outs: paper regions under 3.5 % of the image are removed,
+  rims become see-through ink, specks are dropped. Font rebuilt with one baseline.
+- Not fixed, moved on: focus after delete, hold and buy (T037); strings in `×`, `‹`,
+  `›` and language names (T038); plurals through `Intl` (T038); reloading a tab
+  while another waits swaps them; back/forward cache has no `pageshow` handling,
+  though holding a Web Lock keeps Chromium from using it; four CSS lint warnings.
+- Final `pnpm verify`: exit 0 (106 unit tests, 150 browser scenarios). Owner steps
+  repeated by script in real time on the development URL at both widths after the
+  fixes: all passed, no console errors, 17 screenshots in `review/round-2/`. The
+  independent reviewer did not re-review the fixes.
+
+Context: large, by estimate well past the 250k limit; exact figure not available.
