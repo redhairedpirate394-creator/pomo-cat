@@ -365,3 +365,21 @@ independent review, only tests. Steps 1 to 3 passed as written at both sizes.
 Final `pnpm verify`: exit 0 (112 unit, 178 browser, 9 skipped), axe 0 violations,
 `http://127.0.0.1:5173/?probelauf` answers 200 (this computer only). Screenshots:
 `specs/001-pomo-cat/review/round-3/`, 12 files. Context: large, exact figure not available.
+
+### Round 4: square corners (2026-11-04)
+
+r28 answered Q2 of round 3 and replaced the two rounded corners; Q1 was asked again,
+because the owner had not seen the corners, and "ansonsten passt alles" was not read
+as acceptance. T049: the frame is rebuilt from the owner's four lines: slant removed,
+each line evened to the weight of the heaviest, flush with the image edge, so they end
+in a right angle; `--sketch-corners` is 0. Rebuilt by a scratchpad script from the
+frame in 605a34b; rebuilding needs it written again.
+
+Review of fde16e7: one blocker (report step 2 showed nothing with 5 coins or more,
+because everything in the shop costs 5 now), three should-fix (lines poking past each
+other, hover grey outside the frame, lines too thin). All fixed, and the nits: hover on
+disabled boxes, disabled text contrast, a stale comment. The rebuild after that review
+had no further independent review: `pnpm verify` exit 0, axe 0 violations, visual
+check at 1x and 3x, report steps scripted at both sizes, screenshots in
+`review/round-4/`. Square corner buttons look slightly smudgy at 3x, because the long
+drawn line is compressed there; fine at normal size. Context: large, figure not available.
