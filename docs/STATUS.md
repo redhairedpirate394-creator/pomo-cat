@@ -18,7 +18,7 @@ commands, outcomes, review findings and screenshots go to
 
 - Active feature: 001-pomo-cat (no spec yet; interview running)
 - Checkpoint: none yet; C1 comes after the interview, spec and plan.
-- Pending owner decisions: interview round 2 (questions posted in chat, answers
+- Pending owner decisions: interview round 3 (questions posted in chat, answers
   go to `docs/journal/001-pomo-cat.md`).
 
 ## Counters
@@ -47,6 +47,6 @@ commands, outcomes, review findings and screenshots go to
 
 ## Exact next action
 
-Wait for the owner's answers to interview round 2 (account, shop, timer). Record them, ask the next
+Wait for the owner's answers to interview round 3. Record them, ask the next
 frontier with the `grilling` skill until it is empty, then `/speckit-specify`
 (BOOTSTRAP-PROMPT.md, NEW PRODUCT steps 2-6).
