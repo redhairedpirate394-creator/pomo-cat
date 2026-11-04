@@ -293,3 +293,9 @@ was stretched while learning, because the bigger tap area also applied to the pl
 image, now only the button and tested; enclosed ears and feet stay white, stars stay
 see-through; gear alone in a square box. Q2 is not stated and is asked again. These
 three changes had no independent review; `pnpm verify` and a visual check only.
+
+### Publish of C2 (2026-11-04)
+
+`pnpm ship --mode auto-merge`: PR #2 merged by rebase, `main` at 644064a, CI verify and
+Pages deploy passed. Live check at desktop and Pixel 7: trial link works, image and
+owner font load, no failed or external requests.

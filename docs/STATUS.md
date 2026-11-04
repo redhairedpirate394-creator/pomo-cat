@@ -7,7 +7,7 @@ commands, outcomes, review findings and screenshots go to
 ## Product
 
 - Product: Pomo Cat (possibly Pomo Pet later, with other animals and rooms)
-- Repository/branch: `redhairedpirate394-creator/pomo-cat` (public), `main`; next work on `001-pomo-cat-c3`
+- Repository/branch: `redhairedpirate394-creator/pomo-cat` (public), `001-pomo-cat-c3`
 - Live URL: https://redhairedpirate394-creator.github.io/pomo-cat/
   (GitHub Pages, source: workflow; trial link: add `?probelauf`)
 - Spec language: de (chat and spec). App: German and English.
@@ -46,6 +46,6 @@ commands, outcomes, review findings and screenshots go to
 
 ## Exact next action
 
-C2 is live. Ask Q2 of round 2 again. Create `001-pomo-cat-c3` from the updated
-`main` and record the publish there, then do T037 to T042 (the rest of Phase 9),
-then the C3 GATE (T043). T040 waits for the owner's remaining drawings.
+C2 is live (PR #2 merged). Ask Q2 of round 2 again, then T037 to T042 on branch
+`001-pomo-cat-c3`, then the C3 GATE (T043). T040 waits for the owner's remaining
+drawings.
