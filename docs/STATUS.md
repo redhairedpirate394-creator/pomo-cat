@@ -44,9 +44,10 @@ commands, outcomes, review findings and screenshots go to
   (`docs/update-from-template.md`, ADR 010).
 - Delivery modes Light and Spike are untested (no feature has used them yet).
 - No license chosen yet.
+- Product limits and exact restart steps: `README.md`, top section.
 
 ## Exact next action
 
-C2 is live (PR #2 merged). Do T037 to T042 on branch
-`001-pomo-cat-c3`, then the C3 GATE (T043). T040 waits for the owner's remaining
-drawings.
+C2 is live (PR #2 merged). On branch `001-pomo-cat-c3`: finish T039 (the hidden tab
+measurement), then the C3 GATE (T043). T040 stays open until the owner delivers the
+remaining drawings (r16).
