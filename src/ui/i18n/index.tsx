@@ -1,5 +1,6 @@
 import { createContext, type ReactNode, useContext } from "react";
 import { CatError } from "../../domain/cat";
+import { TodoError } from "../../domain/todos";
 import { StoreError } from "../../storage/port";
 import { de } from "./de";
 import { en } from "./en";
@@ -42,7 +43,9 @@ export function useMessages(): Messages {
 }
 
 export function errorCode(cause: unknown): ErrorCode {
-  return cause instanceof CatError || cause instanceof StoreError
+  return cause instanceof CatError ||
+    cause instanceof TodoError ||
+    cause instanceof StoreError
     ? cause.code
     : "unexpected";
 }

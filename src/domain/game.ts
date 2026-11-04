@@ -1,8 +1,16 @@
 import { type Cat, createCat, currentMood, raiseMood } from "./cat";
-import type { FoodId, RoomItemId } from "./catalog";
+import {
+  type FoodId,
+  ROOM_ITEMS,
+  type RoomItemId,
+  SNACK_PRICE,
+} from "./catalog";
 import { coinsFor } from "./rewards";
 import {
   DEFAULT_SETTINGS,
+  isValidMinutes,
+  isValidUnits,
+  LIMITS,
   type Plan,
   planFrom,
   type Settings,
@@ -251,4 +259,63 @@ export function resumeAfterClose(state: GameState, now: number): GameState {
 export function remainingMs(phase: Phase, now: number): number | null {
   if (phase.kind !== "learning" && phase.kind !== "break") return null;
   return Math.max(0, phase.endsAt - now);
+}
+
+/** Ends a fed break early; after the long break this starts a new run. */
+export function learnNow(state: GameState, now: number): GameState {
+  const { phase } = state;
+  if (phase.kind !== "break" || !phase.fed) return state;
+  if (phase.length === "long") {
+    return start({ ...state, phase: IDLE }, now);
+  }
+  return { ...state, phase: learning(phase.plan, phase.unit + 1, now) };
+}
+
+function canShop(state: GameState): boolean {
+  const { phase } = state;
+  if (state.cat === null || phase.kind === "learning") return false;
+  return phase.kind !== "break" || phase.fed;
+}
+
+/** A snack goes straight to the cat; there is no supply. */
+export function buySnack(state: GameState, now: number): GameState {
+  if (!canShop(state) || state.cat === null || state.coins < SNACK_PRICE) {
+    return state;
+  }
+  return {
+    ...state,
+    coins: state.coins - SNACK_PRICE,
+    cat: raiseMood(state.cat, now),
+  };
+}
+
+export function buyRoomItem(state: GameState, id: RoomItemId): GameState {
+  const item = ROOM_ITEMS.find((candidate) => candidate.id === id);
+  if (
+    !canShop(state) ||
+    item === undefined ||
+    state.owned.includes(id) ||
+    state.coins < item.price
+  ) {
+    return state;
+  }
+  return {
+    ...state,
+    coins: state.coins - item.price,
+    owned: [...state.owned, id],
+  };
+}
+
+/** Only valid values get through; a running run keeps its own plan. */
+export function updateSettings(
+  state: GameState,
+  patch: Partial<Settings>,
+): GameState {
+  const settings = { ...state.settings, ...patch };
+  const valid =
+    isValidMinutes(settings.learnMinutes, LIMITS.learnMinutes) &&
+    isValidMinutes(settings.shortBreakMinutes, LIMITS.shortBreakMinutes) &&
+    isValidMinutes(settings.longBreakMinutes, LIMITS.longBreakMinutes) &&
+    isValidUnits(settings.units);
+  return valid ? { ...state, settings } : state;
 }

@@ -83,9 +83,9 @@ journey. Tests are written alongside the code they prove, never deferred.
 
 **Independent Test**: Pet, hold, close, reopen and continue; check mood over simulated days
 
-- [ ] T019 [US2] Learn-now event with tests in src/domain/game.ts and src/domain/game.test.ts (FR-022)
-- [ ] T020 [US2] Break controls and warning in src/ui/components/BreakControls.tsx, moods and reactions in src/ui/components/CatStage.tsx (FR-008, FR-021, FR-026)
-- [ ] T021 [US2] Playwright journey in e2e/break.spec.ts for scenarios 1 to 6 of US2
+- [X] T019 [US2] Learn-now event with tests in src/domain/game.ts and src/domain/game.test.ts (FR-022)
+- [X] T020 [US2] Break controls and warning in src/ui/components/BreakControls.tsx, moods and reactions in src/ui/components/CatStage.tsx (FR-008, FR-021, FR-026)
+- [X] T021 [US2] Playwright journey in e2e/break.spec.ts for scenarios 1 to 6 of US2
 
 ---
 
@@ -95,9 +95,9 @@ journey. Tests are written alongside the code they prove, never deferred.
 
 **Independent Test**: Buy with a seeded coin count; items stay after a reload
 
-- [ ] T022 [US3] Buying with tests in src/domain/game.ts and src/domain/game.test.ts: never negative, room items once, snack raises mood at once (FR-028, FR-029, FR-031)
-- [ ] T023 [US3] Collapsible panel in src/ui/components/Panel.tsx, shop in src/ui/components/ShopPanel.tsx, fixed places and toy play in src/ui/components/CatStage.tsx (FR-003, FR-027, FR-029, FR-030)
-- [ ] T024 [US3] Playwright journey in e2e/shop.spec.ts for US3 and scenario 7 of US2, including SC-006
+- [X] T022 [US3] Buying with tests in src/domain/game.ts and src/domain/game.test.ts: never negative, room items once, snack raises mood at once (FR-028, FR-029, FR-031)
+- [X] T023 [US3] Collapsible panel in src/ui/components/Panel.tsx, shop in src/ui/components/ShopPanel.tsx, fixed places and toy play in src/ui/components/CatStage.tsx (FR-003, FR-027, FR-029, FR-030)
+- [X] T024 [US3] Playwright journey in e2e/shop.spec.ts for US3 and scenario 7 of US2, including SC-006
 
 ---
 
@@ -107,8 +107,8 @@ journey. Tests are written alongside the code they prove, never deferred.
 
 **Independent Test**: Seed days, cancel a unit, browse months, check a gap
 
-- [ ] T025 [US4] Calendar in src/ui/components/CalendarPanel.tsx with `Intl` month names (FR-032, FR-034)
-- [ ] T026 [US4] [ROUTINE] Playwright journey in e2e/calendar.spec.ts for scenarios 1 to 5 of US4, following e2e/shop.spec.ts
+- [X] T025 [US4] Calendar in src/ui/components/CalendarPanel.tsx with `Intl` month names (FR-032, FR-034)
+- [X] T026 [US4] [ROUTINE] Playwright journey in e2e/calendar.spec.ts for scenarios 1 to 5 of US4, following e2e/shop.spec.ts
 
 ---
 
@@ -118,9 +118,9 @@ journey. Tests are written alongside the code they prove, never deferred.
 
 **Independent Test**: Add, tick, delete, reload
 
-- [ ] T027 [US5] To-do rules with tests in src/domain/todos.ts and src/domain/todos.test.ts: text 1 to 120 characters after trimming, wired through src/domain/game.ts (FR-035)
-- [ ] T028 [US5] [ROUTINE] To-do panel in src/ui/components/TodoPanel.tsx inside src/ui/components/Panel.tsx, reachable during a unit (FR-035)
-- [ ] T029 [US5] [ROUTINE] Playwright journey in e2e/todos.spec.ts for scenarios 1 to 4 of US5
+- [X] T027 [US5] To-do rules with tests in src/domain/todos.ts and src/domain/todos.test.ts: text 1 to 120 characters after trimming, wired through src/domain/game.ts (FR-035)
+- [X] T028 [US5] [ROUTINE] To-do panel in src/ui/components/TodoPanel.tsx inside src/ui/components/Panel.tsx, reachable during a unit (FR-035)
+- [X] T029 [US5] [ROUTINE] Playwright journey in e2e/todos.spec.ts for scenarios 1 to 4 of US5
 
 ---
 
@@ -130,9 +130,9 @@ journey. Tests are written alongside the code they prove, never deferred.
 
 **Independent Test**: Change values, see when they apply, switch language, mute
 
-- [ ] T030 [US6] Settings events with tests in src/domain/game.ts and src/domain/game.test.ts (FR-036, FR-037)
-- [ ] T031 [US6] Settings dialog in src/ui/components/SettingsDialog.tsx with the gear button, always reachable (FR-036, FR-038)
-- [ ] T032 [US6] Playwright journey in e2e/settings.spec.ts for scenarios 1 to 5 of US6, including SC-008
+- [X] T030 [US6] Settings events with tests in src/domain/game.ts and src/domain/game.test.ts (FR-036, FR-037)
+- [X] T031 [US6] Settings dialog in src/ui/components/SettingsDialog.tsx with the gear button, always reachable (FR-036, FR-038)
+- [X] T032 [US6] Playwright journey in e2e/settings.spec.ts for scenarios 1 to 5 of US6, including SC-008
 
 ### Reliability for C2
 

@@ -47,3 +47,35 @@ export function savedGame(page: Page, key = KEY) {
     return raw === null ? null : JSON.parse(raw);
   }, key);
 }
+
+/** Starts the page with a saved game; `T0` is the page's time. */
+export async function seedGame(page: Page, overrides: Record<string, unknown>) {
+  const game = {
+    version: 1,
+    cat: { name: "Mimi", mood: "normal", moodAt: T0.getTime() },
+    coins: 0,
+    owned: [],
+    studyLog: {},
+    todos: [],
+    settings: {
+      learnMinutes: 25,
+      shortBreakMinutes: 5,
+      longBreakMinutes: 15,
+      units: 4,
+      sound: true,
+      language: null,
+    },
+    phase: { kind: "idle" },
+    lastSeenAt: null,
+    ...overrides,
+  };
+  await page.addInitScript(
+    ([key, value]) => {
+      if (sessionStorage.getItem("seeded") === null) {
+        sessionStorage.setItem("seeded", "yes");
+        localStorage.setItem(key as string, value as string);
+      }
+    },
+    [KEY, JSON.stringify(game)],
+  );
+}
