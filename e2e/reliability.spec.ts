@@ -268,6 +268,45 @@ test("typing is not interrupted by the game moving on", async ({
   await expect(task).toHaveValue("Lesen");
 });
 
+test("on a phone feeding does not bring the keyboard back", async ({
+  page,
+  isMobile,
+}) => {
+  test.skip(!isMobile, "only touch screens have this keyboard");
+  await nameAndStart(page);
+  await page.getByRole("button", { name: "To-Dos" }).click();
+  const task = page.getByLabel("Neue Aufgabe");
+  await task.fill("Lesen");
+  await task.press("Enter");
+  await expect(task).toBeFocused();
+
+  await finishUnit(page);
+  await feedTuna(page);
+  await expect(task).not.toBeFocused();
+  await expect(page.getByRole("button", { name: "Anhalten" })).toBeFocused();
+});
+
+test("a failed save does not move focus", async ({ page, isMobile }) => {
+  test.skip(isMobile, "phones have no keyboard");
+  await nameAndStart(page);
+  await page.getByRole("button", { name: "To-Dos" }).click();
+  const task = page.getByLabel("Neue Aufgabe");
+  await task.focus();
+  await page.evaluate(() => {
+    Storage.prototype.setItem = () => {
+      throw new Error("full");
+    };
+    (document.activeElement as HTMLElement).blur();
+  });
+  await task.fill("Lesen");
+  await page.evaluate(() => (document.activeElement as HTMLElement).blur());
+  await page.getByRole("button", { name: "Eintragen" }).dispatchEvent("click");
+  await expect(page.getByRole("alert")).toContainText(
+    "nicht gespeichert werden",
+  );
+  await expect(page.locator("body")).toBeFocused();
+});
+
 test("changes in the game are announced", async ({ page }) => {
   await nameAndStart(page);
   await expect(page.getByRole("heading", { level: 1 })).toHaveText("Pomo Cat");

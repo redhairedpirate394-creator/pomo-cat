@@ -25,6 +25,7 @@ import { CalendarPanel } from "./CalendarPanel";
 import { type CatPose, CatStage } from "./CatStage";
 import { FeedDialog } from "./FeedDialog";
 import { NameCat } from "./NameCat";
+import { SaveFailedNotice } from "./SaveFailedNotice";
 import { SettingsDialog } from "./SettingsDialog";
 import { ShopPanel } from "./ShopPanel";
 import { StopDialog } from "./StopDialog";
@@ -104,11 +105,10 @@ export function GameScreen({
     if (feedOpen) setShowSettings(false);
   }, [feedOpen]);
 
-  // A new step removes the button that led to it, and so does a retry that
-  // worked; focus would fall to the page, so it goes to the step's main button
-  // instead. Focus elsewhere stays.
+  // A new step removes the button that led to it, so focus would fall to the
+  // page; it goes to the step's main button instead. Focus elsewhere stays.
   const side = useRef<HTMLElement>(null);
-  const step = `${cat !== null}:${phase.kind}:${feedOpen}:${saveFailed}`;
+  const step = `${cat !== null}:${phase.kind}:${feedOpen}`;
   const lastStep = useRef(step);
 
   useEffect(() => {
@@ -295,14 +295,7 @@ export function GameScreen({
           />
         )}
         {!learning && <CalendarPanel log={state.studyLog} now={now} />}
-        {saveFailed && (
-          <div className="save-failed">
-            <p role="alert">{m.saveFailed}</p>
-            <button type="button" onClick={onRetrySave}>
-              {m.retry}
-            </button>
-          </div>
-        )}
+        {saveFailed && <SaveFailedNotice onRetry={onRetrySave} />}
         {demo && <p className="note">{m.demoNote}</p>}
       </aside>
 
