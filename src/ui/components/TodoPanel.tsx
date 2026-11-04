@@ -1,4 +1,4 @@
-import { type FormEvent, useId, useRef, useState } from "react";
+import { type FormEvent, useId, useState } from "react";
 import { TODO_MAX, type Todo } from "../../domain/todos";
 import { GLYPHS, useMessages } from "../i18n";
 import type { ErrorCode } from "../i18n/messages";
@@ -20,8 +20,7 @@ export function TodoPanel({
   const [text, setText] = useState("");
   const [error, setError] = useState<ErrorCode | null>(null);
   const errorId = useId();
-  const input = useRef<HTMLInputElement>(null);
-  const list = useKeepFocus<HTMLUListElement>(todos, () => input.current);
+  const list = useKeepFocus<HTMLUListElement>(todos);
 
   function submit(event: FormEvent) {
     event.preventDefault();
@@ -36,7 +35,6 @@ export function TodoPanel({
         <label>
           {m.todoLabel}
           <input
-            ref={input}
             value={text}
             maxLength={TODO_MAX}
             autoComplete="off"

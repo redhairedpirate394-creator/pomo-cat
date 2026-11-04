@@ -47,7 +47,7 @@ export const en: Messages = {
   unitOf: (unit, total) => `Unit ${unit} of ${total}`,
   breakShort: "Short break",
   breakLong: "Long break",
-  timerLabel: "Time left",
+  timerLabel: (time) => `Time left: ${time}`,
   feedTitle: "Feed",
   feedQuestion: (name) => `What does ${name} get?`,
   feedTimeLeft: (time) => `${time} of break left`,

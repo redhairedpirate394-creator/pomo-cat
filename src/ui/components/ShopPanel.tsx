@@ -22,10 +22,7 @@ export function ShopPanel({
   onBuyItem: (item: RoomItemId) => void;
 }) {
   const m = useMessages();
-  // With nothing left to buy, the panel's own button is the nearest place.
-  const body = useKeepFocus<HTMLDivElement>(coins, (root) =>
-    root?.parentElement?.querySelector("button"),
-  );
+  const body = useKeepFocus<HTMLDivElement>(coins);
   return (
     <Panel label={m.shop} bodyRef={body.root}>
       <h2>{m.snacksHeading}</h2>

@@ -104,10 +104,11 @@ export function GameScreen({
     if (feedOpen) setShowSettings(false);
   }, [feedOpen]);
 
-  // A new step removes the button that led to it, so focus would fall to the
-  // page; it goes to the step's main button instead. Focus elsewhere stays.
+  // A new step removes the button that led to it, and so does a retry that
+  // worked; focus would fall to the page, so it goes to the step's main button
+  // instead. Focus elsewhere stays.
   const side = useRef<HTMLElement>(null);
-  const step = `${cat !== null}:${phase.kind}:${feedOpen}`;
+  const step = `${cat !== null}:${phase.kind}:${feedOpen}:${saveFailed}`;
   const lastStep = useRef(step);
 
   useEffect(() => {

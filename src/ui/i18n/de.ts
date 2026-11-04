@@ -47,7 +47,7 @@ export const de: Messages = {
   unitOf: (unit, total) => `Einheit ${unit} von ${total}`,
   breakShort: "Kurze Pause",
   breakLong: "Lange Pause",
-  timerLabel: "Verbleibende Zeit",
+  timerLabel: (time) => `Verbleibende Zeit: ${time}`,
   feedTitle: "Füttern",
   feedQuestion: (name) => `Was bekommt ${name}?`,
   feedTimeLeft: (time) => `Noch ${time} Pause`,
