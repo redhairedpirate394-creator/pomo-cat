@@ -18,7 +18,7 @@ commands, outcomes, review findings and screenshots go to
 
 - Active feature: 001-pomo-cat (no spec yet; interview running)
 - Checkpoint: none yet; C1 comes after the interview, spec and plan.
-- Pending owner decisions: Q30 (not stated), handwriting font (not stated), summary confirmation (answers
+- Pending owner decisions: none; interview closed 2026-11-04 (answers
   go to `docs/journal/001-pomo-cat.md`).
 
 ## Counters
@@ -47,6 +47,6 @@ commands, outcomes, review findings and screenshots go to
 
 ## Exact next action
 
-Wait for Q30 and the owner's yes to the summary (grilling: no action before). If new questions arise, ask the next
+Run the Spec Kit flow for 001-pomo-cat. If new questions arise, ask the next
 frontier with the `grilling` skill until it is empty, then `/speckit-specify`
 (BOOTSTRAP-PROMPT.md, NEW PRODUCT steps 2-6).

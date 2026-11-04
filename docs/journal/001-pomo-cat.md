@@ -170,3 +170,13 @@ retention, cost and operations rules, and the owner's yes. No provider chosen.
 - Q35 Stil: "Handgezeichnet, aber ich mache dass dan farbig das sind nur
   entwürfe." (final art is hand-drawn and in colour; the sketches are drafts.
   Handwriting font: not stated.)
+
+### Interview closing (owner's words, unchanged)
+
+- Q30 To-Do-Liste: "Ja" (accepts: collapsed at first, can be opened while
+  learning; add, tick, delete; no coins; saved; joins the account data; shop and
+  calendar also collapsed at first)
+- Q36 Schrift: "Ja" (accepts: legible handwriting font for timer and buttons)
+
+The summary posted in chat said it applies once Q30 and Q36 are answered yes, so
+it stands as the shared understanding. Interview frontier empty.
