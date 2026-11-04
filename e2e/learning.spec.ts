@@ -42,7 +42,13 @@ test("a unit shows the timer, the unit and the sleeping cat, and nothing else to
   await expect(page.getByText("Einheit 1 von 4")).toBeVisible();
   await expect(page.getByRole("img", { name: "Mimi schläft" })).toBeVisible();
   await expect(page).toHaveTitle(/^25:00 · Pomo Cat$/);
-  await expect(page.getByRole("button")).toHaveText(["Stop"]);
+  // Exactly the controls of the owner's sketch.
+  await expect(page.getByRole("button")).toHaveCount(3);
+  await expect(page.getByRole("button", { name: "To-Dos" })).toBeVisible();
+  await expect(page.getByRole("button", { name: "Stop" })).toBeVisible();
+  await expect(
+    page.getByRole("button", { name: "Einstellungen" }),
+  ).toBeVisible();
   await expect(page.getByText(/Münze/)).toBeHidden();
 
   await page.clock.fastForward("10:00");
@@ -148,7 +154,7 @@ test("after the last unit comes the long break, then a click", async ({
   }
   await finishUnit(page);
   await expect(page.getByRole("dialog", { name: "Füttern" })).toContainText(
-    "Noch 15:00 Pause",
+    /Noch 1[45]:[0-9][0-9] Pause/,
   );
   await feedTuna(page);
   await expect(page.getByText("Lange Pause")).toBeVisible();

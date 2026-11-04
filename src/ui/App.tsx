@@ -61,6 +61,7 @@ export function App({
           now={now}
           act={act}
           demo={demo}
+          language={locale}
           saveFailed={saveFailed}
           onRetrySave={retrySave}
         />

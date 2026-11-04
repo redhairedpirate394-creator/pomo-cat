@@ -10,6 +10,9 @@ import iconCoin from "./icon-coin.png";
 import iconGear from "./icon-gear.png";
 import itemMouse from "./item-mouse.png";
 import itemPillow from "./item-pillow.png";
+import itemPlant from "./item-plant.png";
+import itemRug from "./item-rug.png";
+import itemPost from "./item-scratching-post.png";
 import itemYarn from "./item-yarn.png";
 import meow from "./meow.wav";
 
@@ -33,6 +36,9 @@ export const roomImages = {
   yarn: itemYarn,
   mouse: itemMouse,
   pillow: itemPillow,
+  plant: itemPlant,
+  rug: itemRug,
+  "scratching-post": itemPost,
 } as const;
 
 export const sounds = { meow } as const;

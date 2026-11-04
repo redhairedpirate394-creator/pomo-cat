@@ -1,16 +1,20 @@
 import { describe, expect, it } from "vitest";
 import {
   advance,
+  buyRoomItem,
+  buySnack,
   CLOSE_GRACE_MS,
   feed,
   type GameState,
   hold,
+  learnNow,
   nameCat,
   newGame,
   remainingMs,
   resumeAfterClose,
   start,
   stop,
+  updateSettings,
 } from "./game";
 
 const MINUTE = 60 * 1000;
@@ -291,5 +295,102 @@ describe("remainingMs", () => {
     expect(remainingMs(state.phase, T0 + MINUTE)).toBe(24 * MINUTE);
     expect(remainingMs(state.phase, T0 + 99 * MINUTE)).toBe(0);
     expect(remainingMs({ kind: "idle" }, T0)).toBeNull();
+  });
+});
+
+describe("learnNow", () => {
+  it("ends a fed short break at once", () => {
+    const fed = feed(afterUnit(started()), "dry");
+    const next = learnNow(fed, T0 + 26 * MINUTE);
+    expect(next.phase).toMatchObject({
+      kind: "learning",
+      unit: 2,
+      startedAt: T0 + 26 * MINUTE,
+    });
+  });
+
+  it("is not possible before feeding", () => {
+    const state = afterUnit(started());
+    expect(learnNow(state, T0 + 26 * MINUTE)).toBe(state);
+  });
+
+  it("starts a new run from the long break, with the current settings", () => {
+    const base = { ...fresh(), settings: { ...fresh().settings, units: 1 } };
+    const fed = feed(afterUnit(started(base)), "dry");
+    const changed = { ...fed, settings: { ...fed.settings, learnMinutes: 50 } };
+    const next = learnNow(changed, T0 + 26 * MINUTE);
+    expect(next.phase).toMatchObject({
+      kind: "learning",
+      unit: 1,
+      plan: { learnMinutes: 50 },
+    });
+  });
+});
+
+describe("the shop", () => {
+  const rich = (coins = 40): GameState => ({ ...fresh(), coins });
+
+  it("feeds a snack at once: three coins, one mood step", () => {
+    const next = buySnack(rich(), T0 + MINUTE);
+    expect(next.coins).toBe(37);
+    expect(next.cat?.mood).toBe("happy");
+    expect(next.cat?.moodAt).toBe(T0 + MINUTE);
+  });
+
+  it("refuses a snack without enough coins", () => {
+    const state = rich(2);
+    expect(buySnack(state, T0)).toBe(state);
+  });
+
+  it("can buy with exactly the price, and never goes negative", () => {
+    expect(buySnack(rich(3), T0).coins).toBe(0);
+    expect(buyRoomItem(rich(20), "scratching-post").coins).toBe(0);
+    const state = rich(19);
+    expect(buyRoomItem(state, "scratching-post")).toBe(state);
+  });
+
+  it("keeps room items, once each", () => {
+    const next = buyRoomItem(rich(), "yarn");
+    expect(next.owned).toEqual(["yarn"]);
+    expect(next.coins).toBe(35);
+    expect(buyRoomItem(next, "yarn")).toBe(next);
+  });
+
+  it("is closed during a unit and before feeding", () => {
+    const learning = { ...started(), coins: 40 };
+    expect(buySnack(learning, T0)).toBe(learning);
+    expect(buyRoomItem(learning, "yarn")).toBe(learning);
+    const unfed = afterUnit(started());
+    expect(buySnack(unfed, T0 + 26 * MINUTE)).toBe(unfed);
+  });
+
+  it("is open in a fed break and while held", () => {
+    const fed = feed(afterUnit(started()), "dry");
+    expect(buySnack(fed, T0 + 26 * MINUTE).coins).toBe(2);
+    expect(buySnack(hold(fed), T0 + 26 * MINUTE).coins).toBe(2);
+  });
+});
+
+describe("updateSettings", () => {
+  it("changes settings and leaves a running plan alone", () => {
+    const state = started();
+    const next = updateSettings(state, { learnMinutes: 50, sound: false });
+    expect(next.settings).toMatchObject({ learnMinutes: 50, sound: false });
+    expect(next.phase).toEqual(state.phase);
+  });
+
+  it("applies from the next run", () => {
+    const next = updateSettings(fresh(), { learnMinutes: 50, units: 2 });
+    expect(start(next, T0).phase).toMatchObject({
+      endsAt: T0 + 50 * MINUTE,
+      plan: { units: 2 },
+    });
+  });
+
+  it("ignores values outside the rules", () => {
+    const state = fresh();
+    expect(updateSettings(state, { learnMinutes: 7 })).toBe(state);
+    expect(updateSettings(state, { shortBreakMinutes: 35 })).toBe(state);
+    expect(updateSettings(state, { units: 9 })).toBe(state);
   });
 });
