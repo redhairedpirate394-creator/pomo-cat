@@ -1,44 +1,58 @@
-import { TITLE_MAX } from "../../domain/items";
 import type { Messages } from "./messages";
 
-const titleMax = new Intl.NumberFormat("en").format(TITLE_MAX);
+const coins = (count: number) => (count === 1 ? "1 coin" : `${count} coins`);
 
 export const en: Messages = {
-  documentTitle: "Local-first MVP starter demo",
-  eyebrow: "Reusable starter · demo only",
-  heading: "A small idea, saved locally.",
-  intro:
-    "Create, check, and delete sample items to try the harness. This is not your product yet.",
-  listHeading: "Demo items",
-  listNote:
-    "Discardable sample data only. No account, server, or backup. Use this browser and origin to return to your items.",
-  working: "Working…",
-  loaded: "Demo loaded from this browser.",
-  saved: "Saved in this browser.",
-  resetDone: "Demo data reset. Other site storage was not changed.",
-  retryLoading: "Retry loading",
-  newItemLabel: "New demo item",
-  addItem: "Add item",
-  empty: "No demo items yet. Add one above to begin.",
-  deleteItem: "Delete",
-  deleteItemLabel: (title) => `Delete ${title}`,
-  resetPrompt:
-    "Delete all demo items from this browser? This cannot be undone.",
-  confirmReset: "Confirm reset demo",
+  documentTitle: "Pomo Cat",
+  loading: "One moment …",
+  nameTitle: "What is your cat called?",
+  nameLabel: "Name",
+  nameSubmit: "Let's go",
+  start: "Start",
+  stop: "Stop",
+  stopTitle: "Cancel this unit?",
+  stopText:
+    "You get no coins for this unit. The time you have learned so far is saved.",
+  stopConfirm: "Yes, cancel",
+  stopKeep: "Keep learning",
+  unitOf: (unit, total) => `Unit ${unit} of ${total}`,
+  breakShort: "Short break",
+  breakLong: "Long break",
+  timerLabel: "Time left",
+  feedTitle: "Feed",
+  feedQuestion: (name) => `What does ${name} get?`,
+  feedTimeLeft: (time) => `${time} of break left`,
+  feedStopNote: "Without food, it won't continue after the break.",
+  foods: { dry: "Dry food", wet: "Wet food", tuna: "Tuna" },
+  fedNote: (name, count) => `${name} gives you ${coins(count)}.`,
+  warning: "Starting again soon",
+  warningStop: "Stop",
+  continueUnit: (unit, total) => `Continue with unit ${unit} of ${total}`,
+  coins,
+  catAsleep: (name) => `${name} is asleep`,
+  catEating: (name) => `${name} is eating`,
+  catMood: (name, mood) =>
+    ({
+      happy: `${name} is happy`,
+      normal: `${name} is sitting there`,
+      sad: `${name} is sad`,
+    })[mood],
+  demoNote: "Trial run: time passes 30 times faster.",
+  retry: "Try again",
+  startOver: "Start over",
+  startOverTitle: "Really start over?",
+  startOverText:
+    "This app's saved data will be deleted. This cannot be undone.",
+  startOverConfirm: "Yes, delete everything",
   cancel: "Cancel",
-  resetData: "Reset demo data",
-  footerNote:
-    "Local persistence does not guarantee offline page loading. Review the project docs before building your own idea.",
+  saveFailed: "Your progress could not be saved.",
   errors: {
-    "title-invalid": `Enter a title between 1 and ${titleMax} characters.`,
-    "id-invalid": "Item IDs must be non-empty and unique.",
-    "read-failed":
-      "Cannot read browser storage. Allow site storage and retry. No data was changed.",
-    "data-invalid":
-      "Demo data is malformed or from an unsupported version. It has been preserved. Retry or deliberately reset the demo.",
-    "save-failed":
-      "Not saved: browser storage is unavailable or full. Your last saved data is unchanged. Allow storage or free space, then try again.",
-    "reset-failed": "Reset failed: browser storage is unavailable. Try again.",
-    unexpected: "Unexpected failure. Please retry.",
+    "name-required": "Please give your cat a name.",
+    "name-too-long": "The name can be at most 20 characters long.",
+    "read-failed": "Your progress could not be read.",
+    "data-invalid": "The saved data is damaged.",
+    "save-failed": "Your progress could not be saved.",
+    "reset-failed": "The data could not be deleted.",
+    unexpected: "Something went wrong.",
   },
 };

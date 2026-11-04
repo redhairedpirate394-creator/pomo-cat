@@ -1,0 +1,304 @@
+import { expect, test } from "@playwright/test";
+import {
+  DEMO_KEY,
+  feedTuna,
+  finishUnit,
+  KEY,
+  nameAndStart,
+  savedGame,
+  soundPlays,
+  useTestClock,
+} from "./helpers";
+
+test.beforeEach(async ({ page }) => {
+  await useTestClock(page);
+});
+
+test("first start asks for a name once and goes straight to the timer", async ({
+  page,
+}) => {
+  await page.goto("/");
+  const dialog = page.getByRole("dialog", { name: "Wie heißt deine Katze?" });
+  await expect(dialog).toBeVisible();
+
+  await page.getByRole("button", { name: "Los geht's" }).click();
+  await expect(page.getByRole("alert")).toContainText("Namen");
+
+  await page.getByLabel("Name").fill("Mimi");
+  await page.getByRole("button", { name: "Los geht's" }).click();
+  await expect(dialog).toBeHidden();
+  await expect(page.getByRole("button", { name: "Start" })).toBeVisible();
+
+  await page.reload();
+  await expect(dialog).toBeHidden();
+  await expect(page.getByRole("button", { name: "Start" })).toBeVisible();
+});
+
+test("a unit shows the timer, the unit and the sleeping cat, and nothing else to do", async ({
+  page,
+}) => {
+  await nameAndStart(page);
+  await expect(page.getByRole("timer")).toHaveText("25:00");
+  await expect(page.getByText("Einheit 1 von 4")).toBeVisible();
+  await expect(page.getByRole("img", { name: "Mimi schläft" })).toBeVisible();
+  await expect(page).toHaveTitle(/^25:00 · Pomo Cat$/);
+  await expect(page.getByRole("button")).toHaveText(["Stop"]);
+  await expect(page.getByText(/Münze/)).toBeHidden();
+
+  await page.clock.fastForward("10:00");
+  await expect(page.getByRole("timer")).toHaveText("15:00");
+  await expect(page).toHaveTitle(/^15:00 · Pomo Cat$/);
+});
+
+test("the end of a unit meows, opens the feed window and pays when fed", async ({
+  page,
+}) => {
+  await nameAndStart(page);
+  await finishUnit(page);
+  expect(await soundPlays(page)).toBe(1);
+
+  const dialog = page.getByRole("dialog", { name: "Füttern" });
+  await expect(dialog).toContainText("Was bekommt Mimi?");
+  await expect(dialog.getByRole("button")).toHaveText([
+    "Trockenfutter",
+    "Nassfutter",
+    "Thunfisch",
+  ]);
+  await expect(dialog).toContainText("Noch 05:00 Pause");
+
+  await feedTuna(page);
+  await expect(page.getByRole("status")).toHaveText("Mimi gibt dir 5 Münzen.");
+  await expect(page.getByRole("img", { name: "Mimi frisst" })).toBeVisible();
+  await expect(page.getByText("5 Münzen", { exact: true })).toBeVisible();
+});
+
+test("the next unit starts by itself after a warning meow", async ({
+  page,
+}) => {
+  await nameAndStart(page);
+  await finishUnit(page);
+  await feedTuna(page);
+
+  await page.clock.fastForward("04:30");
+  await expect(page.getByRole("status")).toHaveText("Gleich geht es weiter");
+  await expect(page.getByRole("button", { name: "Stopp" })).toBeVisible();
+  expect(await soundPlays(page)).toBe(2);
+
+  await page.clock.fastForward("00:31");
+  await expect(page.getByText("Einheit 2 von 4")).toBeVisible();
+  await expect(page.getByRole("button", { name: "Stop" })).toBeVisible();
+});
+
+test("the warning's stop button holds the run until a click", async ({
+  page,
+}) => {
+  await nameAndStart(page);
+  await finishUnit(page);
+  await feedTuna(page);
+  await page.clock.fastForward("04:30");
+  await page.getByRole("button", { name: "Stopp" }).click();
+  await page.clock.fastForward("30:00");
+  await expect(
+    page.getByRole("button", { name: "Weiter mit Einheit 2 von 4" }),
+  ).toBeVisible();
+});
+
+test("without feeding it stops at the end of the break and the coins stay", async ({
+  page,
+}) => {
+  await nameAndStart(page);
+  await finishUnit(page);
+  await page.clock.fastForward("05:01");
+  await expect(page.getByRole("dialog", { name: "Füttern" })).toBeHidden();
+  await expect(page.getByText("5 Münzen", { exact: true })).toBeVisible();
+
+  // Nothing piles up, however long nobody is there.
+  await page.clock.fastForward("02:00:00");
+  await expect(page.getByText("5 Münzen", { exact: true })).toBeVisible();
+
+  await page
+    .getByRole("button", { name: "Weiter mit Einheit 2 von 4" })
+    .click();
+  await expect(page.getByText("Einheit 2 von 4")).toBeVisible();
+  await expect(page.getByRole("timer")).toHaveText("25:00");
+});
+
+test("a happy cat pays more in the next unit", async ({ page }) => {
+  await nameAndStart(page);
+  await finishUnit(page);
+  await feedTuna(page);
+  await page.clock.fastForward("05:00");
+  await expect(page.getByText("Einheit 2 von 4")).toBeVisible();
+  await finishUnit(page);
+  await feedTuna(page);
+  await expect(page.getByRole("status")).toHaveText("Mimi gibt dir 8 Münzen.");
+  await expect(page.getByText("13 Münzen", { exact: true })).toBeVisible();
+});
+
+test("after the last unit comes the long break, then a click", async ({
+  page,
+}) => {
+  await nameAndStart(page);
+  for (const unit of [1, 2, 3]) {
+    await finishUnit(page);
+    await feedTuna(page);
+    await page.clock.fastForward("05:00");
+    await expect(page.getByText(`Einheit ${unit + 1} von 4`)).toBeVisible();
+  }
+  await finishUnit(page);
+  await expect(page.getByRole("dialog", { name: "Füttern" })).toContainText(
+    "Noch 15:00 Pause",
+  );
+  await feedTuna(page);
+  await expect(page.getByText("Lange Pause")).toBeVisible();
+
+  const before = await soundPlays(page);
+  await page.clock.fastForward("15:01");
+  await expect(page.getByRole("button", { name: "Start" })).toBeVisible();
+  expect(await soundPlays(page)).toBe(before + 1);
+});
+
+test("stop asks first, then ends the run without coins or a penalty", async ({
+  page,
+}) => {
+  await nameAndStart(page);
+  await page.clock.fastForward("12:00");
+  await page.getByRole("button", { name: "Stop" }).click();
+  await page.getByRole("button", { name: "Weiterlernen" }).click();
+  await expect(page.getByRole("timer")).toBeVisible();
+  await expect(page.getByRole("button", { name: "Stop" })).toBeVisible();
+
+  await page.getByRole("button", { name: "Stop" }).click();
+  await page.getByRole("button", { name: "Ja, abbrechen" }).click();
+  await expect(page.getByRole("button", { name: "Start" })).toBeVisible();
+  await expect(page.getByText("0 Münzen", { exact: true })).toBeVisible();
+
+  const game = await savedGame(page);
+  expect(game.studyLog).toEqual({ "2026-11-04": 12 });
+  expect(game.cat.mood).toBe("normal");
+});
+
+test("closing the app for more than two minutes cancels the unit", async ({
+  page,
+}) => {
+  await nameAndStart(page);
+  await page.clock.fastForward("10:00");
+  await page.goto("about:blank");
+  await page.clock.fastForward("03:00");
+  await page.goto("/");
+  await expect(page.getByRole("button", { name: "Start" })).toBeVisible();
+  await expect(page.getByText("0 Münzen", { exact: true })).toBeVisible();
+  expect((await savedGame(page)).studyLog).toEqual({ "2026-11-04": 10 });
+});
+
+test("coming back within two minutes continues the unit", async ({ page }) => {
+  await nameAndStart(page);
+  await page.clock.fastForward("10:00");
+  await page.goto("about:blank");
+  await page.clock.fastForward("01:00");
+  await page.goto("/");
+  await expect(page.getByRole("timer")).toHaveText("14:00");
+  await expect(page.getByRole("button", { name: "Stop" })).toBeVisible();
+});
+
+test("the layout fits without sideways scrolling", async ({ page }) => {
+  await nameAndStart(page);
+  await finishUnit(page);
+  for (const state of ["feed window", "break"]) {
+    const fits = await page.evaluate(
+      () => document.documentElement.scrollWidth <= window.innerWidth,
+    );
+    expect(fits, state).toBe(true);
+    if (state === "feed window") await feedTuna(page);
+  }
+});
+
+test("the trial link runs faster and leaves real progress alone", async ({
+  page,
+}) => {
+  await page.goto("/?probelauf");
+  await page.getByLabel("Name").fill("Probe");
+  await page.getByRole("button", { name: "Los geht's" }).click();
+  await page.getByRole("button", { name: "Start" }).click();
+  await expect(page.getByText("30-mal schneller")).toBeVisible();
+
+  await page.clock.fastForward("00:50");
+  await expect(page.getByRole("dialog", { name: "Füttern" })).toBeVisible();
+  expect(await savedGame(page, KEY)).toBeNull();
+  expect((await savedGame(page, DEMO_KEY)).coins).toBe(5);
+});
+
+test("damaged data is never deleted without asking", async ({ page }) => {
+  await page.addInitScript((key) => {
+    if (sessionStorage.getItem("seeded") === null) {
+      localStorage.setItem(key, "{broken");
+      localStorage.setItem("unrelated", "keep");
+      sessionStorage.setItem("seeded", "yes");
+    }
+  }, KEY);
+  await page.goto("/");
+  await expect(page.getByRole("alert")).toContainText("beschädigt");
+
+  await page.getByRole("button", { name: "Erneut versuchen" }).click();
+  await expect(page.getByRole("alert")).toContainText("beschädigt");
+  expect(await page.evaluate((k) => localStorage.getItem(k), KEY)).toBe(
+    "{broken",
+  );
+
+  await page.getByRole("button", { name: "Neu anfangen" }).click();
+  await page.getByRole("button", { name: "Abbrechen" }).click();
+  expect(await page.evaluate((k) => localStorage.getItem(k), KEY)).toBe(
+    "{broken",
+  );
+
+  await page.getByRole("button", { name: "Neu anfangen" }).click();
+  await page.getByRole("button", { name: "Ja, alles löschen" }).click();
+  await expect(
+    page.getByRole("dialog", { name: "Wie heißt deine Katze?" }),
+  ).toBeVisible();
+  expect(await page.evaluate(() => localStorage.getItem("unrelated"))).toBe(
+    "keep",
+  );
+});
+
+test("unreadable storage offers a retry and no reset", async ({ page }) => {
+  await page.addInitScript(() => {
+    Storage.prototype.getItem = () => {
+      throw new Error("denied");
+    };
+  });
+  await page.goto("/");
+  await expect(page.getByRole("alert")).toContainText("nicht gelesen");
+  await expect(
+    page.getByRole("button", { name: "Erneut versuchen" }),
+  ).toBeVisible();
+  await expect(page.getByRole("button", { name: "Neu anfangen" })).toBeHidden();
+});
+
+test("a failed save says so, keeps playing and recovers on retry", async ({
+  page,
+}) => {
+  await nameAndStart(page);
+  await page.evaluate(() => {
+    const original = Storage.prototype.setItem;
+    Storage.prototype.setItem = () => {
+      throw new Error("full");
+    };
+    (window as unknown as { restoreSave: () => void }).restoreSave = () => {
+      Storage.prototype.setItem = original;
+    };
+  });
+  await finishUnit(page);
+  await feedTuna(page);
+  await expect(page.getByRole("alert")).toContainText(
+    "nicht gespeichert werden",
+  );
+  await expect(page.getByText("5 Münzen", { exact: true })).toBeVisible();
+
+  await page.evaluate(() =>
+    (window as unknown as { restoreSave: () => void }).restoreSave(),
+  );
+  await page.getByRole("button", { name: "Erneut versuchen" }).click();
+  await expect(page.getByRole("alert")).toBeHidden();
+  expect((await savedGame(page)).coins).toBe(5);
+});

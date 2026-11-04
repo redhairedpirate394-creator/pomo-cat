@@ -1,8 +1,9 @@
-import type { DemoItem } from "../domain/items";
+import type { GameState } from "../domain/game";
 
-export interface DemoStore {
-  load(): Promise<DemoItem[]>;
-  save(items: readonly DemoItem[]): Promise<void>;
+export interface GameStore {
+  /** null means there is no saved game yet. */
+  load(): Promise<GameState | null>;
+  save(state: GameState): Promise<void>;
   reset(): Promise<void>;
 }
 

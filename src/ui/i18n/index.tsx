@@ -1,15 +1,25 @@
 import { createContext, type ReactNode, useContext } from "react";
-import { ItemError } from "../../domain/items";
+import { CatError } from "../../domain/cat";
 import { StoreError } from "../../storage/port";
+import { de } from "./de";
 import { en } from "./en";
-import type { Messages } from "./messages";
+import type { ErrorCode, Messages } from "./messages";
 
 export type { Messages } from "./messages";
 
 // Add a locale by adding its catalog here; the spec language is the default.
-export const catalogs = { en } satisfies Record<string, Messages>;
+export const catalogs = { de, en } satisfies Record<string, Messages>;
 export type Locale = keyof typeof catalogs;
-export const defaultLocale: Locale = "en";
+export const defaultLocale: Locale = "de";
+
+/** The first browser language the app knows; German otherwise. */
+export function detectLocale(languages: readonly string[]): Locale {
+  for (const language of languages) {
+    const base = language.toLowerCase().split("-")[0];
+    if (base === "de" || base === "en") return base;
+  }
+  return defaultLocale;
+}
 
 const MessagesContext = createContext<Messages>(catalogs[defaultLocale]);
 
@@ -31,9 +41,8 @@ export function useMessages(): Messages {
   return useContext(MessagesContext);
 }
 
-export function errorMessage(cause: unknown, messages: Messages): string {
-  if (cause instanceof ItemError || cause instanceof StoreError) {
-    return messages.errors[cause.code];
-  }
-  return messages.errors.unexpected;
+export function errorCode(cause: unknown): ErrorCode {
+  return cause instanceof CatError || cause instanceof StoreError
+    ? cause.code
+    : "unexpected";
 }

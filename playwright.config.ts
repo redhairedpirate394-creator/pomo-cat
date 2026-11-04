@@ -10,6 +10,7 @@ export default defineConfig({
   retries: process.env.CI ? 1 : 0,
   use: {
     baseURL: url,
+    locale: "de-DE",
     trace: "retain-on-failure",
     screenshot: "only-on-failure",
   },
