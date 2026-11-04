@@ -56,6 +56,7 @@ test("the end of a unit meows, opens the feed window and pays when fed", async (
   await nameAndStart(page);
   await finishUnit(page);
   expect(await soundPlays(page)).toBe(1);
+  await expect(page.getByText("0 Münzen", { exact: true })).toBeAttached();
 
   const dialog = page.getByRole("dialog", { name: "Füttern" });
   await expect(dialog).toContainText("Was bekommt Mimi?");
@@ -202,15 +203,19 @@ test("coming back within two minutes continues the unit", async ({ page }) => {
 });
 
 test("the layout fits without sideways scrolling", async ({ page }) => {
-  await nameAndStart(page);
-  await finishUnit(page);
-  for (const state of ["feed window", "break"]) {
-    const fits = await page.evaluate(
+  const fits = () =>
+    page.evaluate(
       () => document.documentElement.scrollWidth <= window.innerWidth,
     );
-    expect(fits, state).toBe(true);
-    if (state === "feed window") await feedTuna(page);
-  }
+  await nameAndStart(page);
+  expect(await fits(), "learning").toBe(true);
+  await finishUnit(page);
+  expect(await fits(), "feed window").toBe(true);
+  await feedTuna(page);
+  expect(await fits(), "break").toBe(true);
+  await page.clock.fastForward("04:30");
+  await page.getByRole("button", { name: "Stopp" }).click();
+  expect(await fits(), "held").toBe(true);
 });
 
 test("the trial link runs faster and leaves real progress alone", async ({
@@ -301,4 +306,133 @@ test("a failed save says so, keeps playing and recovers on retry", async ({
   await page.getByRole("button", { name: "Erneut versuchen" }).click();
   await expect(page.getByRole("alert")).toBeHidden();
   expect((await savedGame(page)).coins).toBe(5);
+});
+
+test("after an unfed stop the screen says it is paused", async ({ page }) => {
+  await nameAndStart(page);
+  await finishUnit(page);
+  await page.clock.fastForward("05:01");
+  await expect(page.getByRole("status")).toHaveText(
+    "Angehalten. Es geht weiter, wenn du bereit bist.",
+  );
+});
+
+test("the coin note is gone when the break is over", async ({ page }) => {
+  await nameAndStart(page);
+  await finishUnit(page);
+  await feedTuna(page);
+  await expect(page.getByRole("status")).toContainText("Mimi gibt dir");
+  await page.clock.fastForward("04:30");
+  await page.getByRole("button", { name: "Stopp" }).click();
+  await expect(page.getByRole("status")).not.toContainText("Mimi gibt dir");
+});
+
+test("Escape never removes the name window", async ({ page }) => {
+  await page.goto("/");
+  const dialog = page.getByRole("dialog", { name: "Wie heißt deine Katze?" });
+  for (const _ of [1, 2, 3, 4]) {
+    await page.keyboard.press("Escape");
+    await expect(dialog).toBeVisible();
+  }
+  await page.getByLabel("Name").fill("Mimi");
+  await page.getByRole("button", { name: "Los geht's" }).click();
+  await expect(page.getByRole("button", { name: "Start" })).toBeVisible();
+});
+
+test("Escape never removes the feed window", async ({ page }) => {
+  await nameAndStart(page);
+  await finishUnit(page);
+  const dialog = page.getByRole("dialog", { name: "Füttern" });
+  for (const _ of [1, 2, 3, 4]) {
+    await page.keyboard.press("Escape");
+    await expect(dialog).toBeVisible();
+  }
+  await feedTuna(page);
+  await expect(page.getByText("5 Münzen", { exact: true })).toBeVisible();
+});
+
+test("Escape on the stop question keeps learning", async ({ page }) => {
+  await nameAndStart(page);
+  for (const _ of [1, 2, 3]) {
+    await page.getByRole("button", { name: "Stop" }).click();
+    await page.keyboard.press("Escape");
+    await expect(
+      page.getByRole("dialog", { name: "Einheit abbrechen?" }),
+    ).toBeHidden();
+    await expect(page.getByRole("timer")).toBeVisible();
+  }
+  await expect(page.getByRole("button", { name: "Stop" })).toBeVisible();
+});
+
+test("leaving the page records the last moment it was open", async ({
+  page,
+}) => {
+  await nameAndStart(page);
+  const before = (await savedGame(page)).lastSeenAt;
+  await page.clock.fastForward("00:05");
+  await page.evaluate(() => window.dispatchEvent(new Event("pagehide")));
+  const after = (await savedGame(page)).lastSeenAt;
+  expect(after - before).toBeGreaterThanOrEqual(5000);
+  expect(after - before).toBeLessThan(15_000);
+});
+
+test("hiding the tab records the last moment it was open", async ({ page }) => {
+  await nameAndStart(page);
+  const before = (await savedGame(page)).lastSeenAt;
+  await page.clock.fastForward("00:05");
+  await page.evaluate(() => {
+    Object.defineProperty(document, "visibilityState", { value: "hidden" });
+    document.dispatchEvent(new Event("visibilitychange"));
+  });
+  const after = (await savedGame(page)).lastSeenAt;
+  expect(after - before).toBeGreaterThanOrEqual(5000);
+  expect(after - before).toBeLessThan(15_000);
+});
+
+test("a running unit keeps saving that the app is open", async ({ page }) => {
+  await nameAndStart(page);
+  const before = (await savedGame(page)).lastSeenAt;
+  await page.clock.fastForward("00:16");
+  await expect
+    .poll(async () => (await savedGame(page)).lastSeenAt - before)
+    .toBeGreaterThanOrEqual(15_000);
+});
+
+test("a failed reset stays blocked and loses nothing", async ({ page }) => {
+  await page.addInitScript((key) => {
+    localStorage.setItem(key, "{broken");
+    Storage.prototype.removeItem = () => {
+      throw new Error("denied");
+    };
+  }, KEY);
+  await page.goto("/");
+  await page.getByRole("button", { name: "Neu anfangen" }).click();
+  await page.getByRole("button", { name: "Ja, alles löschen" }).click();
+  await expect(page.getByRole("alert")).toContainText("nicht gelöscht");
+  await page.getByRole("button", { name: "Erneut versuchen" }).click();
+  await expect(page.getByRole("alert")).toContainText("beschädigt");
+  expect(await page.evaluate((k) => localStorage.getItem(k), KEY)).toBe(
+    "{broken",
+  );
+});
+
+test("retry recovers once storage can be read again", async ({ page }) => {
+  await page.addInitScript(() => {
+    const original = Storage.prototype.getItem;
+    Storage.prototype.getItem = () => {
+      throw new Error("denied");
+    };
+    (window as unknown as { allowRead: () => void }).allowRead = () => {
+      Storage.prototype.getItem = original;
+    };
+  });
+  await page.goto("/");
+  await expect(page.getByRole("alert")).toContainText("nicht gelesen");
+  await page.evaluate(() =>
+    (window as unknown as { allowRead: () => void }).allowRead(),
+  );
+  await page.getByRole("button", { name: "Erneut versuchen" }).click();
+  await expect(
+    page.getByRole("dialog", { name: "Wie heißt deine Katze?" }),
+  ).toBeVisible();
 });

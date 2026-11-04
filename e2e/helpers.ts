@@ -10,8 +10,8 @@ export async function useTestClock(page: Page) {
   await page.addInitScript(() => {
     const plays = { count: 0 };
     Object.defineProperty(window, "soundPlays", { value: plays });
-    HTMLMediaElement.prototype.play = async () => {
-      plays.count += 1;
+    HTMLMediaElement.prototype.play = async function (this: HTMLMediaElement) {
+      if (!this.muted) plays.count += 1;
     };
   });
 }

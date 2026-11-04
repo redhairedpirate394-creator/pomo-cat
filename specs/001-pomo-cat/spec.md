@@ -151,7 +151,7 @@ Neben dem Timer kann ich eine einfache Liste aufklappen, damit ich weiß, was ic
 - **Tab versehentlich neu geladen**: Innerhalb von 2 Minuten läuft alles weiter.
 - **App während einer Pause geschlossen**: Bei Rückkehr nach mehr als 2 Minuten ist der Ablauf angehalten, die nächste Einheit startet per Klick.
 - **Lange Pause ohne Füttern**: Das Fenster schließt sich am Pausenende, die Münzen sind trotzdem da.
-- **Einheit endet, während die App zu ist**: Innerhalb der 2 Minuten zählt sie als fertig; danach gilt der Abbruch.
+- **Einheit endet, während die App zu ist**: Kommt man innerhalb von 2 Minuten nach dem letzten Moment zurück, in dem die App offen war, zählt die Einheit als fertig; sonst gilt sie als abgebrochen.
 - **App in zwei Tabs offen**: Nur ein Tab führt den Timer; der andere zeigt einen Hinweis, damit keine Münzen doppelt entstehen.
 - **Gespeicherte Daten unlesbar oder Speichern nicht möglich**: Die App zeigt das verständlich, bietet einen neuen Versuch an und löscht niemals still den Fortschritt.
 - **Einheit über Mitternacht**: Die Zeit zählt für den Tag, an dem die Einheit begonnen hat.

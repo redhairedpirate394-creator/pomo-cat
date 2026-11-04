@@ -33,4 +33,8 @@ Der Kratzbaum darf gern höher sein: 300 × 600 Pixel.
 
 ## Ton
 
-`meow.wav` oder `.mp3`: ein kurzes Miauen, höchstens eine Sekunde.
+`meow.wav`: ein kurzes Miauen, höchstens eine Sekunde.
+
+## Wenn du möchtest
+
+`icon-gear.png` (Zahnrad) und `icon-coin.png` (Münze), je 120 × 120 Pixel.

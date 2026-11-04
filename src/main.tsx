@@ -4,6 +4,7 @@ import { createRoot } from "react-dom/client";
 import {
   createBrowserStore,
   DEMO_STORAGE_KEY,
+  loadDemoEpoch,
   STORAGE_KEY,
 } from "./storage/browser";
 import { App } from "./ui/App";
@@ -15,7 +16,9 @@ import "./ui/style.css";
 const DEMO_SPEED = 30;
 
 const demo = new URLSearchParams(window.location.search).has("probelauf");
-const clock = demo ? createDemoClock(DEMO_SPEED) : systemClock;
+const clock = demo
+  ? createDemoClock(DEMO_SPEED, loadDemoEpoch(Date.now()))
+  : systemClock;
 const store = createBrowserStore(demo ? DEMO_STORAGE_KEY : STORAGE_KEY);
 
 const root = document.getElementById("root");

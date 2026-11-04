@@ -53,16 +53,17 @@ export function GameScreen({
   }, [eating]);
 
   const learning = phase.kind === "learning";
+  const onBreak = phase.kind === "break";
 
   // The stop question makes no sense once the unit has ended on its own.
   useEffect(() => {
     if (!learning) setConfirmStop(false);
   }, [learning]);
 
-  // A note about the last meal should not linger into the next unit.
+  // A note about the last meal belongs to that break only.
   useEffect(() => {
-    if (learning) setNote("");
-  }, [learning]);
+    if (!onBreak) setNote("");
+  }, [onBreak]);
 
   if (cat === null) {
     return (
@@ -100,6 +101,11 @@ export function GameScreen({
   }
 
   const warning = phase.kind === "break" && phase.warned && phase.fed;
+  // The cat hands the coins over at the meal, so they appear only then.
+  const shownCoins =
+    phase.kind === "break" && !phase.fed
+      ? state.coins - phase.coinsEarned
+      : state.coins;
 
   return (
     <main className="game">
@@ -109,9 +115,9 @@ export function GameScreen({
       </section>
 
       <aside className="side">
-        {!learning && <p className="coins">{m.coins(state.coins)}</p>}
+        {!learning && <p className="coins">{m.coins(shownCoins)}</p>}
         <p className="status" role="status">
-          {warning ? m.warning : note}
+          {warning ? m.warning : phase.kind === "held" ? m.heldNote : note}
         </p>
         {warning && (
           <button type="button" onClick={() => act(hold)}>
