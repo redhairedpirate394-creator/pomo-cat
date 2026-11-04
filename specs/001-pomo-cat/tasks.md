@@ -154,10 +154,15 @@ journey. Tests are written alongside the code they prove, never deferred.
 
 - [X] T037 Accessibility pass: focus after deleting a to-do, after hold and after buying, labels, status and error announcements in src/ui/
 - [X] T038 [ROUTINE] Localization pass: no user-facing strings outside src/ui/i18n/, `Intl` formatting, layouts tolerate longer text at mobile width
-- [ ] T039 Timer accuracy over 60 minutes in a hidden tab, recorded in docs/journal/001-pomo-cat.md (SC-004)
-- [ ] T040 Replace the placeholders with the owner's final art, when delivered, and confirm no behavior changed (SC-003, SC-010) — open after C3 by owner decision r16: acceptance does not wait for the drawings. Crunchy pillow, playing cat and snack cat also need manifest entries and poses, not only a file swap
+- [X] T039 Timer accuracy over 60 minutes in a hidden tab, recorded in docs/journal/001-pomo-cat.md (SC-004)
+- [ ] T040 Replace the placeholders with the owner's final art, when delivered, and confirm no behavior changed (SC-003, SC-010) — open after C3 by owner decision r16: acceptance does not wait for the drawings. Playing cat and snack cat also need poses, not only a file swap
 - [X] T041 Run quickstart.md validation
 - [X] T042 Document known limits and exact restart steps in docs/STATUS.md and README.md
+- [X] T044 Snacks cost 5 coins in src/domain/catalog.ts, with tests (r17, FR-027, SC-006)
+- [X] T045 Food in the bowls at the drawn proportions, white rim removed from src/ui/assets/food-*.png, and no word split in the food labels (r18, FR-051)
+- [X] T046 Owner's frame drawing as every frame in src/ui/style.css, sizes unchanged; docs/design/image-list.md names it (r19, FR-050, SC-010)
+- [X] T047 Question mark and gear together top left, always available, help window in both catalogs, closed by the feed window; tests (r20, r23, FR-011, FR-036, FR-049, SC-002)
+- [X] T048 Third snack drawing in the shop, named Knusperstangen; plant, rug and scratching post leave the shop, owned ones stay (r25 to r27, FR-027, FR-030, SC-006)
 - [ ] T043 [GATE] C3 checkpoint (owner-facing: "Ready to accept"): same procedure as T018; request explicit acceptance. **STOP**; never mark accepted without a recorded owner decision. After acceptance: write the retro entry (docs/retro.md) and offer to send it upstream.
 
 ---

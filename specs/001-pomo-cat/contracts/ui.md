@@ -6,8 +6,8 @@ The Playwright journeys use these accessible names (German catalog; English in
 | State | Visible |
 | --- | --- |
 | first start | dialog "Wie heißt deine Katze?", field "Name", button "Los geht's" |
-| idle | cat awake, button "Start", panels "Shop", "Kalender", "To-Dos", gear "Einstellungen", coin count |
-| learning | timer, "Einheit X von Y", sleeping cat, "To-Dos", "Stop", gear; no coin count |
+| idle | cat awake, button "Start", panels "Shop", "Kalender", "To-Dos", question mark "Hilfe" and gear "Einstellungen" top left, coin count |
+| learning | timer, "Einheit X von Y", sleeping cat, "To-Dos", "Stop", question mark and gear top left; no coin count |
 | stop confirmation | dialog "Einheit abbrechen?", "Ja, abbrechen", "Weiterlernen" |
 | break, unfed | timer, dialog "Füttern" with one button per food |
 | break, fed | cat awake, "Anhalten", "Jetzt weiterlernen", panels, coin count |

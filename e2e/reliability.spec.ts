@@ -133,7 +133,7 @@ test("the whole game works with the keyboard alone", async ({
 
   await tabTo(page, "Shop");
   await page.keyboard.press("Enter");
-  await tabTo(page, "Lachsstick für 3 Münzen kaufen");
+  await tabTo(page, "Lachsstick für 5 Münzen kaufen");
   await page.keyboard.press("Enter");
   await expect(page.getByRole("status")).toHaveText("Mimi liebt Lachsstick!");
 
@@ -339,7 +339,7 @@ test("the shop button takes focus when nothing can be bought", async ({
   isMobile,
 }) => {
   test.skip(isMobile, "phones have no keyboard");
-  await seedGame(page, { coins: 3 });
+  await seedGame(page, { coins: 5 });
   await page.goto("/");
   await page.getByRole("button", { name: "Shop" }).click();
 

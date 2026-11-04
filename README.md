@@ -23,15 +23,16 @@ address. To check everything: `pnpm verify`.
 
 - Progress lives only in this browser on this device. Clearing the browser's data
   deletes it. There is no account, backup, export or sync.
-- Still placeholders: plant, rug and scratching post; a new drawing replaces the file
-  of the same name. Still without a drawing: crunchy pillow (text only), the playing
-  cat and the cat enjoying a snack (it shows its heart eyes). These need a small
-  addition to the code when the drawings arrive; the behaviour stays the same.
+- Plant, rug and scratching post are out of the shop until their drawings and the
+  real room exist; anyone who bought them keeps them. The playing cat and the cat
+  enjoying a snack have no drawing yet (it shows its heart eyes); these need a small
+  addition to the code when the drawings arrive, the behaviour stays the same.
 - Tested automatically in Chromium, at desktop and phone size. Firefox, Safari and
   real phones were not tested, including the sound on an iPhone.
-- Timer accuracy over 60 minutes in a hidden tab was measured in Chromium on a
-  computer. A locked phone may pause the page: the time stays right, but the meow
-  can come late.
+- Timer accuracy over 60 minutes in a hidden tab was measured in Chromium on one
+  computer: the meow came 0.25 seconds late. Chromium did not slow this page down
+  in that run, so a browser that does may behave differently, and a locked phone
+  may pause the page: the time stays right, but the meow can come late.
 - Keyboard use is tested. A one-time automatic accessibility scan found nothing on
   the main screens, but it is not part of `pnpm verify`, and no one has tried the app
   with a real screen reader.

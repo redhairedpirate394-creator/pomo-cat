@@ -7,7 +7,7 @@ kannst eine Zeichnung jederzeit durch eine neue Version ersetzen.
 
 Katze schlafend, fressend, sitzend, weinend und mit Herzaugen; Münze, Zahnrad;
 Wollknäuel, Spielmaus, Kissen; Napf, Nassfutter, Trockenfutter, Thunfisch;
-Lachsstick, Katzenminze; dein Alphabet.
+Lachsstick, Katzenminze, Knusper-Snack; dein Alphabet; der Rahmen (`frame.png`).
 
 ## Noch offen
 
@@ -16,7 +16,6 @@ Lachsstick, Katzenminze; dein Alphabet.
 | Pflanze | `item-plant.png` | Platzhalter |
 | Teppich | `item-rug.png` | Platzhalter |
 | Kratzbaum (gern hoch) | `item-scratching-post.png` | Platzhalter |
-| Knusperkissen | `snack-crunchy-pillow.png` | nur Text im Shop |
 | Katze spielt mit Wollknäuel | `cat-play-yarn.png` | Herzaugen |
 | Katze spielt mit Spielmaus | `cat-play-mouse.png` | Herzaugen |
 | Katze spielt am Kratzbaum | `cat-play-post.png` | Herzaugen |

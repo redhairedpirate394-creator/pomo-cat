@@ -31,6 +31,13 @@ export const en: Messages = {
   settingSound: "Sound on",
   settingLanguage: "Language",
   minutes,
+  helpOpen: "Help",
+  helpTitle: "How to keep your cat happy:",
+  helpPoints: [
+    "Study to feed it. If you do not study for a while, it gets sad :(",
+    "A tasty snack now and then. Snacks make your cat happier",
+    "Lots and lots of cuddles!!!",
+  ],
   close: "Close",
   loading: "One moment …",
   otherTab: "Pomo Cat is already open in another tab.",
@@ -66,7 +73,7 @@ export const en: Messages = {
   roomHeading: "For the room",
   snacks: {
     "salmon-stick": "Salmon stick",
-    "crunchy-pillow": "Crunchy pillow",
+    "crunchy-pillow": "Crunchy sticks",
     catnip: "Catnip",
   },
   roomItems: {

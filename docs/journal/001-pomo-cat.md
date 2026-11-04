@@ -325,3 +325,32 @@ Session start after `/clear`, in a fresh context. Owner answered Q43 (r16).
   takes no coins, 0 console problems. A server from an earlier session already held
   port 5173 and serves this worktree.
 - `pnpm verify`: exit 0 (110 unit tests, 160 browser scenarios), lint without warnings.
+
+### C3 review, wishes and measurement (2026-11-04)
+
+- First independent review: two blockers (focus fell to the page when a window
+  closed, because React removed the dialog before it closed; report step 1 not doable
+  as written), seven should-fix. All fixed, narrow re-check confirmed them and found two
+  more (phone keyboard after feeding, save failure moving focus), fixed. Mutations of
+  the last two fixes fail the new tests. Accepted on purpose: after an unfed break,
+  focus lands on "Weiter", so one stray key starts the unit; Stop undoes that.
+- T039, attempt 1: computer slept at 18:30:48 and restarted unexpectedly at 18:40,
+  void after 31 minutes (max deviation 663 ms so far). Attempt 2 stopped by the lead:
+  `pnpm verify` ran alongside and stalled the page 5.5 s. A hiccup under self-made load,
+  but no evidence.
+- T039, attempt 3, clean: real 60-minute unit, build of 9222957 on a local preview,
+  Chromium headed on Windows, `Modal`-independent timer code unchanged since. Browser
+  throttling flags left on; Playwright only set up the unit and disconnected, because
+  its focus emulation keeps pages visible; a blank tab in front. Keep-awake request
+  from the script, no settings changed. Deadline to meow 249 ms, to feed window 279 ms,
+  largest display deviation 278 ms, 7198 display updates, longest wall-clock gap
+  5.0 s, so no sleep. SC-004 passes in this environment. Limits: visible about 2 of 60
+  minutes (the window was clicked; hidden at the deadline); the page timer stayed near
+  1 s (max 2 s), so Chromium's one-minute throttling did not apply to this page, and
+  the worker fallback was not exercised against it.
+- r17 to r27 folded in (T044 to T048): snack 5 coins, food at 84 % of the bowl and rim
+  peeled, frame from the owner's drawing via `border-image`, help window, corner
+  buttons, third snack named Knusperstangen, plant, rug, post out of the shop in UI and
+  domain, owned ones stay. Analyze: no conflicts; exclusions and the UI contract
+  updated. Room, sounds: next section; r22 means two sliders only.
+- `pnpm verify`: exit 0 (112 unit, 176 browser, 9 skipped). axe: 0 violations.

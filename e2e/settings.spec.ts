@@ -86,7 +86,7 @@ test("the whole game can be played in English", async ({ page }) => {
   await expect(page.getByText("November 2026")).toBeVisible();
   await page.getByRole("button", { name: "Shop" }).click();
   await expect(
-    page.getByRole("button", { name: "Buy Salmon stick for 3 coins" }),
+    page.getByRole("button", { name: "Buy Salmon stick for 5 coins" }),
   ).toBeVisible();
   await page.getByRole("button", { name: "Start" }).click();
   await page.clock.fastForward("25:00");
@@ -162,4 +162,73 @@ test("long text does not scroll sideways at 320 px", async ({ page }) => {
   await page.getByLabel("Sprache").selectOption("en");
   await expect(page.getByRole("dialog", { name: "Settings" })).toBeVisible();
   expect(await overflow()).toBeLessThanOrEqual(0);
+});
+
+test("the question mark explains how the cat stays happy", async ({ page }) => {
+  await nameAndStart(page);
+  const help = page.getByRole("button", { name: "Hilfe" });
+  await help.click();
+  const dialog = page.getByRole("dialog", {
+    name: "So bleibt deine Katze glücklich:",
+  });
+  await expect(dialog.getByRole("listitem")).toHaveText([
+    "Lernen, um sie zu füttern. Lernst du eine Zeit nicht, wird sie traurig :(",
+    "Ab und zu ein leckerer Snack. Deine Katze wird durch diese glücklicher",
+    "Ganz viele Streicheleinheiten!!!",
+  ]);
+  await page.keyboard.press("Escape");
+  await expect(dialog).toBeHidden();
+  await expect(help).toBeFocused();
+});
+
+test("the help follows the language", async ({ page }) => {
+  await seedGame(page, {});
+  await page.goto("/");
+  await page.getByRole("button", { name: "Einstellungen" }).click();
+  await page.getByLabel("Sprache").selectOption("en");
+  await page.getByRole("button", { name: "Close" }).click();
+  await page.getByRole("button", { name: "Help" }).click();
+  const dialog = page.getByRole("dialog", {
+    name: "How to keep your cat happy:",
+  });
+  await expect(dialog.getByRole("listitem")).toHaveCount(3);
+});
+
+test("the feed window closes the help", async ({ page }) => {
+  await nameAndStart(page);
+  await page.getByRole("button", { name: "Hilfe" }).click();
+  await page.clock.fastForward("25:00");
+  await expect(page.getByRole("dialog", { name: "Füttern" })).toBeVisible();
+  await expect(
+    page.getByRole("dialog", { name: "So bleibt deine Katze glücklich:" }),
+  ).toBeHidden();
+});
+
+test("help and settings stay in the top left corner", async ({ page }) => {
+  await seedGame(page, {});
+  await page.goto("/");
+  const inCorner = async () => {
+    for (const name of ["Hilfe", "Einstellungen"]) {
+      const box = await page.getByRole("button", { name }).boundingBox();
+      expect(box?.x).toBeLessThan(120);
+      expect(box?.y).toBeLessThan(30);
+      expect(box?.width).toBe(box?.height);
+    }
+  };
+  await inCorner();
+  await page.getByRole("button", { name: "Start" }).click();
+  await expect(page.getByRole("button", { name: "Stop" })).toBeVisible();
+  await inCorner();
+  await page.evaluate(() => window.scrollTo(0, 400));
+  await inCorner();
+});
+
+test("the food lies in the bowl at the drawn size", async ({ page }) => {
+  await nameAndStart(page);
+  await page.clock.fastForward("25:00");
+  const bowl = page.locator(".bowl").first();
+  await expect(bowl).toBeVisible();
+  const outer = await bowl.boundingBox();
+  const food = await bowl.locator(".on-bowl").boundingBox();
+  expect((food?.width ?? 0) / (outer?.width ?? 1)).toBeCloseTo(0.84, 2);
 });
