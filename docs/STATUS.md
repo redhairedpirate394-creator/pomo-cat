@@ -6,19 +6,20 @@ commands, outcomes, review findings and screenshots go to
 
 ## Product
 
-- Product: mvp-starter (the template itself; no product yet). Products
-  created from the template rewrite this section on "let's start".
-- Repository/branch: `markusrt/mvp-starter`, `main` (template changes merge
-  there through PRs)
-- Spec language: en
-- Publish choice: expert-review (the template's own changes go through PRs)
+- Product: Pomo Cat (possibly Pomo Pet later, with other animals and rooms)
+- Repository/branch: `redhairedpirate394-creator/pomo-cat` (public), `001-pomo-cat`
+- Live URL once published: https://redhairedpirate394-creator.github.io/pomo-cat/
+  (GitHub Pages enabled, source: workflow; nothing deployed yet)
+- Spec language: de (chat and spec). App: German and English.
+- Publish choice: auto-merge ("publish automatically")
 - Owner experience: see `.mvp-starter/manifest.json` (single source)
 
 ## Where we are
 
-- Active feature: none. The starter ships no sample spec (ADR 004).
-- Checkpoint: none pending. Template v3.0.0 (owner-centric loop) under review.
-- Pending owner decisions: none.
+- Active feature: 001-pomo-cat (no spec yet; interview running)
+- Checkpoint: none yet; C1 comes after the interview, spec and plan.
+- Pending owner decisions: interview round 1 (questions posted in chat, answers
+  go to `docs/journal/001-pomo-cat.md`).
 
 ## Counters
 
@@ -27,24 +28,25 @@ commands, outcomes, review findings and screenshots go to
 
 ## Machine
 
-- Last tool check: not run in the template (products record the date of the
-  `team` skill's first-run check here)
+- Last tool check: 2026-11-04 (Windows 11; Node 24.22.0, pnpm 10.34.7, git
+  2.56.0, gh 2.102.0, Playwright Chromium installed; `pnpm verify` passes)
 
 ## Worktree
 
-- See `git status`; nothing uncommitted is expected on `main`.
+- See `git status`; nothing uncommitted is expected between steps.
 
 ## Limits
 
-- Discardable nonsensitive demo only; no backup/export, auth, backend, sync,
-  conflict resolution, or PWA/offline loading. Static GitHub Pages deployment
-  per ADR 007. Storage limits: ADR 002.
+- No backup/export, auth, backend, sync, conflict resolution, or PWA/offline
+  loading in the foundation. Static GitHub Pages deployment per ADR 007.
+  Storage limits: ADR 002.
 - Spec Kit 1.2.1 is vendored; upgrades are a template task
   (`docs/update-from-template.md`, ADR 010).
 - Delivery modes Light and Spike are untested (no feature has used them yet).
-- No license chosen for the template repository.
+- No license chosen yet.
 
 ## Exact next action
 
-None pending in the starter. Products created from the template: the owner
-says "let's start" and the `team` skill takes over (`BOOTSTRAP-PROMPT.md`).
+Wait for the owner's answers to interview round 1. Record them, ask the next
+frontier with the `grilling` skill until it is empty, then `/speckit-specify`
+(BOOTSTRAP-PROMPT.md, NEW PRODUCT steps 2-6).
