@@ -7,14 +7,12 @@ reading, for triage. Anything the owner did not say is marked **not stated**.
 These items arrived before the round 3 report was posted, while the 60-minute
 measurement ran.
 
-**Decision**: not stated
+**Decision**: not stated for acceptance; order of the wishes decided, see r24
 **Publish choice**: as recorded
 **Tried**: not stated
 
 Timing: `before publish` | `next round` | `later` (backlog).
 Type: bug (within the spec) | change (other than specified) | extension (new scope) | question | decision | praise.
-
-Timing below is the team's proposal until the owner decides it.
 
 | ID | Timing | Type | Reference | Summary |
 | --- | --- | --- | --- | --- |
@@ -25,6 +23,7 @@ Timing below is the team's proposal until the owner decides it.
 | r21 | next round | extension | US3, FR-029 | A real room to furnish and click around in, with the owner's designs |
 | r22 | next round | extension | FR-010, FR-036, FR-038 | New cat sounds with their own controls; the alert stays and can be turned off |
 | r23 | before publish | change | SC-002, FR-036 | Gear beside the question mark; both always available |
+| r24 | before publish | decision | r17 to r23 | Team's order accepted; one volume slider for cat sounds, one for alerts; new frame drawing sent |
 
 ## r17, r18 Futter
 
@@ -86,8 +85,23 @@ Sound sources, and how purring during a unit fits with learning, are also open.
 > 4.	Die Position des Zahnrades
 > -	Pack das einfach neben das Fragezeichen beides soll immer zu verfügung stehen
 
+## r24 Antworten
+
+> ja aber 4.: mache es bitte so wie ich gesagt habe. Ein lautstärkeregler für katzengeräusche und einer für alerts
+
+Answers the four questions asked in chat: (1) the snack price, the food in the
+bowls, the question mark and the gear come before acceptance, the room and the
+sounds become their own next section; (2) yes, and the owner sent the frame drawing
+with this message, saved as `docs/design/owner/frame.jpg`; since it is here, r19
+comes before acceptance too; (3) the room drawing is the first design of the room;
+(4) overrides the team's recommendation: no switch per sound, exactly two volume
+sliders, "Katzengeräusche" and alerts. Turning a sound off means sliding it to zero;
+the team reads this from "Auschalten" in r22 and reads it back.
+
+The frame drawing's corners are nearly square, while r19 likes two rounded corners.
+The team builds it as drawn and asks the owner to judge it in the app.
+
 ## Not stated
 
-- Whether C3 is accepted, and whether these wishes come before or after acceptance.
-- What the sent room drawing is meant to be.
-- r22: the controls per sound or per category.
+- Whether C3 is accepted.
+- Whether the frame's corners should stay as drawn or two of them be rounded.
