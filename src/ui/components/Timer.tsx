@@ -10,7 +10,7 @@ export function Timer({ ms, caption }: { ms: number; caption: string }) {
       <div
         className="timer-digits"
         role="timer"
-        aria-label={`${m.timerLabel}: ${text}`}
+        aria-label={m.timerLabel(text)}
       >
         {[...text].map((char, index) => (
           <span

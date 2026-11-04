@@ -4,7 +4,7 @@
 
 **Created**: 2026-11-04
 
-**Status**: Draft
+**Status**: C2 accepted and published, C3 at its gate
 
 **Spec Language**: de
 
@@ -30,9 +30,12 @@ Geklärt im Interview (Fragen Q1 bis Q36, Wortlaut im Journal):
 - Q: Herzaugen? → A: gelten für die fröhliche und die gestreichelte Katze (Q38).
 - Q: Lila Bild? → A: das Kissen aus dem Shop (Q39).
 - Q: Gelieferte Zeichnungen? → A: werden eingebaut; spätere Versionen ersetzen sie als Datei (Q40).
-- Q: Knöpfe? → A: Das Zahnrad als Bild; alle anderen Knöpfe, auch „Shop“, im gleichen Kasten mit der eigenen Schrift (Q41, r10).
+- Q: Knöpfe? → A: Alle Knöpfe, auch „Shop“, im gleichen Kasten mit der eigenen Schrift; das Zahnrad ohne gezeichneten Rand in einem quadratischen Kasten (Q41, r10, r15).
 - Q: Knusperkissen ohne Bild? → A: bleibt vorerst ohne Bild im Shop (Q42).
 - Q: Schrift und Größen? → A: Buchstaben auf einer Linie, leicht versetzt erlaubt; Sachen im Raum in stimmigen Größen; die Katze sitzt auf dem Kissen (r08, r11, r12).
+- 2026-11-04 Q: Maus und Hinterfüße? → A: Die Maus bleibt neben der schlafenden Katze in normaler Form; die Hinterfüße sind ausgemalt, nicht durchsichtig (r13, r14).
+- 2026-11-04 Q: Kleinigkeiten aus Runde 2? → A: Passen so: Beim Snack und beim Spielen zeigt die Katze vorerst die Herzaugen; abgehakte Aufgaben bleiben stehen, bis man sie löscht; der Kalender beginnt am Montag; eine zweite offene App wartet mit einem Hinweis (Runde 2, Q2).
+- 2026-11-04 Q: Wartet die Abnahme auf die restlichen Zeichnungen? → A: Nein. Alles andere wird fertig, die Zeichnungen kommen nach, sobald es sie gibt (Q43, r16).
 
 ## User Scenarios & Testing *(mandatory)*
 

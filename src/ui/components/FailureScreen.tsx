@@ -17,6 +17,7 @@ export function FailureScreen({
   const [confirming, setConfirming] = useState(false);
   return (
     <main className="failure">
+      <h1 className="visually-hidden">{m.documentTitle}</h1>
       <p role="alert">{m.errors[code]}</p>
       <div className="choices">
         <button type="button" onClick={onRetry}>

@@ -59,7 +59,7 @@ export interface Messages {
   readonly unitOf: (unit: number, total: number) => string;
   readonly breakShort: string;
   readonly breakLong: string;
-  readonly timerLabel: string;
+  readonly timerLabel: (time: string) => string;
   readonly feedTitle: string;
   readonly feedQuestion: (name: string) => string;
   readonly feedTimeLeft: (time: string) => string;

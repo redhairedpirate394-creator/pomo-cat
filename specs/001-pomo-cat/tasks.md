@@ -155,7 +155,7 @@ journey. Tests are written alongside the code they prove, never deferred.
 - [X] T037 Accessibility pass: focus after deleting a to-do, after hold and after buying, labels, status and error announcements in src/ui/
 - [X] T038 [ROUTINE] Localization pass: no user-facing strings outside src/ui/i18n/, `Intl` formatting, layouts tolerate longer text at mobile width
 - [ ] T039 Timer accuracy over 60 minutes in a hidden tab, recorded in docs/journal/001-pomo-cat.md (SC-004)
-- [ ] T040 Replace the placeholders with the owner's final art, when delivered, and confirm no behavior changed (SC-003, SC-010) — open after C3 by owner decision r16: acceptance does not wait for the drawings
+- [ ] T040 Replace the placeholders with the owner's final art, when delivered, and confirm no behavior changed (SC-003, SC-010) — open after C3 by owner decision r16: acceptance does not wait for the drawings. Crunchy pillow, playing cat and snack cat also need manifest entries and poses, not only a file swap
 - [X] T041 Run quickstart.md validation
 - [X] T042 Document known limits and exact restart steps in docs/STATUS.md and README.md
 - [ ] T043 [GATE] C3 checkpoint (owner-facing: "Ready to accept"): same procedure as T018; request explicit acceptance. **STOP**; never mark accepted without a recorded owner decision. After acceptance: write the retro entry (docs/retro.md) and offer to send it upstream.

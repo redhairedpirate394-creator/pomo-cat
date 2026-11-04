@@ -5,16 +5,12 @@ const TARGETS = "button:not(:disabled)";
 /**
  * A button that removes or disables itself drops keyboard focus to the page.
  * `keep` remembers its place; once `changed` differs, the button now at that
- * place takes over, or the last one, or `fallback` when none is left.
+ * place takes over, or the last one. With none left, the panel's own button
+ * does: a text field would open the keyboard on a phone.
  */
-export function useKeepFocus<Root extends HTMLElement>(
-  changed: unknown,
-  fallback: (root: Root | null) => HTMLElement | null | undefined,
-) {
+export function useKeepFocus<Root extends HTMLElement>(changed: unknown) {
   const root = useRef<Root>(null);
   const place = useRef<number | null>(null);
-  const fallbackNow = useRef(fallback);
-  fallbackNow.current = fallback;
 
   // biome-ignore lint/correctness/useExhaustiveDependencies: runs when `changed` does
   useEffect(() => {
@@ -29,7 +25,8 @@ export function useKeepFocus<Root extends HTMLElement>(
     if (kept) return;
     const targets = root.current?.querySelectorAll<HTMLElement>(TARGETS);
     const next = targets?.[index] ?? targets?.[targets.length - 1];
-    (next ?? fallbackNow.current(root.current))?.focus();
+    const panel = root.current?.closest(".panel");
+    (next ?? panel?.querySelector<HTMLElement>(TARGETS))?.focus();
   }, [changed]);
 
   function keep(control: HTMLElement) {

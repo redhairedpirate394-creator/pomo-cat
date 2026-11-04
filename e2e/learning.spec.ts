@@ -309,8 +309,10 @@ test("a failed save says so, keeps playing and recovers on retry", async ({
   await page.evaluate(() =>
     (window as unknown as { restoreSave: () => void }).restoreSave(),
   );
-  await page.getByRole("button", { name: "Erneut versuchen" }).click();
+  await page.getByRole("button", { name: "Erneut versuchen" }).focus();
+  await page.keyboard.press("Enter");
   await expect(page.getByRole("alert")).toBeHidden();
+  await expect(page.getByRole("button", { name: "Anhalten" })).toBeFocused();
   expect((await savedGame(page)).coins).toBe(5);
 });
 

@@ -213,8 +213,73 @@ test("focus stays near the list after deleting a to-do", async ({
   await page.keyboard.press("Enter");
   await expect(remove("Zwei")).toBeFocused();
 
+  // Not the text field: on a phone that would open the keyboard.
   await page.keyboard.press("Enter");
-  await expect(page.getByLabel("Neue Aufgabe")).toBeFocused();
+  await expect(page.getByRole("button", { name: "To-Dos" })).toBeFocused();
+});
+
+test("focus returns to where it was when a window closes", async ({
+  page,
+  isMobile,
+}) => {
+  test.skip(isMobile, "phones have no keyboard");
+  await nameAndStart(page);
+  const gear = page.getByRole("button", { name: "Einstellungen" });
+  const stop = page.getByRole("button", { name: "Stop" });
+
+  await gear.focus();
+  await page.keyboard.press("Enter");
+  await page.keyboard.press("Escape");
+  await expect(gear).toBeFocused();
+
+  await page.keyboard.press("Enter");
+  await page.getByRole("button", { name: "Schließen" }).focus();
+  await page.keyboard.press("Enter");
+  await expect(gear).toBeFocused();
+
+  await stop.focus();
+  await page.keyboard.press("Enter");
+  await page.getByRole("button", { name: "Weiterlernen" }).focus();
+  await page.keyboard.press("Enter");
+  await expect(stop).toBeFocused();
+});
+
+test("typing is not interrupted by the game moving on", async ({
+  page,
+  isMobile,
+}) => {
+  test.skip(isMobile, "phones have no keyboard");
+  await nameAndStart(page);
+  await page.getByRole("button", { name: "To-Dos" }).click();
+  const task = page.getByLabel("Neue Aufgabe");
+  await task.fill("Le");
+
+  await finishUnit(page);
+  await page.keyboard.press("Tab");
+  await page.keyboard.press("Enter");
+  await expect(page.getByRole("dialog", { name: "Füttern" })).toBeHidden();
+  await expect(task).toBeFocused();
+
+  // The break ends and the next unit starts on its own.
+  await page.clock.fastForward("05:00");
+  await expect(page.getByRole("button", { name: "Stop" })).toBeVisible();
+  await expect(task).toBeFocused();
+  await page.keyboard.type("sen");
+  await expect(task).toHaveValue("Lesen");
+});
+
+test("changes in the game are announced", async ({ page }) => {
+  await nameAndStart(page);
+  await expect(page.getByRole("heading", { level: 1 })).toHaveText("Pomo Cat");
+  await expect(page.getByText("Einheit 1 von 4")).toHaveAttribute(
+    "aria-live",
+    "polite",
+  );
+  await finishUnit(page);
+  await page.clock.fastForward("04:30");
+  await expect(page.getByRole("alert")).toHaveText(
+    "Ohne Futter geht es nach der Pause nicht weiter.",
+  );
 });
 
 test("focus stays in the shop after buying", async ({ page, isMobile }) => {
