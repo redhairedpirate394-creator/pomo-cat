@@ -1,41 +1,50 @@
 import { describe, expect, it } from "vitest";
-import { createItem, ItemError } from "../../domain/items";
+import { CatError } from "../../domain/cat";
 import { StoreError } from "../../storage/port";
-import { catalogs, errorMessage } from "./index";
+import { catalogs, defaultLocale, detectLocale, errorCode } from "./index";
 
-describe("message catalogs", () => {
-  it("maps domain and storage error codes to catalog text", () => {
-    const { en } = catalogs;
-    let domainFailure: unknown;
-    try {
-      createItem([], " ", "one");
-    } catch (cause) {
-      domainFailure = cause;
-    }
-    expect(domainFailure).toBeInstanceOf(ItemError);
-    expect(errorMessage(domainFailure, en)).toBe(en.errors["title-invalid"]);
-    expect(errorMessage(new StoreError("save-failed"), en)).toBe(
-      en.errors["save-failed"],
+describe("catalogs", () => {
+  it("defaults to German", () => {
+    expect(defaultLocale).toBe("de");
+  });
+
+  it("has the same top-level strings in every locale", () => {
+    expect(Object.keys(catalogs.en).sort()).toEqual(
+      Object.keys(catalogs.de).sort(),
     );
   });
 
-  it("never shows raw technical messages to users", () => {
-    const { en } = catalogs;
-    expect(errorMessage(new Error("ZodError: internal"), en)).toBe(
-      en.errors.unexpected,
-    );
-    expect(errorMessage("thrown string", en)).toBe(en.errors.unexpected);
+  it("uses singular and plural for coins", () => {
+    expect(catalogs.de.coins(1)).toBe("1 Münze");
+    expect(catalogs.de.coins(5)).toBe("5 Münzen");
+    expect(catalogs.en.coins(1)).toBe("1 coin");
+    expect(catalogs.en.coins(0)).toBe("0 coins");
+  });
+});
+
+describe("detectLocale", () => {
+  it("follows the browser", () => {
+    expect(detectLocale(["de-AT", "en"])).toBe("de");
+    expect(detectLocale(["en-GB"])).toBe("en");
   });
 
-  it("has non-empty text in every catalog", () => {
-    for (const messages of Object.values(catalogs)) {
-      for (const text of [
-        ...Object.values(messages).filter((v) => typeof v === "string"),
-        ...Object.values(messages.errors),
-        messages.deleteItemLabel("x"),
-      ]) {
-        expect(text.trim()).not.toBe("");
-      }
-    }
+  it("takes the first language it knows", () => {
+    expect(detectLocale(["fr", "en-US", "de"])).toBe("en");
+  });
+
+  it("falls back to German", () => {
+    expect(detectLocale(["fr"])).toBe("de");
+    expect(detectLocale([])).toBe("de");
+  });
+});
+
+describe("errorCode", () => {
+  it("passes typed codes through", () => {
+    expect(errorCode(new CatError("name-required"))).toBe("name-required");
+    expect(errorCode(new StoreError("save-failed"))).toBe("save-failed");
+  });
+
+  it("maps anything else to unexpected", () => {
+    expect(errorCode(new Error("boom"))).toBe("unexpected");
   });
 });

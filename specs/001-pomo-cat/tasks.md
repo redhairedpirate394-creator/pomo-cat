@@ -20,10 +20,10 @@ journey. Tests are written alongside the code they prove, never deferred.
 
 **Purpose**: Adapt the starter skeleton; do not regenerate tooling
 
-- [ ] T001 Rename the product to Pomo Cat in package.json and index.html (title, `lang="de"`)
-- [ ] T002 Remove the starter demo: src/domain/items.ts, src/domain/items.test.ts, the demo App in src/ui/App.tsx and e2e/demo.spec.ts; keep equivalent failure coverage in the new store and e2e tests (FR-045)
-- [ ] T003 Make German the default locale: add src/ui/i18n/de.ts, rewrite src/ui/i18n/en.ts and src/ui/i18n/messages.ts, support switching the locale at runtime in src/ui/i18n/index.tsx (FR-039)
-- [ ] T004 Add `@fontsource/patrick-hand` 5.3.0 with an exact pin, list it in THIRD-PARTY-NOTICES.md (FR-041)
+- [X] T001 Rename the product to Pomo Cat in package.json and index.html (title, `lang="de"`)
+- [X] T002 Remove the starter demo: src/domain/items.ts, src/domain/items.test.ts, the demo App in src/ui/App.tsx and e2e/demo.spec.ts; keep equivalent failure coverage in the new store and e2e tests (FR-045)
+- [X] T003 Make German the default locale: add src/ui/i18n/de.ts, rewrite src/ui/i18n/en.ts and src/ui/i18n/messages.ts, support switching the locale at runtime in src/ui/i18n/index.tsx (FR-039)
+- [X] T004 Add `@fontsource/patrick-hand` 5.3.0 with an exact pin, list it in THIRD-PARTY-NOTICES.md (FR-041)
 
 ---
 
@@ -31,12 +31,12 @@ journey. Tests are written alongside the code they prove, never deferred.
 
 **Purpose**: Rules and storage every story needs
 
-- [ ] T005 [P] Settings limits and defaults in src/domain/settings.ts with src/domain/settings.test.ts: learn 5-60, short break 5-30, long break 5-60, multiples of 5, units 1-8, defaults 25/5/15/4 (FR-006, FR-036)
-- [ ] T006 [P] Mood rules in src/domain/cat.ts with src/domain/cat.test.ts: name 1 to 20 characters after trimming, 48 h and 96 h decay, raise one step (FR-023, FR-024, FR-025)
-- [ ] T007 [P] Coins in src/domain/rewards.ts and the catalog in src/domain/catalog.ts with tests: 1 coin per 5 minutes, happy `ceil(base * 1.5)`, foods, snacks at 3, room items at 5/10/20 (FR-016, FR-019, FR-027)
-- [ ] T008 [P] Study log in src/domain/studyLog.ts with src/domain/studyLog.test.ts: local day key, add minutes, month view, streak with a 5-minute threshold ending today or yesterday (FR-033, FR-034)
-- [ ] T009 Game state machine in src/domain/game.ts with src/domain/game.test.ts: GameState, phases, start, advance, stop, feed, resumeAfterClose and sound effects per data-model.md, including the chain that stops at an unfed break (FR-007, FR-008, FR-009, FR-012, FR-013, FR-015, FR-017, FR-018, FR-019, SC-005)
-- [ ] T010 Store port and validated adapter in src/storage/port.ts and src/storage/browser.ts with src/storage/browser.test.ts per contracts/game-state.md: read, invalid, save and reset failures (FR-043, FR-045)
+- [X] T005 [P] Settings limits and defaults in src/domain/settings.ts with src/domain/settings.test.ts: learn 5-60, short break 5-30, long break 5-60, multiples of 5, units 1-8, defaults 25/5/15/4 (FR-006, FR-036)
+- [X] T006 [P] Mood rules in src/domain/cat.ts with src/domain/cat.test.ts: name 1 to 20 characters after trimming, 48 h and 96 h decay, raise one step (FR-023, FR-024, FR-025)
+- [X] T007 [P] Coins in src/domain/rewards.ts and the catalog in src/domain/catalog.ts with tests: 1 coin per 5 minutes, happy `ceil(base * 1.5)`, foods, snacks at 3, room items at 5/10/20 (FR-016, FR-019, FR-027)
+- [X] T008 [P] Study log in src/domain/studyLog.ts with src/domain/studyLog.test.ts: local day key, add minutes, month view, streak with a 5-minute threshold ending today or yesterday (FR-033, FR-034)
+- [X] T009 Game state machine in src/domain/game.ts with src/domain/game.test.ts: GameState, phases, start, continue, hold, advance, stop, feed, resumeAfterClose and sound effects per data-model.md, including the chain that stops at an unfed break (FR-007, FR-008, FR-009, FR-012, FR-013, FR-015, FR-017, FR-018, FR-019, SC-005)
+- [X] T010 Store port and validated adapter in src/storage/port.ts and src/storage/browser.ts with src/storage/browser.test.ts per contracts/game-state.md: read, invalid, save and reset failures (FR-043, FR-045)
 
 **Checkpoint**: Foundation ready
 
@@ -52,16 +52,16 @@ journey. Tests are written alongside the code they prove, never deferred.
 
 ### Tests for User Story 1
 
-- [ ] T011 [P] [US1] Playwright journeys in e2e/learning.spec.ts for scenarios 1 to 10 of US1, SC-001, SC-002, SC-005 and no sideways scrolling (SC-009) on both projects
+- [X] T011 [P] [US1] Playwright journeys in e2e/learning.spec.ts for scenarios 1 to 10 of US1, SC-001, SC-005 and no sideways scrolling (SC-009) on both projects
 
 ### Implementation for User Story 1
 
-- [ ] T012 [US1] Placeholder images and sound in src/ui/assets/ behind src/ui/assets/manifest.ts, the sleeping cat cut from docs/design/owner-sketch-learning-screen.jpg, a meow synthesised by the team (FR-040, research R4, R7)
-- [ ] T013 [US1] Time and effects in src/ui/ticker.ts, src/ui/sounds.ts and src/ui/useGame.ts: worker tick, heartbeat, persistence queue, document title (FR-004, FR-005, FR-010, FR-014, research R1, R2)
-- [ ] T014 [US1] Composition in src/main.tsx with the demo link (`?probelauf`, clock times 60, own storage key) and the browser language (FR-039, FR-048)
-- [ ] T015 [US1] Screen per docs/design/owner-sketch-learning-screen.jpg and contracts/ui.md in src/ui/App.tsx, src/ui/components/NameCat.tsx, Timer.tsx, CatStage.tsx, FeedDialog.tsx, StopDialog.tsx, src/ui/style.css (FR-001, FR-002, FR-011, FR-016, FR-020, FR-041)
-- [ ] T016 [US1] Load and save failures on an error screen in src/ui/App.tsx with e2e coverage in e2e/learning.spec.ts (FR-045)
-- [ ] T017 [US1] Image list with sizes for the owner in docs/design/image-list.md (FR-042)
+- [X] T012 [US1] Placeholder images and sound in src/ui/assets/ behind src/ui/assets/manifest.ts, the sleeping cat cut from docs/design/owner-sketch-learning-screen.jpg, a meow synthesised by the team (FR-040, research R4, R7)
+- [X] T013 [US1] Time and effects in src/ui/ticker.ts, src/ui/sounds.ts and src/ui/useGame.ts: worker tick, heartbeat, persistence queue, document title (FR-004, FR-005, FR-010, FR-014, research R1, R2)
+- [X] T014 [US1] Composition in src/main.tsx with the demo link (`?probelauf`, clock times 30, own storage key) and the browser language (FR-039, FR-048)
+- [X] T015 [US1] Screen per docs/design/owner-sketch-learning-screen.jpg and contracts/ui.md in src/ui/App.tsx, src/ui/components/NameCat.tsx, Timer.tsx, CatStage.tsx, FeedDialog.tsx, StopDialog.tsx, src/ui/style.css (FR-001, FR-002, FR-011, FR-016, FR-020, FR-041)
+- [X] T016 [US1] Load and save failures on an error screen in src/ui/App.tsx with e2e coverage in e2e/learning.spec.ts (FR-045)
+- [X] T017 [US1] Image list with sizes for the owner in docs/design/image-list.md (FR-042)
 
 ### C1 GATE
 
@@ -75,7 +75,7 @@ journey. Tests are written alongside the code they prove, never deferred.
 
 **Independent Test**: Pet, hold, close, reopen and continue; check mood over simulated days
 
-- [ ] T019 [US2] Hold, continue and learn-now events with tests in src/domain/game.ts and src/domain/game.test.ts (FR-022)
+- [ ] T019 [US2] Learn-now event with tests in src/domain/game.ts and src/domain/game.test.ts (FR-022)
 - [ ] T020 [US2] Break controls and warning in src/ui/components/BreakControls.tsx, moods and reactions in src/ui/components/CatStage.tsx (FR-008, FR-021, FR-026)
 - [ ] T021 [US2] Playwright journey in e2e/break.spec.ts for scenarios 1 to 6 of US2
 
@@ -130,7 +130,7 @@ journey. Tests are written alongside the code they prove, never deferred.
 
 - [ ] T033 Single active tab in src/ui/tabGuard.ts, wired in src/ui/useGame.ts, with e2e coverage in e2e/reliability.spec.ts (FR-046)
 - [ ] T034 Reload, invalid data, read and write failure, recovery and offline-free checks in e2e/reliability.spec.ts, including no external requests (FR-043, FR-044, FR-045, SC-007)
-- [ ] T035 Keyboard-only journey and labelled dialogs in e2e/reliability.spec.ts (FR-047)
+- [ ] T035 Keyboard-only journey, labelled dialogs and the exact sketch controls in e2e/reliability.spec.ts (FR-047, SC-002)
 
 ### C2 GATE
 

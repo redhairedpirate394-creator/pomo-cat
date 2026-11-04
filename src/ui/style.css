@@ -1,107 +1,213 @@
+/* Pencil on paper, after the owner's sketch. */
 :root {
-  font-family: system-ui, sans-serif;
-  color: #182c3c;
-  background: #eef4f5;
-  line-height: 1.6;
-  color-scheme: light;
+  --paper: #ffffff;
+  --ink: #1a1a1a;
+  --ink-soft: #5c5c5c;
+  --accent: #c2410c;
+  --line: 2px solid var(--ink);
+  /* Slightly uneven corners read as hand-drawn boxes. */
+  --sketch-corners: 255px 15px 225px 15px / 15px 225px 15px 255px;
+  font-family: "Patrick Hand", "Segoe Print", "Comic Sans MS", cursive;
+  font-size: 18px;
+  line-height: 1.35;
+  color: var(--ink);
+  background: var(--paper);
 }
+
 * {
   box-sizing: border-box;
 }
+
 body {
   margin: 0;
+  background: var(--paper);
+  color: var(--ink);
 }
-main {
-  max-width: 48rem;
-  margin: auto;
-  padding: clamp(1rem, 4vw, 3rem);
+
+h2 {
+  margin: 0 0 0.5rem;
+  font-size: 1.5rem;
+  font-weight: 400;
 }
-h1 {
-  font-size: clamp(2rem, 6vw, 3rem);
-  line-height: 1.15;
+
+p {
+  margin: 0;
 }
-.eyebrow {
-  color: #315e68;
-  font-weight: 700;
-}
-section {
-  background: white;
-  border: 1px solid #b6c9ce;
-  border-radius: 1rem;
-  padding: clamp(1rem, 3vw, 2rem);
-}
-label {
-  font-weight: 600;
-}
-.entry {
-  display: flex;
-  gap: 0.5rem;
-  flex-wrap: wrap;
-  margin-top: 0.5rem;
-}
-input,
-button {
+
+button,
+input {
   font: inherit;
+  color: inherit;
 }
-input[type="text"],
-input:not([type]) {
-  flex: 1;
-  min-width: 0;
-  width: 100%;
-  padding: 0.6rem;
-  border: 1px solid #657e87;
-  border-radius: 0.4rem;
-}
+
 button {
+  min-height: 2.75rem;
+  padding: 0.4rem 1.1rem;
+  background: var(--paper);
+  border: var(--line);
+  border-radius: var(--sketch-corners);
   cursor: pointer;
-  background: #205d68;
-  color: white;
-  border: 1px solid #205d68;
-  border-radius: 0.4rem;
-  padding: 0.6rem 1rem;
-  min-height: 44px;
 }
-button:disabled {
-  opacity: 0.6;
-  cursor: not-allowed;
+
+button:hover {
+  background: #f1f1f1;
 }
-:focus-visible {
-  outline: 3px solid #a44800;
-  outline-offset: 3px;
+
+button:focus-visible,
+input:focus-visible {
+  outline: 3px solid var(--accent);
+  outline-offset: 2px;
 }
-ul {
-  padding: 0;
-  list-style: none;
+
+input {
+  display: block;
+  width: 100%;
+  margin-top: 0.25rem;
+  padding: 0.4rem 0.6rem;
+  background: var(--paper);
+  border: var(--line);
+  border-radius: var(--sketch-corners);
 }
-li {
-  display: flex;
+
+.game {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 16rem;
+  gap: 2rem;
+  max-width: 62rem;
+  min-height: 100vh;
+  margin: 0 auto;
+  padding: 2rem 1.5rem;
   align-items: center;
-  justify-content: space-between;
-  gap: 0.5rem;
-  border-top: 1px solid #d5e0e3;
-  padding: 0.8rem 0;
 }
-.item {
+
+.center {
   display: flex;
+  flex-direction: column;
   align-items: center;
-  gap: 0.6rem;
-  overflow-wrap: anywhere;
+  gap: 1.5rem;
   min-width: 0;
 }
-input[type="checkbox"] {
-  width: 1.4rem;
-  height: 1.4rem;
-  flex-shrink: 0;
-  accent-color: #205d68;
+
+.timer {
+  text-align: center;
 }
-.completed {
-  text-decoration: line-through;
+
+.timer-digits {
+  font-size: clamp(4rem, 14vw, 6rem);
+  line-height: 1;
 }
+
+.timer-digits .digit {
+  display: inline-block;
+  width: 0.5em;
+  text-align: center;
+}
+
+.timer-digits .colon {
+  display: inline-block;
+  width: 0.3em;
+  text-align: center;
+}
+
+.timer-caption {
+  min-height: 1.6em;
+  font-size: 1.25rem;
+}
+
+.stage {
+  width: 100%;
+  max-width: 30rem;
+}
+
+.stage img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.side {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  min-width: 0;
+}
+
+.coins {
+  font-size: 1.25rem;
+}
+
+.status {
+  min-height: 1.4em;
+}
+
+.note {
+  color: var(--ink-soft);
+}
+
 .error {
-  color: #8e2020;
-  border-left: 4px solid;
-  padding: 0.5rem;
+  margin-top: 0.5rem;
+  color: var(--accent);
 }
-footer {
-  margin-top: 1.5rem;
+
+.save-failed {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: 0.75rem;
+  border: var(--line);
+  border-radius: var(--sketch-corners);
+}
+
+.modal {
+  width: min(24rem, calc(100vw - 2rem));
+  padding: 1.5rem;
+  color: var(--ink);
+  background: var(--paper);
+  border: var(--line);
+  border-radius: var(--sketch-corners);
+}
+
+.modal::backdrop {
+  background: rgb(255 255 255 / 70%);
+}
+
+.modal form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.modal > p {
+  margin-bottom: 0.75rem;
+}
+
+.choices {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 0.75rem;
+}
+
+.choices button {
+  flex: 1 1 auto;
+}
+
+.failure {
+  max-width: 28rem;
+  margin: 4rem auto;
+  padding: 0 1.5rem;
+}
+
+.failure > p {
+  margin-bottom: 1rem;
+}
+
+@media (max-width: 44rem) {
+  .game {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 1.25rem;
+    min-height: 0;
+    padding: 1.25rem 1rem;
+    align-items: start;
+  }
 }

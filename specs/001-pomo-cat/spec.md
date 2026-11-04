@@ -237,7 +237,7 @@ Neben dem Timer kann ich eine einfache Liste aufklappen, damit ich weiß, was ic
 - **FR-045**: Können Daten nicht gelesen oder gespeichert werden, MUSS die App das verständlich zeigen, einen neuen Versuch anbieten und DARF den Fortschritt nicht still löschen.
 - **FR-046**: Ist die App in zwei Tabs offen, DARF nur einer den Timer führen, und Münzen DÜRFEN nicht doppelt entstehen.
 - **FR-047**: Alle Funktionen MÜSSEN per Tastatur bedienbar sein, und Fenster MÜSSEN für Screenreader verständlich beschriftet sein.
-- **FR-048**: Es MUSS einen eigenen Probelauf-Link geben, in dem die Zeit 60-mal schneller läuft und der den echten Fortschritt nicht berührt, damit sich der Ablauf in Testrunden ausprobieren lässt, ohne jeweils 25 Minuten zu warten.
+- **FR-048**: Es MUSS einen eigenen Probelauf-Link geben, in dem die Zeit 30-mal schneller läuft und der den echten Fortschritt nicht berührt, damit sich der Ablauf in Testrunden ausprobieren lässt, ohne jeweils 25 Minuten zu warten.
 
 ### Key Entities *(include if feature involves data)*
 

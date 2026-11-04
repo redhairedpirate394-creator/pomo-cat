@@ -1,194 +1,70 @@
-import { useEffect, useRef, useState } from "react";
-import {
-  createItem,
-  type DemoItem,
-  deleteItem,
-  TITLE_MAX,
-  toggleItem,
-} from "../domain/items";
-import type { DemoStore } from "../storage/port";
-import { errorMessage, useMessages } from "./i18n";
+import { useEffect } from "react";
+import { remainingMs } from "../domain/game";
+import type { GameStore } from "../storage/port";
+import type { Clock } from "./clock";
+import { FailureScreen } from "./components/FailureScreen";
+import { GameScreen } from "./components/GameScreen";
+import { formatClock } from "./format";
+import { catalogs, type Locale, MessagesProvider, useMessages } from "./i18n";
+import type { PlaySound } from "./sounds";
+import { useGame } from "./useGame";
 
-export function App({ store }: { store: DemoStore }) {
+function Loading() {
   const m = useMessages();
-  const [items, setItems] = useState<DemoItem[]>([]);
-  const [title, setTitle] = useState("");
-  const [ready, setReady] = useState(false);
-  const [busy, setBusy] = useState(false);
-  const [error, setError] = useState("");
-  const [notice, setNotice] = useState("");
-  const [confirmReset, setConfirmReset] = useState(false);
-  const locked = useRef(false);
-  const input = useRef<HTMLInputElement>(null);
+  return <p className="failure">{m.loading}</p>;
+}
 
-  async function load() {
-    if (locked.current) return;
-    locked.current = true;
-    setBusy(true);
-    setReady(false);
-    setError("");
-    setNotice("");
-    try {
-      setItems(await store.load());
-      setReady(true);
-      setNotice(m.loaded);
-    } catch (cause) {
-      setError(errorMessage(cause, m));
-    } finally {
-      locked.current = false;
-      setBusy(false);
-    }
-  }
+export function App({
+  store,
+  clock,
+  play,
+  browserLocale,
+  demo,
+}: {
+  store: GameStore;
+  clock: Clock;
+  play: PlaySound;
+  browserLocale: Locale;
+  demo: boolean;
+}) {
+  const { load, now, saveFailed, act, retrySave, retryLoad, startOver } =
+    useGame(store, clock, play);
+  const state = load.status === "ready" ? load.state : null;
+  const locale = state?.settings.language ?? browserLocale;
 
-  // The injected store is stable for the lifetime of the application.
-  // biome-ignore lint/correctness/useExhaustiveDependencies: initial load only
+  const title = catalogs[locale].documentTitle;
+  const left = state ? remainingMs(state.phase, now) : null;
+  const documentTitle =
+    left === null ? title : `${formatClock(left)} · ${title}`;
+
   useEffect(() => {
-    void load();
-  }, []);
+    document.documentElement.lang = locale;
+  }, [locale]);
 
-  async function save(next: () => DemoItem[], after?: () => void) {
-    if (locked.current || !ready) return;
-    locked.current = true;
-    setBusy(true);
-    setError("");
-    setNotice("");
-    try {
-      const updated = next();
-      await store.save(updated);
-      setItems(updated);
-      setNotice(m.saved);
-      after?.();
-    } catch (cause) {
-      setError(errorMessage(cause, m));
-    } finally {
-      locked.current = false;
-      setBusy(false);
-      input.current?.focus();
-    }
-  }
-
-  async function reset() {
-    if (locked.current) return;
-    locked.current = true;
-    setBusy(true);
-    setError("");
-    setNotice("");
-    try {
-      await store.reset();
-      setItems([]);
-      setTitle("");
-      setReady(true);
-      setConfirmReset(false);
-      setNotice(m.resetDone);
-    } catch (cause) {
-      setError(errorMessage(cause, m));
-    } finally {
-      locked.current = false;
-      setBusy(false);
-    }
-  }
+  useEffect(() => {
+    document.title = documentTitle;
+  }, [documentTitle]);
 
   return (
-    <main>
-      <header>
-        <p className="eyebrow">{m.eyebrow}</p>
-        <h1>{m.heading}</h1>
-        <p>{m.intro}</p>
-      </header>
-      <section aria-labelledby="demo-heading" aria-busy={busy}>
-        <h2 id="demo-heading">{m.listHeading}</h2>
-        <p>{m.listNote}</p>
-        <p role="status">{busy ? m.working : notice}</p>
-        {error && (
-          <p role="alert" className="error">
-            {error}
-          </p>
-        )}
-        {!ready && !busy && (
-          <button type="button" onClick={() => void load()}>
-            {m.retryLoading}
-          </button>
-        )}
-        <form
-          onSubmit={(event) => {
-            event.preventDefault();
-            void save(
-              () => createItem(items, title, crypto.randomUUID()),
-              () => setTitle(""),
-            );
-          }}
-        >
-          <label htmlFor="title">{m.newItemLabel}</label>
-          <div className="entry">
-            <input
-              ref={input}
-              id="title"
-              value={title}
-              maxLength={TITLE_MAX}
-              required
-              disabled={!ready || busy}
-              onChange={(event) => setTitle(event.target.value)}
-            />
-            <button disabled={!ready || busy || !title.trim()} type="submit">
-              {m.addItem}
-            </button>
-          </div>
-        </form>
-        {ready && items.length === 0 && <p>{m.empty}</p>}
-        {ready && (
-          <ul>
-            {items.map((item) => (
-              <li key={item.id}>
-                <label className="item">
-                  <input
-                    type="checkbox"
-                    checked={item.completed}
-                    disabled={busy}
-                    onChange={() => void save(() => toggleItem(items, item.id))}
-                  />
-                  <span className={item.completed ? "completed" : ""}>
-                    {item.title}
-                  </span>
-                </label>
-                <button
-                  type="button"
-                  disabled={busy}
-                  aria-label={m.deleteItemLabel(item.title)}
-                  onClick={() => void save(() => deleteItem(items, item.id))}
-                >
-                  {m.deleteItem}
-                </button>
-              </li>
-            ))}
-          </ul>
-        )}
-      </section>
-      <footer>
-        {confirmReset ? (
-          <div>
-            <p>{m.resetPrompt}</p>
-            <button type="button" disabled={busy} onClick={() => void reset()}>
-              {m.confirmReset}
-            </button>{" "}
-            <button
-              type="button"
-              disabled={busy}
-              onClick={() => setConfirmReset(false)}
-            >
-              {m.cancel}
-            </button>
-          </div>
-        ) : (
-          <button
-            type="button"
-            disabled={busy}
-            onClick={() => setConfirmReset(true)}
-          >
-            {m.resetData}
-          </button>
-        )}
-        <p>{m.footerNote}</p>
-      </footer>
-    </main>
+    <MessagesProvider locale={locale}>
+      {load.status === "loading" && <Loading />}
+      {load.status === "failed" && (
+        <FailureScreen
+          code={load.code}
+          onRetry={() => void retryLoad()}
+          onStartOver={() => void startOver()}
+        />
+      )}
+      {state && (
+        <GameScreen
+          state={state}
+          now={now}
+          act={act}
+          demo={demo}
+          saveFailed={saveFailed}
+          onRetrySave={retrySave}
+        />
+      )}
+    </MessagesProvider>
   );
 }

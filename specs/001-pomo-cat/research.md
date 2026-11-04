@@ -39,9 +39,9 @@
 
 ## R5 Trying the loop without waiting
 
-- Decision: a demo link, `?probelauf`, runs the clock 60 times faster and uses a
+- Decision: a demo link, `?probelauf`, runs the clock 30 times faster and uses a
   separate storage key.
-- Rationale: the owner cannot judge the loop if each try takes half an hour, and
+- Rationale: the owner cannot judge the loop if each try takes half an hour, and at 30 times a unit takes 50 s and a short break 10 s, enough to feed; 60 times would leave 5 s. Also,
   demo progress must never touch real progress (FR-048).
 - Alternatives: seconds in the settings (contradicts the owner's 5-minute steps).
 
