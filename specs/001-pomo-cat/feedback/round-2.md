@@ -6,7 +6,7 @@ reading, for triage. Anything the owner did not say is marked **not stated**.
 
 These items arrived while the review ran, before the round report was posted.
 
-**Decision**: not stated
+**Decision**: approve with follow-ups
 **Publish choice**: as recorded
 **Tried**: the trial link on the local address; steps not stated
 
@@ -21,6 +21,9 @@ Type: bug (within the spec) | change (other than specified) | extension (new sco
 | r10 | next round | change | Q41 | SHOP should look like To-Dos and Start |
 | r11 | next round | change | FR-041 | Letters on one line, heights may change |
 | r12 | next round | change | FR-029 | Room items in sizes that look right together |
+| r13 | before publish | change | FR-029 | The mouse looks odd beside the sleeping cat |
+| r14 | before publish | bug | FR-040 | The hind feet must be filled, not see-through |
+| r15 | before publish | change | Q41 | Gear without its drawn frame, in a square box like To-Dos and Start |
 
 ## r07, r08, r09, r10
 
@@ -45,6 +48,16 @@ Room items get sizes that look right together.
 All of r07 to r12 are built. r09: confirmed by reproduction on the development server
 before the fix, and the settings window failed the same way.
 
+## r13, r14, r15
+
+> 1: Ja
+> 2: die maus ist komisch bei der schlafenden Katze. Die hinteren Füße der Katze sollen ausgemalt und nicht transparent sein. Mache das Zahnrad symbol OHNE rand auch in einen Kasten wie ToDO/ Start nut Quadratisch
+
+Q1 approves the round and the publish. Under 2 the owner wrote these wishes; they do
+not say whether the four details of Q2 fit, so Q2 stays open. r14 came from the
+cut-out rule of r07, which also removed small enclosed areas that belong to the cat.
+r15 supersedes the gear part of Q41.
+
 ## Not stated
 
-- Q1 and Q2 of the round 2 report.
+- Q2 of the round 2 report.

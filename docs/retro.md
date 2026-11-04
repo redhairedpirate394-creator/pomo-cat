@@ -35,3 +35,13 @@ Rules the owner wants for this product only go into the constitution's
 - The owner kept trying the app and answering while the review ran. The handoff
   steps assume the report comes first; a line on feedback before the report would
   remove the doubt about what such an answer approves.
+
+## Pomo Cat, C2 (2026-11-04)
+
+- The e2e suite tests a production build while owners review on the dev server, so a
+  bug that exists only under StrictMode reached the owner. A dev smoke test belongs
+  in the template.
+- Owners often send wishes during the review. The handoff has no step for what a
+  review means when the code changes right after it.
+- A mid-turn image may not reach the disk, so an owner has to send it twice.
+- Round numbers in report questions (Q1, Q2) clash with interview numbers.

@@ -144,7 +144,7 @@ journey. Tests are written alongside the code they prove, never deferred.
 
 ### C2 GATE
 
-- [ ] T036 [GATE] C2 checkpoint (owner-facing: "Solid and usable"): same procedure as T018 for US1-US6; **STOP** for an explicit owner decision.
+- [X] T036 [GATE] C2 checkpoint (owner-facing: "Solid and usable"): same procedure as T018 for US1-US6; **STOP** for an explicit owner decision.
 
 ---
 
