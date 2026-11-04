@@ -24,7 +24,7 @@ commands, outcomes, review findings and screenshots go to
 ## Counters
 
 - Rounds held: 1
-- Last feedback id: r02 (next is r03)
+- Last feedback id: r05 (next is r06)
 
 ## Machine
 
