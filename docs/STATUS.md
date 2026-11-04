@@ -16,15 +16,15 @@ commands, outcomes, review findings and screenshots go to
 
 ## Where we are
 
-- Active feature: 001-pomo-cat (no spec yet; interview running)
-- Checkpoint: C1 in progress (delivery mode Full).
-- Pending owner decisions: none; interview closed 2026-11-04 (record in
-  `docs/journal/001-pomo-cat.md`).
+- Active feature: 001-pomo-cat (`specs/001-pomo-cat/`)
+- Checkpoint: C1 gate (T018) pending, delivery mode Full. Round 1 reported.
+- Pending owner decisions: round 1 Q1 (approve and publish), Q2 (team-chosen
+  details), whether the meow was audible; design wishes announced by the owner.
 
 ## Counters
 
-- Rounds held: 0
-- Last feedback id: none (next is r01)
+- Rounds held: 1
+- Last feedback id: r02 (next is r03)
 
 ## Machine
 
@@ -47,4 +47,7 @@ commands, outcomes, review findings and screenshots go to
 
 ## Exact next action
 
-Run `/speckit-implement` to the C1 GATE (T018 in specs/001-pomo-cat/tasks.md).
+Wait for the owner (`specs/001-pomo-cat/review/round-1.md`, open items in
+`specs/001-pomo-cat/feedback/round-1.md`). Do not start US2. On feedback: handoff
+step 8. Review URL: `pnpm dev --host 127.0.0.1 --port 5173 --strictPort`, then
+`/?probelauf`; it is local to this machine and must be restarted in a new session.
