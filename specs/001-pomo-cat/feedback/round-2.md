@@ -60,4 +60,4 @@ r15 supersedes the gear part of Q41.
 
 ## Not stated
 
-- Q2 of the round 2 report.
+- None left. Q2, answered 2026-11-04, the owner's words unchanged: "2: passt alles".

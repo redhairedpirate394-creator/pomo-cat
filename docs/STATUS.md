@@ -18,7 +18,7 @@ commands, outcomes, review findings and screenshots go to
 
 - Active feature: 001-pomo-cat (`specs/001-pomo-cat/`)
 - Checkpoint: C2 approved 2026-11-04 and published; C3 next, delivery mode Full.
-- Pending owner decisions: round 2 Q2 (the four team-chosen details).
+- Pending owner decisions: Q43, whether acceptance waits for the remaining drawings.
 
 ## Counters
 
@@ -46,6 +46,6 @@ commands, outcomes, review findings and screenshots go to
 
 ## Exact next action
 
-C2 is live (PR #2 merged). Ask Q2 of round 2 again, then T037 to T042 on branch
+C2 is live (PR #2 merged). Do T037 to T042 on branch
 `001-pomo-cat-c3`, then the C3 GATE (T043). T040 waits for the owner's remaining
 drawings.
