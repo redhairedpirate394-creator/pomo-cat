@@ -190,3 +190,37 @@ it stands as the shared understanding. Interview frontier empty.
 - `/speckit-tasks`: 43 tasks; `/speckit-analyze`: 1 gap found and fixed (FR-014
   had no task, added to T013), 1 contract detail clarified (the warning's stop
   button exists only after feeding). 0 critical issues, coverage 100 %.
+
+### C1 implementation and review (2026-11-04)
+
+- T001-T017 done. First `pnpm verify`: exit 0 (77 unit tests, 32 browser scenarios).
+- Reviewer (fresh context): walked the steps in real time at 1280x800 and Pixel 7,
+  20 screenshots in `specs/001-pomo-cat/review/round-1/`. Mutation checks on a
+  scratch copy showed the worker, pagehide/visibility save and heartbeat were each
+  unproven by tests.
+- Fixed: report step 1 wording (B1); Escape removing the name and feed windows
+  (S1); short trial windows stated in the report (S2); demo epoch moved behind the
+  storage boundary and the contract updated (S3); tests for ticker, demo clock,
+  pagehide, visibility, heartbeat, failed reset, read retry (S4); STATUS, journal
+  and contract truth (S5); report template lines and limits (S6). Also from the
+  notes: audio unlock on the first gesture (note 1), held screen explains itself
+  (3), stale coin note (4), spec edge case wording (7), optional icons in the image
+  list (9), coins appear with the meal (12), layout test covers more states (13).
+- The new failed-reset test found one more bug: the confirmation stayed open over
+  the error. Fixed in `FailureScreen.tsx`.
+- Final `pnpm verify`: exit 0 (84 unit tests, 52 browser scenarios, 26 on each
+  project). Walk-through script rerun on the fixed app, exit 0, screenshots
+  refreshed, no external requests.
+- Dev server up at http://127.0.0.1:5173/?probelauf, HTTP 200, loopback only.
+
+Not verified: an audible meow (headless browsers do not enforce autoplay rules, and
+nobody on the team can listen), hidden-tab timing in a real browser (T039), iOS.
+Sound unlock code has no automated proof either.
+
+Carried to later tasks: focus after feeding and accidental feeding by key press
+(T037); back/forward cache restore needs a `pageshow` reload of the state and a test
+(T034); plurals through `Intl` (T038); four ticks per second from two sources is
+harmless but wasteful; trial mood decay also runs 30 times faster.
+
+Context at this handoff: large, roughly 200k tokens by estimate; the exact figure
+is not available to the lead.
