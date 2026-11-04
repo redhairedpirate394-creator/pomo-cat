@@ -7,7 +7,7 @@ reading, for triage. Anything the owner did not say is marked **not stated**.
 These items arrived before the round 3 report was posted, while the 60-minute
 measurement ran.
 
-**Decision**: not stated for acceptance; order of the wishes decided, see r24
+**Decision**: changes requested (r28); acceptance not stated, see Not stated
 **Publish choice**: as recorded
 **Tried**: not stated
 
@@ -27,6 +27,7 @@ Type: bug (within the spec) | change (other than specified) | extension (new sco
 | r25 | before publish | decision | r21, FR-027, SC-006 | Leave the furniture out for now, remember it for later |
 | r26 | before publish | change | Q42, FR-027, T040 | Drawing of the third snack delivered |
 | r27 | before publish | decision | r25, r26 | Plant, rug and scratching post leave the shop for now; third snack is Knusperstangen |
+| r28 | before publish | change | r19, FR-050, Q2 of round 3 | All frame corners at exactly 90 degrees; everything else fits |
 
 ## r17, r18 Futter
 
@@ -122,7 +123,16 @@ Takes both recommendations asked in chat: plant, rug and scratching post leave t
 shop until their drawings and the real room exist, yarn, mouse and pillow stay; the
 third snack is called Knusperstangen, in English Crunchy sticks.
 
+## r28 Antwort auf den Bericht
+
+> Kannst du versuchen die Ecken der Rahmen alle im 90° winkel zu machen ddas sieht grade noch komisch aus ansonsten passt alles
+
+Answers Q2 of the report: the frames do not stay as they are, and this replaces the
+two rounded corners of r19. The odd look has two causes: the drawn frame is slightly
+skewed, so its stretched sides miss its corners, and a small rounding is still set.
+"ansonsten passt alles" is not read as Q1: the owner has not seen the corners yet, so
+acceptance and the publish are asked again once they are built.
+
 ## Not stated
 
-- Whether C3 is accepted.
-- Whether the frame's corners should stay as drawn or two of them be rounded.
+- Whether C3 is accepted (Q1 of round 3).
