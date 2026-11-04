@@ -124,3 +124,32 @@ retention, cost and operations rules, and the owner's yes. No provider chosen.
   calendar; no ads or analytics; EU servers where possible, checked before
   choosing a provider; delete-account button removes everything)
 - Q20 Kosten: "ja" (accepts: stays free, no cost without the owner's explicit yes)
+
+### Interview round 3 (owner's words, unchanged)
+
+- Q21 Lernserie: "ja" (accepts: small "X days in a row" in the calendar; a day
+  counts with at least 5 learned minutes, cancelled units included; breaks
+  silently; no reminders; mood does not depend on it)
+- Q22 Anhalten: "ja" (accepts: "pause" button in the cat room stops the
+  countdown, no time limit, "continue" starts the next unit, survives closing
+  the app; "learn now" ends a break early)
+- Q23 Anzahl: "ja" (accepts: 1 to 8 units, default 4; long break after the last
+  unit, then a click; changes apply from the next start)
+- Q24 Schließen: "ja" (accepts: tab switch and phone lock do not cancel; closing
+  cancels with no reward, time so far goes to the calendar; back within 2
+  minutes continues; a phone ending the page for longer counts as cancelled)
+- Q25 Beim Lernen: "ja" (accepts: only timer, sleeping cat, cancel button;
+  settings part is superseded by the sketch in Q26, see round 4)
+- Q26 Aufbau: "siehe PNG" (sketch saved as
+  `docs/design/owner-sketch-learning-screen.jpg`: timer "00:25" and "Einheit X"
+  at the top centre, sleeping cat with "zzz" on a rug below, on the right a
+  "To-Dos:" panel with a "Stop" button and a gear button under it, plain black
+  lines on white. The to-do list is new scope.)
+- Q27 Füttern: "Füttern passiert automatisch nach der Einheit durch ein Fenster
+  dass sich öffnet, da kann man wählen was gefüttert werden soll. Wird nicht
+  gefüttert bricht die EInheit ab und läuft nicht weiter, um du versichern dass
+  man nicht AFK geld schäffelt. Das geld für die Vorherige einheit gibts
+  trotzdem. Gekaufte Snacks werden direkt gefüttert."
+- Q28 Töne: "ja" (accepts: free placeholder sound, own meow possible later)
+- Q29 Freunde: "ja" (accepts: one single-use personal link per person, separate
+  cats, nobody sees anybody else, invitations unlocked after the legal check)
