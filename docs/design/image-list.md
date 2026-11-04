@@ -4,16 +4,16 @@ Für alle Bilder gilt: PNG mit durchsichtigem Hintergrund. Die Bilder müssen ni
 pixelgenau sein, das Seitenverhältnis sollte aber stimmen. Bis ein Bild fertig ist,
 nutzt die App einen Platzhalter.
 
-## Die Katze (je 600 × 400 Pixel, Katze unten mittig, mit Decke)
+## Die Katze (ungefähr 900 Pixel an der längsten Seite, liegend oder sitzend)
 
 | Datei | Zeigt | Gebraucht ab |
 | --- | --- | --- |
 | `cat-sleeping.png` | schläft, während du lernst | jetzt |
-| `cat-happy.png` | fröhlich | jetzt |
+| `cat-happy.png` | fröhlich (Herzaugen) | jetzt |
 | `cat-normal.png` | sitzt ruhig da | jetzt |
 | `cat-sad.png` | traurig | jetzt |
 | `cat-eating.png` | frisst aus dem Napf | jetzt |
-| `cat-petted.png` | wird gestreichelt | nächste Runde |
+| `cat-petted.png` | wird gestreichelt, vorerst die Herzaugen | wenn du möchtest |
 | `cat-snack.png` | freut sich besonders über einen Snack | nächste Runde |
 | `cat-play-yarn.png` | spielt mit dem Wollknäuel | nächste Runde |
 | `cat-play-mouse.png` | spielt mit der Spielmaus | nächste Runde |

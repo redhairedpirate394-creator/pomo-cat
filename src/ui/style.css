@@ -1,14 +1,21 @@
-/* Pencil on paper, after the owner's sketch. */
+/* Pencil on paper, after the owner's sketches; the lettering is the owner's own. */
+@font-face {
+  font-family: "Pomo Hand";
+  src: url("./assets/pomo-hand.otf") format("opentype");
+  font-display: swap;
+}
+
 :root {
   --paper: #ffffff;
   --ink: #1a1a1a;
   --ink-soft: #5c5c5c;
   --accent: #c2410c;
   --line: 2px solid var(--ink);
-  /* Slightly uneven corners read as hand-drawn boxes. */
-  --sketch-corners: 255px 15px 225px 15px / 15px 225px 15px 255px;
-  font-family: "Patrick Hand", "Segoe Print", "Comic Sans MS", cursive;
-  font-size: 18px;
+  /* Slightly uneven corners, like the boxes the owner draws. */
+  --sketch-corners: 3px 6px 2px 5px;
+  /* Characters the owner did not draw, such as an é in a name, fall through. */
+  font-family: "Pomo Hand", "Patrick Hand", "Segoe Print", cursive;
+  font-size: 21px;
   line-height: 1.35;
   color: var(--ink);
   background: var(--paper);
@@ -99,13 +106,14 @@ input {
 
 .timer-digits .digit {
   display: inline-block;
-  width: 0.5em;
+  width: 0.56em;
   text-align: center;
 }
 
 .timer-digits .colon {
   display: inline-block;
   width: 0.3em;
+  transform: translateY(-0.12em);
   text-align: center;
 }
 
@@ -117,12 +125,16 @@ input {
 .stage {
   width: 100%;
   max-width: 30rem;
+  height: clamp(13rem, 44vh, 22rem);
 }
 
+/* Lying and sitting cats have different shapes; they stand on the same floor. */
 .stage img {
   display: block;
   width: 100%;
-  height: auto;
+  height: 100%;
+  object-fit: contain;
+  object-position: center bottom;
 }
 
 .side {
@@ -133,7 +145,15 @@ input {
 }
 
 .coins {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
   font-size: 1.25rem;
+}
+
+.coins img {
+  width: 2.5rem;
+  height: auto;
 }
 
 .status {
