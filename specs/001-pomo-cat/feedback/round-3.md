@@ -26,6 +26,7 @@ Type: bug (within the spec) | change (other than specified) | extension (new sco
 | r24 | before publish | decision | r17 to r23 | Team's order accepted; one volume slider for cat sounds, one for alerts; new frame drawing sent |
 | r25 | before publish | decision | r21, FR-027, SC-006 | Leave the furniture out for now, remember it for later |
 | r26 | before publish | change | Q42, FR-027, T040 | Drawing of the third snack delivered |
+| r27 | before publish | decision | r25, r26 | Plant, rug and scratching post leave the shop for now; third snack is Knusperstangen |
 
 ## r17, r18 Futter
 
@@ -113,9 +114,15 @@ asks which. Removing the scratching post would change SC-006. r26: the drawing, 
 as `docs/design/owner/snack-third.jpg`, shows three brown sticks. The third snack is
 called Knusperkissen so far, so the name may no longer fit.
 
+## r27 Antwort
+
+> Ja
+
+Takes both recommendations asked in chat: plant, rug and scratching post leave the
+shop until their drawings and the real room exist, yarn, mouse and pillow stay; the
+third snack is called Knusperstangen, in English Crunchy sticks.
+
 ## Not stated
 
 - Whether C3 is accepted.
 - Whether the frame's corners should stay as drawn or two of them be rounded.
-- Which furniture r25 means.
-- The name of the third snack.
