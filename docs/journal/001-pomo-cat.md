@@ -92,3 +92,35 @@ retention, cost and operations rules, and the owner's yes. No provider chosen.
   (10,000 vs 50,000); no card required; a product stops at its quota instead of
   billing. Verify on official pages before choosing. EU data location for auth
   not confirmed for either provider.
+
+### Interview round 2 (owner's words, unchanged)
+
+- Q10 Kreislauf: "ja" (accepts: a finished unit makes the cat hungry; the owner
+  picks a food, the cat gives 1 coin per 5 learned minutes; a happy cat gives
+  50 % more, rounded up. Replaces the extra portion of Q2.)
+- Q11 Shop: "Snacks je 3 Münzen, sonst passt" (accepts: free foods dry food, wet
+  food, tuna; snacks salmon stick, crunchy pillow, catnip, one-time, special
+  reaction, mood one step up; room: yarn ball, toy mouse, pillow 5 each, plant
+  and rug 10 each, scratching post 20, permanent)
+- Q12 Kalender: "Ja, Lernserie kann es geben, aber ohne Druck" (accepts: month
+  view, learned time per day including cancelled units, no breaks, no
+  leaderboards; a streak is allowed, without pressure)
+- Q13 Automatik: "Ja, man kann sich entscheiden ob man Statt der 5 min Pause
+  pausieren möchte um später zurück zu kehren. Man soll auch die Anzahl der
+  einheiten einstellen können, falls man weniger Zeit hat" (accepts: automatic
+  inside a block, click after the long break, stop button during the warning,
+  screen-only warning with sound off)
+- Q14 Zeiten: "ja" (accepts: 5-minute steps, learn 5-60, short break 5-30, long
+  break 5-60, defaults 25/5/15; "always after four units" is superseded by Q13)
+- Q15 App zu: "wenn die App geschlossen wird, bricht es ab" (rejects: time keeps
+  running and the unit counts)
+- Q16 Konto wann: "ja" (accepts: timer, cat, shop and calendar first without an
+  account, the account as the second step, progress moves into the account)
+- Q17 Wer: "ja, andere nur über link, freunde" (accepts: first only the owner;
+  others only through a link, friends)
+- Q18 Anmeldung: "ja, google geht auch" (accepts email and password with reset;
+  Google is also fine)
+- Q19 Daten: "Ja" (accepts: email, cat name, settings, coins, purchases, mood,
+  calendar; no ads or analytics; EU servers where possible, checked before
+  choosing a provider; delete-account button removes everything)
+- Q20 Kosten: "ja" (accepts: stays free, no cost without the owner's explicit yes)
