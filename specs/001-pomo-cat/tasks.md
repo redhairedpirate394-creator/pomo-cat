@@ -75,9 +75,9 @@ journey. Tests are written alongside the code they prove, never deferred.
 
 ### Owner's art (feedback r03 to r05, IDs added after C1)
 
-- [ ] T044 Build the owner's cat drawings from docs/design/owner/ into src/ui/assets/ with transparent paper, make src/ui/components/CatStage.tsx fit lying and sitting cats, heart eyes for happy and petted (FR-026, FR-040, Q38, Q40)
-- [ ] T045 Cut coin, gear, SHOP, yarn, mouse and pillow from docs/design/owner/items-sheet.jpg into src/ui/assets/ behind src/ui/assets/manifest.ts, drawn box for the other buttons (FR-040, Q39, Q41)
-- [ ] T046 Owner's lettering from docs/design/owner/alphabet-sheet.jpg: timer digits for certain, whole text only if legible at button size, otherwise keep the current font for small text and say so (FR-041, Q41)
+- [X] T044 Build the owner's cat drawings from docs/design/owner/ into src/ui/assets/ with transparent paper, make src/ui/components/CatStage.tsx fit lying and sitting cats, heart eyes for happy and petted (FR-026, FR-040, Q38, Q40)
+- [X] T045 Cut coin, gear, SHOP, yarn, mouse and pillow from docs/design/owner/items-sheet.jpg into src/ui/assets/ behind src/ui/assets/manifest.ts, drawn box for the other buttons (FR-040, Q39, Q41)
+- [X] T046 Owner's lettering from docs/design/owner/alphabet-sheet.jpg: timer digits for certain, whole text only if legible at button size, otherwise keep the current font for small text and say so (FR-041, Q41)
 
 ### Story work
 

@@ -10,6 +10,7 @@ import {
   start,
   stop,
 } from "../../domain/game";
+import { icons } from "../assets/manifest";
 import { formatClock } from "../format";
 import { useMessages } from "../i18n";
 import type { ErrorCode } from "../i18n/messages";
@@ -115,7 +116,12 @@ export function GameScreen({
       </section>
 
       <aside className="side">
-        {!learning && <p className="coins">{m.coins(shownCoins)}</p>}
+        {!learning && (
+          <p className="coins">
+            <img src={icons.coin} alt="" />
+            {m.coins(shownCoins)}
+          </p>
+        )}
         <p className="status" role="status">
           {warning ? m.warning : phase.kind === "held" ? m.heldNote : note}
         </p>

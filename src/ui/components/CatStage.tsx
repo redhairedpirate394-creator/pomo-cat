@@ -14,7 +14,7 @@ export function CatStage({ name, pose }: { name: string; pose: CatPose }) {
         : m.catMood(name, pose);
   return (
     <div className="stage">
-      <img src={catImages[pose]} alt={alt} width={600} height={400} />
+      <img src={catImages[pose]} alt={alt} />
     </div>
   );
 }
