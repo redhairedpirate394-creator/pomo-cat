@@ -10,6 +10,7 @@ import type { Clock } from "./clock";
 import { errorCode } from "./i18n";
 import type { ErrorCode } from "./i18n/messages";
 import type { PlaySound } from "./sounds";
+import type { TabGuard } from "./tabGuard";
 import { startTicker } from "./ticker";
 
 const TICK_MS = 250;
@@ -17,10 +18,16 @@ const HEARTBEAT_MS = 15_000;
 
 export type Load =
   | { readonly status: "loading" }
+  | { readonly status: "waiting" }
   | { readonly status: "failed"; readonly code: ErrorCode }
   | { readonly status: "ready"; readonly state: GameState };
 
-export function useGame(store: GameStore, clock: Clock, play: PlaySound) {
+export function useGame(
+  store: GameStore,
+  clock: Clock,
+  play: PlaySound,
+  guard: TabGuard,
+) {
   const [load, setLoad] = useState<Load>({ status: "loading" });
   const [now, setNow] = useState(() => clock.now());
   const [saveFailed, setSaveFailed] = useState(false);
@@ -73,9 +80,14 @@ export function useGame(store: GameStore, clock: Clock, play: PlaySound) {
     }
   }, [store, clock, commit]);
 
-  useEffect(() => {
-    void open();
-  }, [open]);
+  useEffect(
+    () =>
+      guard(
+        () => void open(),
+        () => setLoad({ status: "waiting" }),
+      ),
+    [guard, open],
+  );
 
   const isReady = load.status === "ready";
 

@@ -51,7 +51,7 @@ test("changes during a run wait for the next start", async ({ page }) => {
   await close(page);
   await expect(page.getByText("Einheit 1 von 4")).toBeVisible();
   await page.clock.fastForward("24:00");
-  await expect(page.getByRole("timer")).toContainText("00:");
+  await expect(page.getByRole("timer")).toHaveText("01:00");
   expect((await savedGame(page)).phase.plan.learnMinutes).toBe(25);
 });
 

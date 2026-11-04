@@ -1,11 +1,16 @@
 // The only place that names art and sound files. To use a final drawing, replace
 // the file under the same name; docs/design/image-list.md lists them all.
+import type { SnackId } from "../../domain/catalog";
 import buttonShop from "./button-shop.png";
 import catEating from "./cat-eating.png";
 import catHappy from "./cat-happy.png";
 import catNormal from "./cat-normal.png";
 import catSad from "./cat-sad.png";
 import catSleeping from "./cat-sleeping.png";
+import foodBowl from "./food-bowl.png";
+import foodDry from "./food-dry.png";
+import foodTuna from "./food-tuna.png";
+import foodWet from "./food-wet.png";
 import iconCoin from "./icon-coin.png";
 import iconGear from "./icon-gear.png";
 import itemMouse from "./item-mouse.png";
@@ -15,6 +20,8 @@ import itemRug from "./item-rug.png";
 import itemPost from "./item-scratching-post.png";
 import itemYarn from "./item-yarn.png";
 import meow from "./meow.wav";
+import snackCatnip from "./snack-catnip.png";
+import snackSalmon from "./snack-salmon-stick.png";
 
 export const catImages = {
   sleeping: catSleeping,
@@ -40,5 +47,18 @@ export const roomImages = {
   rug: itemRug,
   "scratching-post": itemPost,
 } as const;
+
+export const foodImages = {
+  bowl: foodBowl,
+  dry: foodDry,
+  wet: foodWet,
+  tuna: foodTuna,
+} as const;
+
+/** The crunchy pillow has no drawing yet and shows as text only. */
+export const snackImages: Partial<Record<SnackId, string>> = {
+  "salmon-stick": snackSalmon,
+  catnip: snackCatnip,
+};
 
 export const sounds = { meow } as const;

@@ -5,7 +5,7 @@ import {
   SNACKS,
   type SnackId,
 } from "../../domain/catalog";
-import { icons } from "../assets/manifest";
+import { icons, snackImages } from "../assets/manifest";
 import { useMessages } from "../i18n";
 import { Panel } from "./Panel";
 
@@ -32,6 +32,9 @@ export function ShopPanel({
               disabled={coins < SNACK_PRICE}
               onClick={() => onBuySnack(snack)}
             >
+              {snackImages[snack] && (
+                <img className="snack" src={snackImages[snack]} alt="" />
+              )}
               {m.buy(m.snacks[snack], m.coins(SNACK_PRICE))}
             </button>
           </li>

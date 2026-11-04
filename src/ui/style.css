@@ -511,3 +511,59 @@ select {
   max-height: calc(100vh - 2rem);
   overflow-y: auto;
 }
+
+.foods {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.5rem;
+  margin-bottom: 0.75rem;
+}
+
+.foods button {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0.4rem 0.2rem;
+  overflow-wrap: anywhere;
+  font-size: 0.9rem;
+}
+
+/* The chosen food lies on the bowl, as the owner drew it to be layered. */
+.bowl {
+  position: relative;
+  display: block;
+  width: 100%;
+  max-width: 5rem;
+}
+
+.bowl img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.bowl .on-bowl {
+  position: absolute;
+  top: 2%;
+  left: 18%;
+  width: 64%;
+}
+
+.modal:focus {
+  outline: none;
+}
+
+.shop-list button {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  text-align: left;
+}
+
+.shop-list .snack {
+  flex: 0 0 auto;
+  width: 2rem;
+  height: 2rem;
+  object-fit: contain;
+}

@@ -35,6 +35,7 @@ export interface Messages {
   readonly minutes: (count: number) => string;
   readonly close: string;
   readonly loading: string;
+  readonly otherTab: string;
   readonly nameTitle: string;
   readonly nameLabel: string;
   readonly nameSubmit: string;

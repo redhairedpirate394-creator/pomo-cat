@@ -79,7 +79,7 @@ journey. Tests are written alongside the code they prove, never deferred.
 - [X] T045 Cut coin, gear, SHOP, yarn, mouse and pillow from docs/design/owner/items-sheet.jpg into src/ui/assets/ behind src/ui/assets/manifest.ts, drawn box for the other buttons (FR-040, Q39, Q41)
 - [X] T046 Owner's lettering from docs/design/owner/alphabet-sheet.jpg: timer digits for certain, whole text only if legible at button size, otherwise keep the current font for small text and say so (FR-041, Q41)
 
-- [ ] T047 Cut bowl, wet food, dry food, tuna, salmon stick and catnip from docs/design/owner/food-sheet.jpg into src/ui/assets/; the feed window shows the bowl with each food layered on top, the shop shows the snacks (FR-016, FR-027, FR-040, r06)
+- [X] T047 Cut bowl, wet food, dry food, tuna, salmon stick and catnip from docs/design/owner/food-sheet.jpg into src/ui/assets/; the feed window shows the bowl with each food layered on top, the shop shows the snacks (FR-016, FR-027, FR-040, r06)
 
 ### Story work
 
@@ -138,9 +138,9 @@ journey. Tests are written alongside the code they prove, never deferred.
 
 ### Reliability for C2
 
-- [ ] T033 Single active tab in src/ui/tabGuard.ts, wired in src/ui/useGame.ts, with e2e coverage in e2e/reliability.spec.ts (FR-046)
-- [ ] T034 Reload, invalid data, read and write failure, recovery and offline-free checks in e2e/reliability.spec.ts, including no external requests (FR-043, FR-044, FR-045, SC-007)
-- [ ] T035 Keyboard-only journey, labelled dialogs and the exact sketch controls in e2e/reliability.spec.ts (FR-047, SC-002)
+- [X] T033 Single active tab in src/ui/tabGuard.ts, wired in src/ui/useGame.ts, with e2e coverage in e2e/reliability.spec.ts (FR-046)
+- [X] T034 Reload, invalid data, read and write failure, recovery and offline-free checks in e2e/reliability.spec.ts, including no external requests (FR-043, FR-044, FR-045, SC-007)
+- [X] T035 Keyboard-only journey, labelled dialogs and the exact sketch controls in e2e/reliability.spec.ts (FR-047, SC-002)
 
 ### C2 GATE
 
