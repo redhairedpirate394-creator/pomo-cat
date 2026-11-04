@@ -163,6 +163,7 @@ journey. Tests are written alongside the code they prove, never deferred.
 - [X] T046 Owner's frame drawing as every frame in src/ui/style.css, sizes unchanged; docs/design/image-list.md names it (r19, FR-050, SC-010)
 - [X] T047 Question mark and gear together top left, always available, help window in both catalogs, closed by the feed window; tests (r20, r23, FR-011, FR-036, FR-049, SC-002)
 - [X] T048 Third snack drawing in the shop, named Knusperstangen; plant, rug and scratching post leave the shop, owned ones stay (r25 to r27, FR-027, FR-030, SC-006)
+- [X] T049 All frame corners at exactly 90 degrees, built from the owner's drawn lines (r28, FR-050)
 - [ ] T043 [GATE] C3 checkpoint (owner-facing: "Ready to accept"): same procedure as T018; request explicit acceptance. **STOP**; never mark accepted without a recorded owner decision. After acceptance: write the retro entry (docs/retro.md) and offer to send it upstream.
 
 ---
