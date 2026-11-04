@@ -5,7 +5,13 @@ import type { Clock } from "./clock";
 import { FailureScreen } from "./components/FailureScreen";
 import { GameScreen } from "./components/GameScreen";
 import { formatClock } from "./format";
-import { catalogs, type Locale, MessagesProvider, useMessages } from "./i18n";
+import {
+  catalogs,
+  GLYPHS,
+  type Locale,
+  MessagesProvider,
+  useMessages,
+} from "./i18n";
 import type { PlaySound } from "./sounds";
 import type { TabGuard } from "./tabGuard";
 import { useGame } from "./useGame";
@@ -47,7 +53,9 @@ export function App({
   const title = catalogs[locale].documentTitle;
   const left = state ? remainingMs(state.phase, now) : null;
   const documentTitle =
-    left === null ? title : `${formatClock(left)} · ${title}`;
+    left === null
+      ? title
+      : `${formatClock(left)}${GLYPHS.titleSeparator}${title}`;
 
   useEffect(() => {
     document.documentElement.lang = locale;

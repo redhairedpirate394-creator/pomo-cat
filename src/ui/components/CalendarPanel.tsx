@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { monthDays, type StudyLog, streak } from "../../domain/studyLog";
-import { useMessages } from "../i18n";
+import { GLYPHS, useMessages } from "../i18n";
 import { Panel } from "./Panel";
 
 const MONDAY_WEEK = [1, 2, 3, 4, 5, 6, 7].map((day) => new Date(2024, 0, day));
@@ -29,21 +29,21 @@ export function CalendarPanel({ log, now }: { log: StudyLog; now: number }) {
           aria-label={m.previousMonth}
           onClick={() => setOffset(offset - 1)}
         >
-          ‹
+          {GLYPHS.previous}
         </button>
-        <h3>
+        <h2>
           {new Intl.DateTimeFormat(m.intlLocale, {
             month: "long",
             year: "numeric",
           }).format(shown)}
-        </h3>
+        </h2>
         <button
           type="button"
           aria-label={m.nextMonth}
           disabled={offset >= 0}
           onClick={() => setOffset(offset + 1)}
         >
-          ›
+          {GLYPHS.next}
         </button>
       </div>
       <ol className="calendar weekdays" aria-hidden="true">

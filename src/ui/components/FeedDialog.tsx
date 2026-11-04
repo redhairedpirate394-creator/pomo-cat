@@ -30,7 +30,11 @@ export function FeedDialog({
         ))}
       </div>
       <p className="note">{m.feedTimeLeft(timeLeft)}</p>
-      {warned && <p className="note">{m.feedStopNote}</p>}
+      {warned && (
+        <p className="note" role="alert">
+          {m.feedStopNote}
+        </p>
+      )}
     </Modal>
   );
 }

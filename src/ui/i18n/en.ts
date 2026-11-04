@@ -1,18 +1,23 @@
+import { counted } from "./format";
 import type { Messages } from "./messages";
 
-const coins = (count: number) => (count === 1 ? "1 coin" : `${count} coins`);
+const intlLocale = "en-GB";
+
+const coins = (count: number) =>
+  counted(intlLocale, count, { one: "coin", other: "coins" });
+const minutes = (count: number) =>
+  counted(intlLocale, count, { one: "minute", other: "minutes" });
 
 export const en: Messages = {
   documentTitle: "Pomo Cat",
-  intlLocale: "en-GB",
+  intlLocale,
   calendar: "Calendar",
   previousMonth: "Previous month",
   nextMonth: "Next month",
-  dayMinutes: (date, minutes) =>
-    minutes === 0
-      ? date
-      : `${date}: ${minutes} ${minutes === 1 ? "minute" : "minutes"} learned`,
-  streak: (days) => (days === 1 ? "1 day in a row" : `${days} days in a row`),
+  dayMinutes: (date, count) =>
+    count === 0 ? date : `${date}: ${minutes(count)} learned`,
+  streak: (days) =>
+    `${counted(intlLocale, days, { one: "day", other: "days" })} in a row`,
   todos: "To-dos",
   todoLabel: "New task",
   todoAdd: "Add",
@@ -25,7 +30,7 @@ export const en: Messages = {
   settingsNote: "Times and units apply from the next start.",
   settingSound: "Sound on",
   settingLanguage: "Language",
-  minutes: (count) => `${count} minutes`,
+  minutes,
   close: "Close",
   loading: "One moment …",
   otherTab: "Pomo Cat is already open in another tab.",

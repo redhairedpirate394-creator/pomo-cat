@@ -3,6 +3,17 @@ import type { FoodId, RoomItemId, SnackId } from "../../domain/catalog";
 import type { TodoErrorCode } from "../../domain/todos";
 import type { StoreErrorCode } from "../../storage/port";
 
+// Language-neutral glyphs and names that are the same in every catalog.
+export const GLYPHS = {
+  remove: "×",
+  previous: "‹",
+  next: "›",
+  titleSeparator: " · ",
+} as const;
+
+// Each language is named in its own language, whichever locale is active.
+export const LANGUAGE_NAMES = { de: "Deutsch", en: "English" } as const;
+
 export type ErrorCode =
   | CatErrorCode
   | TodoErrorCode

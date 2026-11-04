@@ -299,3 +299,29 @@ three changes had no independent review; `pnpm verify` and a visual check only.
 `pnpm ship --mode auto-merge`: PR #2 merged by rebase, `main` at 644064a, CI verify and
 Pages deploy passed. Live check at desktop and Pixel 7: trial link works, image and
 owner font load, no failed or external requests.
+
+### C3 polish (2026-11-04)
+
+Session start after `/clear`, in a fresh context. Owner answered Q43 (r16).
+
+- T037: focus no longer falls to the page. A new step focuses its main button
+  (`data-next-step`), only when focus was lost; deleting a to-do or buying moves to
+  the next button (`useKeepFocus`), then the input or the Shop button. Timer is one
+  value for screen readers, the unit caption is polite live text, the late feed note
+  an alert, name and to-do errors are tied to their field, `select` has the focus
+  ring, a hidden `h1` and `h2` in panels fix the heading order.
+- T038 (developer, diff reviewed): glyphs and language names in `i18n`, plurals through
+  `Intl.PluralRules`, numbers through `Intl.NumberFormat`, 320 px scenario with a
+  120-character unbroken to-do in both languages. The four CSS lint warnings are gone
+  by reordering; no media query overrides the moved rules, checked by grep.
+- Accessibility scan, axe-core 4.10.3 from the scratchpad, not a project dependency:
+  name dialog with error, idle, settings, learning, stop dialog, feed window, held with
+  all panels open, at 1280 and 390 px. 0 violations after the heading fixes. Contrast
+  left "needs review" on dialogs and `.learned`: computed by hand from the tokens,
+  ink on white and on #ffe9a8, soft ink 6.9:1, accent 5.2:1, all pass AA. No screen
+  reader was used.
+- T041: quickstart walked in real time by script on `?probelauf` against the local
+  server: steps 1 to 5 as written, one meow, coins 13 stay when nothing is picked, stop
+  takes no coins, 0 console problems. A server from an earlier session already held
+  port 5173 and serves this worktree.
+- `pnpm verify`: exit 0 (110 unit tests, 160 browser scenarios), lint without warnings.
